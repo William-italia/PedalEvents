@@ -18,7 +18,7 @@ nextBtn.addEventListener('click', () => {
     enterBtn.style.display = 'none';
     backBtn.style.display = 'block';
 
-    img.innerHTML = '<img class="absolute inset-x-0 mx-auto" src="./assets/img/undraw_sculpting_-1-c9p.svg" alt="">';
+    // img.innerHTML = '<img class="absolute inset-x-0 mx-auto" src="./assets/img/undraw_sculpting_-1-c9p.svg" alt="">';
 })
 
 backBtn.addEventListener('click', () => {
@@ -31,7 +31,7 @@ backBtn.addEventListener('click', () => {
     enterBtn.style.display = 'block';
     backBtn.style.display = 'none';
 
-    img.innerHTML = '<img class="absolute inset-x-0 mx-auto" src="./assets/img/undraw_team_up_re_84ok 1.svg" alt=""></img>';
+    // img.innerHTML = '<img class="absolute inset-x-0 mx-auto" src="./assets/img/undraw_team_up_re_84ok 1.svg" alt=""></img>';
 
 
 
