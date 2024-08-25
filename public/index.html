@@ -26,7 +26,8 @@
             <h1 id="logo" class="hidden text-4xl font-russo text-white"><span class="text-colorLogo">Pedal</span> Events
             </h1>
 
-            <ul id="lista" class="flex flex-col space-y-6 text-lg items-center md:items-stretch text-white">
+            <ul id="lista"
+                class="flex flex-col space-y-6 md:space-y-10 text-lg items-center md:items-stretch text-white">
                 <li class="duration-200"><a href="#" class="duration-200 text-white opacity-80 hover:opacity-20"><i
                             class="fa-solid fa-house text-xs md:text-2xl"></i><span class="hidden">Home</span></a></li>
                 <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
@@ -53,6 +54,25 @@
                             alt=""><span class="hidden">Perfil</span></a>
                 </li>
             </ul>
+        </div>
+    </div>
+
+    <div id="buscaAmigos" class="fixed left-[3.5rem] w-[26rem] h-screen bg-[#0065B9] p-4 z-40 md:w-1/4 md:left-[5rem] ">
+        <div>
+            <p class="text-white text-2xl">Busque outros ciclistas</p>
+
+            <input type="text" class="my-8 w-full p-2 rounded-lg bg-[#262626] text-white" placeholder="Pesquisar">
+
+            <div>
+                <div
+                    class="flex space-x-4 bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                    <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                    <div>
+                        <p class="text-xl font-medium">Usuário 1</p>
+                        <p>Info</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -103,6 +123,7 @@
             </div>
         </div>
     </section>
+
     <section id="eventos" class="mx-16 md:mx-[10.3rem] mt-10">
         <!-- Eventos -->
         <div class="my-10 ">
@@ -110,29 +131,7 @@
 
             <!-- Evento -->
             <div class="flex flex-col space-y-10 md:space-y-0 md:flex-row md:space-x-10">
-                <div class="flex-1 border border-black shadow-4xl rounded-lg">
-                    <div>
-                        <img src="./assets/img/desktops.png">
-                    </div>
-                    <div class="p-4">
-                        <h1 class="text-xl md:text-2xl">Trilha nas montanhas</h1>
-                        <p class="md:text-xl">26 de Agosto 19:10</p>
-                        <button
-                            class="bg-[#006CE0] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Participar</button>
-                    </div>
-                </div>
-                <div class="flex-1 border border-black shadow-4xl rounded-lg">
-                    <div>
-                        <img src="./assets/img/desktops.png">
-                    </div>
-                    <div class="p-4">
-                        <h1 class="text-xl md:text-2xl">Trilha nas montanhas</h1>
-                        <p class="md:text-xl">26 de Agosto 19:10</p>
-                        <button
-                            class="bg-[#006CE0] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Participar</button>
-                    </div>
-                </div>
-                <div class="flex-1 border border-black shadow-4xl rounded-lg">
+                <div class="md:w-[33.33%] border border-black shadow-4xl rounded-lg">
                     <div>
                         <img src="./assets/img/desktops.png">
                     </div>
@@ -151,34 +150,9 @@
         <!-- grupos -->
         <div class="my-10 ">
             <h1 class="text-2xl md:text-4xl mb-10 font-medium">Grupos Populares</h1>
-
             <!-- grupo -->
             <div class="flex flex-col space-y-10 md:space-y-0 md:flex-row md:space-x-10">
-                <div class="flex-1 border border-black shadow-4xl rounded-lg">
-                    <div>
-                        <img src="./assets/img/bg.png">
-                    </div>
-                    <div class="p-4">
-                        <h1 class="text-xl md:text-2xl">Bicicleteiros</h1>
-                        <p class="md:text-xl">Criado em 26 de Agosto 19:10</p>
-                        <p class="md:text-xl">Participantes: 15</p>
-                        <button
-                            class="bg-[#006CE0] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Participar</button>
-                    </div>
-                </div>
-                <div class="flex-1 border border-black shadow-4xl rounded-lg">
-                    <div>
-                        <img src="./assets/img/bg.png">
-                    </div>
-                    <div class="p-4">
-                        <h1 class="text-xl md:text-2xl">Bicicleteiros</h1>
-                        <p class="md:text-xl">Criado em 26 de Agosto 19:10</p>
-                        <p class="md:text-xl">Participantes: 15</p>
-                        <button
-                            class="bg-[#006CE0] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Participar</button>
-                    </div>
-                </div>
-                <div class="flex-1 border border-black shadow-4xl rounded-lg">
+                <div class="md:w-[33.33%] border border-black shadow-4xl rounded-lg">
                     <div>
                         <img src="./assets/img/bg.png">
                     </div>
