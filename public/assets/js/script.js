@@ -33,7 +33,5 @@ backBtn.addEventListener('click', () => {
 
     // img.innerHTML = '<img class="absolute inset-x-0 mx-auto" src="./assets/img/undraw_team_up_re_84ok 1.svg" alt=""></img>';
 
-
-
 });
 

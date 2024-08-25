@@ -2,12 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body {
-    background-image: url('../img/bg-header-desktop.png');
-    background-repeat: no-repeat;
-    background-size: contain;
+body {
+    overflow-x: hidden;
 }
 
+#menu-bar {
+    position: fixed; /* Já está configurado como absolute */
+    z-index: 50;
+}
+
+#home-banner {
+    position: relative; /* Adicionando posição relativa */
+    z-index: 10; /* Adicionando z-index menor que #menu-bar */
+    background-image: url('../img/bg-header-desktop.png');
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.icon-faded {
+    opacity: .5;
+}
+
+/* #pelicula {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: black;
+    z-index: 0;
+    opacity: 0;
+} */
+
+/*
 @media(max-width: 576px) {
     body {
       
@@ -22,6 +52,3 @@
     background: linear-gradient(190deg, #003B7A, #006CE0);
 }
 
-.sombra {
-    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
-}
