@@ -25,7 +25,9 @@ body {
     opacity: .5;
 }
 
-
+.none {
+    display: none;
+}
 
 /* #pelicula {
     position: absolute;

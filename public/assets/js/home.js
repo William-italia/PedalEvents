@@ -5,6 +5,9 @@ const spans = document.querySelectorAll('#lista li span');
 const icons = document.querySelectorAll('#lista li a i');
 const h1 = document.querySelector('h1:nth-child(1)');
 const menuBar = document.getElementById('menu-bar');
+const telaBusca = document.getElementById('buscaAmigos');
+const telaConversa = document.getElementById('conversas');
+
 
 function ajustaTamanhoIcones() {
     icons.forEach(i => {
@@ -16,6 +19,71 @@ function ajustaTamanhoIcones() {
             seta.style.fontSize = '1.6rem';
         }
     });
+}
+
+function ajustaDistanciaBuscaAmigos() {
+
+    if (window.innerWidth <= 768 && menuBar.classList.contains('close') || menuBar.classList.contains('open')) {
+        telaBusca.style.left = '3.5rem';
+    }
+
+    if (window.innerWidth > 768) {
+        if (menuBar.classList.contains('close')) {
+            telaBusca.style.left = '4.5rem';
+            telaConversa.style.left = '4.5rem';
+        } else if (menuBar.classList.contains('open')) {
+            telaBusca.style.left = '17.9rem';
+            telaConversa.style.left = '17.9rem';
+        }
+
+    }
+
+}
+
+function selecaoLi(liClicado) {
+    // Define a função para alternar a classe 'none' em um elemento
+    function toggleVisibility(element) {
+        element.classList.toggle('none');
+    }
+
+    // Verifica a classe do elemento clicado e realiza a ação correspondente
+    if (liClicado.classList.contains('buscarAmigos')) {
+        toggleVisibility(telaBusca);
+        // Garantir que a tela de conversas esteja oculta
+        telaConversa.classList.add('none');
+    } else if (liClicado.classList.contains('conversas')) {
+        toggleVisibility(telaConversa);
+        // Garantir que a tela de busca esteja oculta
+        telaBusca.classList.add('none');
+    } else {
+        // Oculta ambas as telas se o item clicado não corresponde a nenhuma das classes
+        telaBusca.classList.add('none');
+        telaConversa.classList.add('none');
+    }
+}
+
+
+function selecaoIcon(iconClicado) {
+    if (iconClicado.closest('li').classList.contains('buscarAmigos')) {
+        if (telaBusca.classList.contains('none')) {
+            telaBusca.classList.remove('none');
+        } else {
+            telaBusca.classList.add('none');
+        }
+
+    } else {
+        telaBusca.classList.add('none');
+    }
+
+    if (iconClicado.closest('li').classList.contains('conversas')) {
+        if (telaConversa.classList.contains('none')) {
+            telaConversa.classList.remove('none');
+        } else {
+            telaConversa.classList.add('none');
+        }
+    } else {
+        telaConversa.classList.add('none');
+    }
 }
 
 function atualizaOpacidadeLi(liClicado) {
@@ -55,25 +123,32 @@ function manipulaMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
     const text = h1.textContent;
     const words = text.split(' ');
     const coloredWords = words.map(word => {
         return `<span class="text-colorLogo">${word.charAt(0).toUpperCase()}</span>${word.slice(1)}`;
     });
+
     const coloredText = coloredWords.join(' ');
     h1.innerHTML = coloredText;
 
     ajustaTamanhoIcones();
+    ajustaDistanciaBuscaAmigos()
 
     window.addEventListener('resize', ajustaTamanhoIcones);
+    window.addEventListener('resize', ajustaDistanciaBuscaAmigos);
+
     seta.addEventListener('click', () => {
         manipulaMenu();
         ajustaTamanhoIcones();
+        ajustaDistanciaBuscaAmigos()
     });
 
     document.querySelectorAll('#lista li').forEach(li => {
         li.addEventListener('click', () => {
             atualizaOpacidadeLi(li);
+            selecaoLi(li);
         });
     });
 
@@ -81,9 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.addEventListener('click', (event) => {
             event.stopPropagation();
             atualizaOpacidadeLi(icon.parentElement.parentElement);
+            selecaoIcon(icon);
         });
     });
-
-
 
 });

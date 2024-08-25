@@ -36,13 +36,14 @@
                 <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
                             class="fa-solid fa-people-group text-xs md:text-2xl"></i><span
                             class="hidden">Grupos</span></a></li>
-                <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
+                <li class="conversas duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
                             class="fa-solid fa-comment text-xs md:text-2xl"></i><span
                             class="hidden">Conversas</span></a></li>
                 <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
                             class="fa-solid fa-bell text-xs md:text-2xl"></i><span
                             class="hidden">Notificações</span></a></li>
-                <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
+                <li id="buscarAmigos" class="buscarAmigos duration-200"><a href="#"
+                        class="duration-200 text-white hover:opacity-20"><i
                             class="fa-solid fa-user-group text-xs md:text-2xl"></i><span class="hidden">Busca de
                             amigos</span></a>
                 </li>
@@ -57,25 +58,58 @@
         </div>
     </div>
 
-    <div id="buscaAmigos" class="fixed left-[3.5rem] w-[26rem] h-screen bg-[#0065B9] p-4 z-40 md:w-1/4 md:left-[5rem] ">
+    <div id="buscaAmigos"
+        class="fixed left-[3rem] w-[26rem] h-screen bg-[#0065B9] p-4 z-40 md:w-1/4 md:left-[4.5rem] none">
         <div>
             <p class="text-white text-2xl">Busque outros ciclistas</p>
 
             <input type="text" class="my-8 w-full p-2 rounded-lg bg-[#262626] text-white" placeholder="Pesquisar">
 
-            <div>
+            <div class="flex flex-col space-y-4">
                 <div
-                    class="flex space-x-4 bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                    class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
                     <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
                     <div>
                         <p class="text-xl font-medium">Usuário 1</p>
                         <p>Info</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
+    <div id="conversas"
+        class="fixed left-[3rem] w-[26rem] h-screen bg-[#0065B9] p-4 z-40 md:w-1/4 md:left-[4.5rem] none">
+        <div>
+            <div class="flex flex-col space-y-4">
+                <div
+                    class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                    <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                    <div>
+                        <p class="text-xl font-medium">Usuário 1</p>
+                        <p>vamos participar do evento?</p>
+                    </div>
+                </div>
+                <div
+                    class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                    <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                    <div>
+                        <p class="text-xl font-medium">Usuário 2</p>
+                        <p>Bora?</p>
+                    </div>
+                </div>
+                <div
+                    class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                    <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                    <div>
+                        <p class="text-xl font-medium">Usuário 3</p>
+                        <p>Tudo bem?</p>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    </div>
     <section id="home-banner" class="">
         <div class="flex items-center justify-center relative">
             <div id="pelicula" class="absolute"></div>
