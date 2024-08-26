@@ -28,7 +28,8 @@
 
             <ul id="lista"
                 class="flex flex-col space-y-6 md:space-y-10 text-lg items-center md:items-stretch text-white">
-                <li class="duration-200"><a href="#" class="duration-200 text-white opacity-80 hover:opacity-20"><i
+                <li class="duration-200 icon-faded opacity-80"><a href="#"
+                        class="duration-200 text-white opacity-80 hover:opacity-20"><i
                             class="fa-solid fa-house text-xs md:text-2xl"></i><span class="hidden">Home</span></a></li>
                 <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
                             class="fa-solid fa-flag text-xs md:text-2xl"></i><span class="hidden">Eventos</span></a>
@@ -81,33 +82,34 @@
     <div id="conversas"
         class="fixed left-[3rem] w-[26rem] h-screen bg-[#0065B9] p-4 z-40 md:w-1/4 md:left-[4.5rem] none">
         <div>
-            <div class="flex flex-col space-y-4">
-                <div
+            <ul id="chats" class="flex flex-col space-y-4">
+                <li
                     class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
                     <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
                     <div>
                         <p class="text-xl font-medium">Usuário 1</p>
                         <p>vamos participar do evento?</p>
                     </div>
-                </div>
-                <div
+                    <input value="id-usuario" type="hidden">
+                </li>
+                <li
                     class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
                     <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
                     <div>
                         <p class="text-xl font-medium">Usuário 2</p>
                         <p>Bora?</p>
                     </div>
-                </div>
-                <div
+                </li>
+                <li
                     class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
                     <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
                     <div>
                         <p class="text-xl font-medium">Usuário 3</p>
                         <p>Tudo bem?</p>
                     </div>
-                </div>
+                </li>
 
-            </div>
+            </ul>
         </div>
     </div>
     <section id="home-banner" class="">
@@ -124,10 +126,10 @@
             </div>
         </div>
     </section>
-    <section id="home-filtro" class="mx-16 md:mx-[10.3rem] mt-10">
+    <section id="home-filtro" class="mx-16 md:mx-[10.3rem] mt-10 hidden">
         <div>
             <!-- Filtro -->
-            <div class="w-full shadow-2xl p-6 md:p-10 border border-gray-600 rounded-lg">
+            <div class="w-full shadow-2xl p-6 md:p-10 rounded-lg">
                 <div class="flex flex-col space-y-10 justify-between md:flex-row md:space-y-0 md:space-x-10">
                     <div class="flex flex-col flex-1">
                         <label class="font-roboto text-xl font-medium" for="categoria">Categoria</label>
@@ -165,7 +167,7 @@
 
             <!-- Evento -->
             <div class="flex flex-col space-y-10 md:space-y-0 md:flex-row md:space-x-10">
-                <div class="md:w-[33.33%] border border-black shadow-4xl rounded-lg">
+                <div class="md:w-[25%] shadow-2xl rounded-2xl">
                     <div>
                         <img src="./assets/img/desktops.png">
                     </div>
@@ -186,7 +188,7 @@
             <h1 class="text-2xl md:text-4xl mb-10 font-medium">Grupos Populares</h1>
             <!-- grupo -->
             <div class="flex flex-col space-y-10 md:space-y-0 md:flex-row md:space-x-10">
-                <div class="md:w-[33.33%] border border-black shadow-4xl rounded-lg">
+                <div class="md:w-[25%] shadow-2xl rounded-2xl">
                     <div>
                         <img src="./assets/img/bg.png">
                     </div>

@@ -7,6 +7,7 @@ const h1 = document.querySelector('h1:nth-child(1)');
 const menuBar = document.getElementById('menu-bar');
 const telaBusca = document.getElementById('buscaAmigos');
 const telaConversa = document.getElementById('conversas');
+const chats = document.getElementById('chats');
 
 
 function ajustaTamanhoIcones() {
@@ -41,22 +42,17 @@ function ajustaDistanciaBuscaAmigos() {
 }
 
 function selecaoLi(liClicado) {
-    // Define a função para alternar a classe 'none' em um elemento
     function toggleVisibility(element) {
         element.classList.toggle('none');
     }
 
-    // Verifica a classe do elemento clicado e realiza a ação correspondente
     if (liClicado.classList.contains('buscarAmigos')) {
         toggleVisibility(telaBusca);
-        // Garantir que a tela de conversas esteja oculta
         telaConversa.classList.add('none');
     } else if (liClicado.classList.contains('conversas')) {
         toggleVisibility(telaConversa);
-        // Garantir que a tela de busca esteja oculta
         telaBusca.classList.add('none');
     } else {
-        // Oculta ambas as telas se o item clicado não corresponde a nenhuma das classes
         telaBusca.classList.add('none');
         telaConversa.classList.add('none');
     }
@@ -122,16 +118,34 @@ function manipulaMenu() {
     }
 }
 
+function selecionandoChat(chatClicado) {
+    document.querySelectorAll('#chats li').forEach(li => {
+        if (!chatClicado.classList.contains('select')) {
+            chatClicado.style.backgroundColor = 'red';
+        }
+    });
+};
+
+
+// function atualizaOpacidadeLi(liClicado) {
+//     document.querySelectorAll('#lista li').forEach(li => {
+//         li.classList.remove('icon-faded');
+//         li.classList.remove('opacity-80');
+//     });
+//     liClicado.classList.add('icon-faded');
+//     liClicado.classList.add('opacity-80');
+// }
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    const text = h1.textContent;
-    const words = text.split(' ');
-    const coloredWords = words.map(word => {
-        return `<span class="text-colorLogo">${word.charAt(0).toUpperCase()}</span>${word.slice(1)}`;
-    });
+    // const text = h1.textContent;
+    // const words = text.split(' ');
+    // const coloredWords = words.map(word => {
+    //     return `<span class="text-colorLogo">${word.charAt(0).toUpperCase()}</span>${word.slice(1)}`;
+    // });
 
-    const coloredText = coloredWords.join(' ');
-    h1.innerHTML = coloredText;
+    // const coloredText = coloredWords.join(' ');
+    // h1.innerHTML = coloredText;
 
     ajustaTamanhoIcones();
     ajustaDistanciaBuscaAmigos()
@@ -149,6 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
         li.addEventListener('click', () => {
             atualizaOpacidadeLi(li);
             selecaoLi(li);
+        });
+    });
+
+    document.querySelectorAll('#chats li').forEach(li => {
+        li.addEventListener('click', () => {
+            selecionandoChat(li);
         });
     });
 
