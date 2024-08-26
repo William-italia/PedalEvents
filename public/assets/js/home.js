@@ -26,6 +26,8 @@ function ajustaDistanciaBuscaAmigos() {
 
     if (window.innerWidth <= 768 && menuBar.classList.contains('close') || menuBar.classList.contains('open')) {
         telaBusca.style.left = '3.5rem';
+        telaConversa.style.left = '3.5rem';
+
     }
 
     if (window.innerWidth > 768) {
@@ -40,6 +42,8 @@ function ajustaDistanciaBuscaAmigos() {
     }
 
 }
+
+
 
 function selecaoLi(liClicado) {
     function toggleVisibility(element) {
@@ -127,15 +131,6 @@ function selecionandoChat(chatClicado) {
 };
 
 
-// function atualizaOpacidadeLi(liClicado) {
-//     document.querySelectorAll('#lista li').forEach(li => {
-//         li.classList.remove('icon-faded');
-//         li.classList.remove('opacity-80');
-//     });
-//     liClicado.classList.add('icon-faded');
-//     liClicado.classList.add('opacity-80');
-// }
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // const text = h1.textContent;
@@ -151,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ajustaDistanciaBuscaAmigos()
 
     window.addEventListener('resize', ajustaTamanhoIcones);
+    window.addEventListener('resize', ajustaDistanciaBuscaAmigos);
     window.addEventListener('resize', ajustaDistanciaBuscaAmigos);
 
     seta.addEventListener('click', () => {
