@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="relative ">
+    <div id="menu-bar" class="fixed flex items-center duration-200 close">
+        <div
+            class="relative bgGradienteVertical h-screen flex-col justify-center px-4 md:px-6 py-24  space-y-10 sombra">
+            <i id="seta"
+                class="fa-solid fa-arrow-right absolute text-white text-2xl top-0 right-0 rotate-0 pt-4 left-5 md:left-7 cursor-pointer  text-xs md:text-2xl"></i>
+            <h1 id="logo" class="hidden text-4xl font-russo text-white"><span class="text-colorLogo">Pedal</span> Events
+            </h1>
+
+            <ul id="lista"
+                class="flex flex-col space-y-6 md:space-y-10 text-lg items-center md:items-stretch text-white">
+                <li class="relative">
+                    <a href="./index.html" class="duration-200 text-white hover:opacity-20">
+                        <i class="fa-solid fa-house text-xs md:text-2xl"></i>
+                        <span class="hidden">Home</span>
+                    </a>
+                </li>
+
+                <li class="relative duration-200 icon-faded "><a href="./eventos.html"
+                        class="duration-200 text-white hover:opacity-20"><i
+                            class="fa-solid fa-flag text-xs md:text-2xl"></i><span class="hidden">Eventos</span></a>
+                </li>
+                <li class="duration-200"><a href="./grupos.html" class="duration-200 text-white hover:opacity-20"><i
+                            class="fa-solid fa-people-group text-xs md:text-2xl"></i><span
+                            class="hidden">Grupos</span></a></li>
+                <li class="conversas duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
+                            class="fa-solid fa-comment text-xs md:text-2xl"></i><span
+                            class="hidden">Conversas</span></a></li>
+                <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
+                            class="fa-solid fa-bell text-xs md:text-2xl"></i><span
+                            class="hidden">Notificações</span></a></li>
+                <li id="buscarAmigos" class="buscarAmigos duration-200"><a href="#"
+                        class="duration-200 text-white hover:opacity-20"><i
+                            class="fa-solid fa-user-group text-xs md:text-2xl"></i><span class="hidden">Busca de
+                            amigos</span></a>
+                </li>
+                <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
+                            class="fa-solid fa-circle-plus text-xs md:text-2xl"></i><span
+                            class="hidden">Criar</span></a></li>
+                <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><img
+                            class="w-[25px] h-[25px] md:w-[30px] md:h-[30px] inline" src="./assets/img/person-img.png"
+                            alt=""><span class="hidden">Perfil</span></a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="buscaAmigos"
+            class="fixed left-[3rem] w-[26rem] h-screen bg-[#0065B9] p-4 z-40 md:w-1/4 md:left-[4.5rem] none">
+            <div>
+                <p class="text-white text-2xl">Busque outros ciclistas</p>
+
+                <input type="text" class="my-8 w-full p-2 rounded-lg bg-[#262626] text-white" placeholder="Pesquisar">
+
+                <div class="flex flex-col space-y-4">
+                    <div
+                        class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                        <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                        <div>
+                            <p class="text-xl font-medium">Usuário 1</p>
+                            <p>Info</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="conversas"
+            class="fixed left-[3rem] w-[26rem] h-screen bg-[#0065B9] p-4 z-40 md:w-1/4 md:left-[4.5rem] none">
+            <div>
+                <ul id="chats" class="flex flex-col space-y-4">
+                    <li
+                        class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                        <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                        <div>
+                            <p class="text-xl font-medium">Usuário 1</p>
+                            <p>vamos participar do evento?</p>
+                        </div>
+                        <input value="id-usuario" type="hidden">
+                    </li>
+                    <li
+                        class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                        <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                        <div>
+                            <p class="text-xl font-medium">Usuário 2</p>
+                            <p>Bora?</p>
+                        </div>
+                    </li>
+                    <li
+                        class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                        <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                        <div>
+                            <p class="text-xl font-medium">Usuário 3</p>
+                            <p>Tudo bem?</p>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <section id="home-filtro" class="mx-16 md:mx-[10.3rem]">
+        <div class="mt-10">
+            <!-- Filtro -->
+            <form method="POST" action="seu-script.php">
+                <div class="w-full shadow-2xl p-6 md:p-10 rounded-lg">
+                    <div class="flex flex-col space-y-10 justify-between md:flex-row md:space-y-0 md:space-x-10">
+                        <div class="flex flex-col flex-1">
+                            <label class="font-roboto text-xl font-medium" for="categoria">Categoria</label>
+                            <select name="categoria" id="categoria"
+                                class="p-2 rounded-lg border border-gray-600 mt-2 font-roboto w-full">
+                                <option value="passeio-recreativo">Passeio Recreativo</option>
+                                <option value="ciclismo-estrada">Ciclismo de Estrada</option>
+                                <option value="mountain-bike">Mountain Bike (MTB)</option>
+                                <option value="ciclismo-urbano">Ciclismo Urbano</option>
+                                <option value="cicloturismo">Cicloturismo</option>
+                                <option value="bmx">BMX</option>
+                                <option value="gravel">Gravel</option>
+                                <option value="ciclismo-indoor">Ciclismo Indoor</option>
+                                <option value="trekking-ciclismo">Trekking e Ciclismo</option>
+                                <option value="evento-competitivo">Evento Competitivo</option>
+                                <option value="paraciclismo">Paraciclismo</option>
+                                <option value="ciclismo-aventura">Ciclismo de Aventura</option>
+                                <option value="downhill">Downhill</option>
+                                <option value="criterium">Criterium</option>
+                                <option value="ciclismo-de-pista">Ciclismo de Pista</option>
+                                <option value="gran-fondo">Gran Fondo</option>
+                                <option value="randonneurs">Randonneurs</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <label class="font-roboto text-xl font-medium" for="localizacao">Localização</label>
+                            <input type="text" name="localizacao" id="localizacao"
+                                class="p-2 rounded-lg border border-gray-600 mt-2 font-roboto w-full"
+                                placeholder="Digite uma localização">
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <label class="font-roboto text-xl font-medium" for="data">Data</label>
+                            <input type="date" name="data" id="data"
+                                class="p-2 rounded-lg border border-gray-600 mt-2 font-roboto w-full">
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="bg-[#006CE0] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">
+                        Aplicar Filtros
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="eventos" class="mx-16 md:mx-[10.3rem] mt-10">
+        <!-- Eventos -->
+        <div class="my-10 ">
+            <h1 class="text-2xl md:text-4xl mb-10 font-medium">Todos os eventos</h1>
+
+            <!-- Evento -->
+            <div class="flex flex-col space-y-10 md:grid md:gap-4 md:grid-cols-4 md:space-y-0">
+                <div class="shadow-2xl rounded-2xl">
+                    <div class="h-[13.8rem] w-full mb-4">
+                        <img src="https://canalcafenatrilha.com.br/wp-content/uploads/2022/02/whatsapp-image-2022-02-09-at-114116.jpeg"
+                            alt="">
+                    </div>
+                    <div class="p-4">
+                        <h1 class="text-xl md:text-2xl">Trilha nas montanhas</h1>
+                        <div class="flex space-x-6 mt-2">
+                            <p class="md:text-xs">Mongaguá, sp</p>
+                            <span>-</span>
+                            <p class="md:text-xs">26 de Agosto 19:10</p>
+                        </div>
+                        <p class="mt-2 md:text-xs">Mountain Bike (MTB)</p>
+                        <button
+                            class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Participar</button>
+                    </div>
+                </div>
+                <div class="shadow-2xl rounded-2xl">
+                    <div class="h-[13.8rem] w-full mb-4">
+                        <img src="https://canalcafenatrilha.com.br/wp-content/uploads/2022/02/whatsapp-image-2022-02-09-at-114116.jpeg"
+                            alt="">
+                    </div>
+                    <div class="p-4">
+                        <h1 class="text-xl md:text-2xl">Trilha nas montanhas</h1>
+                        <div class="flex space-x-6 mt-2">
+                            <p class="md:text-xs">Mongaguá, sp</p>
+                            <span>-</span>
+                            <p class="md:text-xs">26 de Agosto 19:10</p>
+                        </div>
+                        <p class="mt-2 md:text-xs">Mountain Bike (MTB)</p>
+                        <button
+                            class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Participar</button>
+                    </div>
+                </div>
+                <div class="shadow-2xl rounded-2xl">
+                    <div class="h-[13.8rem] w-full mb-4">
+                        <img src="https://canalcafenatrilha.com.br/wp-content/uploads/2022/02/whatsapp-image-2022-02-09-at-114116.jpeg"
+                            alt="">
+                    </div>
+                    <div class="p-4">
+                        <h1 class="text-xl md:text-2xl">Trilha nas montanhas</h1>
+                        <div class="flex space-x-6 mt-2">
+                            <p class="md:text-xs">Mongaguá, sp</p>
+                            <span>-</span>
+                            <p class="md:text-xs">26 de Agosto 19:10</p>
+                        </div>
+                        <p class="mt-2 md:text-xs">Mountain Bike (MTB)</p>
+                        <button
+                            class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Participar</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <script src="./assets/js/home.js"></script>
+</body>
+
+</html>

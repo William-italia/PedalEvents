@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="relative">
+    <div id="menu-bar" class="fixed flex items-center duration-200 close">
+        <div
+            class="relative bgGradienteVertical h-screen flex-col justify-center px-4 md:px-6 py-24  space-y-10 sombra">
+            <i id="seta"
+                class="fa-solid fa-arrow-right absolute text-white text-2xl top-0 right-0 rotate-0 pt-4 left-5 md:left-7 cursor-pointer  text-xs md:text-2xl"></i>
+            <h1 id="logo" class="hidden text-4xl font-russo text-white"><span class="text-colorLogo">Pedal</span> Events
+            </h1>
+
+            <ul id="lista"
+                class="flex flex-col space-y-6 md:space-y-10 text-lg items-center md:items-stretch text-white">
+                <li class="relative duration-200 icon-faded ">
+                    <a href="#" class="duration-200 text-white hover:opacity-20">
+                        <i class="fa-solid fa-house text-xs md:text-2xl"></i>
+                        <span class="hidden">Home</span>
+                    </a>
+                </li>
+
+                <li class="duration-200"><a href="./eventos.html" class="duration-200 text-white hover:opacity-20"><i
+                            class="fa-solid fa-flag text-xs md:text-2xl"></i><span class="hidden">Eventos</span></a>
+                </li>
+                <li class="duration-200"><a href="./grupos.html" class="duration-200 text-white hover:opacity-20"><i
+                            class="fa-solid fa-people-group text-xs md:text-2xl"></i><span
+                            class="hidden">Grupos</span></a></li>
+                <li class="conversas duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
+                            class="fa-solid fa-comment text-xs md:text-2xl"></i><span
+                            class="hidden">Conversas</span></a></li>
+                <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
+                            class="fa-solid fa-bell text-xs md:text-2xl"></i><span
+                            class="hidden">Notificações</span></a></li>
+                <li id="buscarAmigos" class="buscarAmigos duration-200"><a href="#"
+                        class="duration-200 text-white hover:opacity-20"><i
+                            class="fa-solid fa-user-group text-xs md:text-2xl"></i><span class="hidden">Busca de
+                            amigos</span></a>
+                </li>
+                <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
+                            class="fa-solid fa-circle-plus text-xs md:text-2xl"></i><span
+                            class="hidden">Criar</span></a></li>
+                <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><img
+                            class="w-[25px] h-[25px] md:w-[30px] md:h-[30px] inline" src="./assets/img/person-img.png"
+                            alt=""><span class="hidden">Perfil</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="buscaAmigos"
+        class="fixed left-[3rem] w-[26rem] h-screen bg-[#0065B9] p-4 z-40 md:w-1/4 md:left-[4.5rem] none">
+        <div>
+            <p class="text-white text-2xl">Busque outros ciclistas</p>
+
+            <input type="text" class="my-8 w-full p-2 rounded-lg bg-[#262626] text-white" placeholder="Pesquisar">
+
+            <div class="flex flex-col space-y-4">
+                <div
+                    class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                    <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                    <div>
+                        <p class="text-xl font-medium">Usuário 1</p>
+                        <p>Info</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="conversas"
+        class="fixed left-[3rem] w-[26rem] h-screen bg-[#0065B9] p-4 z-40 md:w-1/4 md:left-[4.5rem] none">
+        <div>
+            <ul id="chats" class="flex flex-col space-y-4">
+                <li
+                    class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                    <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                    <div>
+                        <p class="text-xl font-medium">Usuário 1</p>
+                        <p>vamos participar do evento?</p>
+                    </div>
+                    <input value="id-usuario" type="hidden">
+                </li>
+                <li
+                    class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                    <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                    <div>
+                        <p class="text-xl font-medium">Usuário 2</p>
+                        <p>Bora?</p>
+                    </div>
+                </li>
+                <li
+                    class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                    <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                    <div>
+                        <p class="text-xl font-medium">Usuário 3</p>
+                        <p>Tudo bem?</p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <h1>Perfil</h1>
+    <script src="./assets/js/home.js"></script>
+</body>
+
+</html>
