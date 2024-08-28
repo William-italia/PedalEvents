@@ -9,7 +9,6 @@ const telaBusca = document.getElementById('buscaAmigos');
 const telaConversa = document.getElementById('conversas');
 const chats = document.getElementById('chats');
 
-
 function ajustaTamanhoIcones() {
     icons.forEach(i => {
         if (window.innerWidth <= 768 && menuBar.classList.contains('close')) {
@@ -42,7 +41,6 @@ function ajustaDistanciaBuscaAmigos() {
     }
 
 }
-
 
 
 function selecaoLi(liClicado) {
@@ -106,8 +104,8 @@ function manipulaMenu() {
         seta.style.transform = 'rotate(180deg)';
         seta.classList.remove('left-6');
         seta.style.padding = '1rem';
-        lista.classList.remove('md:items-stretch');
         lista.style.alignItems = 'stretch';
+
     } else {
         logo.style.display = 'none';
         seta.style.transform = 'rotate(0deg)';
@@ -119,34 +117,26 @@ function manipulaMenu() {
         seta.style.paddingTop = '1rem';
         spans.forEach(span => span.classList.add('hidden'));
         icons.forEach(icon => icon.style.marginRight = '0rem');
+        lista.style.alignItems = 'center';
+        lista.classList.add('items-center');
     }
 }
 
 function selecionandoChat(chatClicado) {
     document.querySelectorAll('#chats li').forEach(li => {
-        if (!chatClicado.classList.contains('select')) {
-            chatClicado.style.backgroundColor = 'red';
-        }
+        li.style.backgroundColor = '#003B7A';
     });
+
+    chatClicado.style.backgroundColor = '#2F2E41';
 };
 
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // const text = h1.textContent;
-    // const words = text.split(' ');
-    // const coloredWords = words.map(word => {
-    //     return `<span class="text-colorLogo">${word.charAt(0).toUpperCase()}</span>${word.slice(1)}`;
-    // });
-
-    // const coloredText = coloredWords.join(' ');
-    // h1.innerHTML = coloredText;
-
     ajustaTamanhoIcones();
     ajustaDistanciaBuscaAmigos()
 
     window.addEventListener('resize', ajustaTamanhoIcones);
-    window.addEventListener('resize', ajustaDistanciaBuscaAmigos);
     window.addEventListener('resize', ajustaDistanciaBuscaAmigos);
 
     seta.addEventListener('click', () => {
@@ -174,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
             atualizaOpacidadeLi(icon.parentElement.parentElement);
             selecaoIcon(icon);
         });
+
     });
 
 });

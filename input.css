@@ -7,13 +7,23 @@ body {
 }
 
 #menu-bar {
-    position: fixed; /* Já está configurado como absolute */
+    position: fixed; 
+    z-index: 1000;
+    left: 0;
+    top: 0;
+}
+
+#conversas {
+    z-index: 50;
+}
+
+#buscaAmigos {
     z-index: 50;
 }
 
 #home-banner {
-    position: relative; /* Adicionando posição relativa */
-    z-index: 10; /* Adicionando z-index menor que #menu-bar */
+    position: relative; 
+    z-index: 10;
     background-image: url('../img/bg-header-desktop.png');
     width: 100vw;
     background-repeat: no-repeat;
