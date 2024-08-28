@@ -6,7 +6,6 @@ const icons = document.querySelectorAll('#lista li a i');
 const h1 = document.querySelector('h1:nth-child(1)');
 const menuBar = document.getElementById('menu-bar');
 const telaBusca = document.getElementById('buscaAmigos');
-const telaConversa = document.getElementById('conversas');
 const chats = document.getElementById('chats');
 
 function ajustaTamanhoIcones() {
@@ -25,17 +24,13 @@ function ajustaDistanciaBuscaAmigos() {
 
     if (window.innerWidth <= 768 && menuBar.classList.contains('close') || menuBar.classList.contains('open')) {
         telaBusca.style.left = '3.5rem';
-        telaConversa.style.left = '3.5rem';
-
     }
 
     if (window.innerWidth > 768) {
         if (menuBar.classList.contains('close')) {
             telaBusca.style.left = '4.5rem';
-            telaConversa.style.left = '4.5rem';
         } else if (menuBar.classList.contains('open')) {
             telaBusca.style.left = '17.9rem';
-            telaConversa.style.left = '17.9rem';
         }
 
     }
@@ -50,13 +45,11 @@ function selecaoLi(liClicado) {
 
     if (liClicado.classList.contains('buscarAmigos')) {
         toggleVisibility(telaBusca);
-        telaConversa.classList.add('none');
     } else if (liClicado.classList.contains('conversas')) {
         toggleVisibility(telaConversa);
         telaBusca.classList.add('none');
     } else {
         telaBusca.classList.add('none');
-        telaConversa.classList.add('none');
     }
 }
 
@@ -122,13 +115,6 @@ function manipulaMenu() {
     }
 }
 
-function selecionandoChat(chatClicado) {
-    document.querySelectorAll('#chats li').forEach(li => {
-        li.style.backgroundColor = '#003B7A';
-    });
-
-    chatClicado.style.backgroundColor = '#2F2E41';
-};
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -149,12 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
         li.addEventListener('click', () => {
             atualizaOpacidadeLi(li);
             selecaoLi(li);
-        });
-    });
-
-    document.querySelectorAll('#chats li').forEach(li => {
-        li.addEventListener('click', () => {
-            selecionandoChat(li);
         });
     });
 

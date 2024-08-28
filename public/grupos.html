@@ -18,7 +18,7 @@
 </head>
 
 <body class="relative ">
-    <div id="menu-bar" class="fixed flex items-center duration-200 close">
+    <nav id="menu-bar" class="fixed flex items-center duration-200 close">
         <div
             class="relative bgGradienteVertical h-screen flex-col justify-center px-4 md:px-6 py-24  space-y-10 sombra">
             <i id="seta"
@@ -28,8 +28,8 @@
 
             <ul id="lista"
                 class="flex flex-col space-y-6 md:space-y-10 text-lg items-center md:items-stretch text-white">
-                <li class="relative">
-                    <a href="./index.html" class="duration-200 text-white hover:opacity-20">
+                <li class="relative duration-200 icon-faded ">
+                    <a href="#" class="duration-200 text-white hover:opacity-20">
                         <i class="fa-solid fa-house text-xs md:text-2xl"></i>
                         <span class="hidden">Home</span>
                     </a>
@@ -38,8 +38,7 @@
                 <li class="duration-200"><a href="./eventos.html" class="duration-200 text-white hover:opacity-20"><i
                             class="fa-solid fa-flag text-xs md:text-2xl"></i><span class="hidden">Eventos</span></a>
                 </li>
-                <li class="relative duration-200 icon-faded "><a href="#"
-                        class="duration-200 text-white hover:opacity-20"><i
+                <li class="duration-200"><a href="./grupos.html" class="duration-200 text-white hover:opacity-20"><i
                             class="fa-solid fa-people-group text-xs md:text-2xl"></i><span
                             class="hidden">Grupos</span></a></li>
                 <li class="conversas duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
@@ -56,75 +55,43 @@
                 <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><i
                             class="fa-solid fa-circle-plus text-xs md:text-2xl"></i><span
                             class="hidden">Criar</span></a></li>
-                <li class="duration-200"><a href="#" class="duration-200 text-white hover:opacity-20"><img
+                <li class="duration-200"><a href="./perfil.html" class="duration-200 text-white hover:opacity-20"><img
                             class="w-[25px] h-[25px] md:w-[30px] md:h-[30px] inline" src="./assets/img/person-img.png"
                             alt=""><span class="hidden">Perfil</span></a>
                 </li>
             </ul>
         </div>
+    </nav>
 
-        <div id="buscaAmigos"
-            class="fixed left-[3rem] w-[26rem] h-screen bg-[#0065B9] p-4 z-40 md:w-1/4 md:left-[4.5rem] none">
-            <div>
-                <p class="text-white text-2xl">Busque outros ciclistas</p>
+    <div id="buscaAmigos"
+        class="relative left-[3rem] w-[26rem] h-screen bg-[#0065B9] p-4 z-40 md:w-1/4 md:left-[4.5rem] none">
+        <div>
+            <p class="text-white text-2xl">Busque outros ciclistas</p>
 
-                <input type="text" class="my-8 w-full p-2 rounded-lg bg-[#262626] text-white" placeholder="Pesquisar">
+            <input type="text" class="my-8 w-full p-2 rounded-lg bg-[#262626] text-white" placeholder="Pesquisar">
 
-                <div class="flex flex-col space-y-4">
-                    <div
-                        class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
-                        <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
-                        <div>
-                            <p class="text-xl font-medium">Usuário 1</p>
-                            <p>Info</p>
-                        </div>
+            <div class="flex flex-col space-y-4">
+                <div
+                    class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                    <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                    <div>
+                        <p class="text-xl font-medium">Usuário 1</p>
+                        <p>Info</p>
                     </div>
-
                 </div>
-            </div>
-        </div>
 
-        <div id="conversas"
-            class="fixed left-[3rem] w-[26rem] h-screen bg-[#0065B9] p-4 z-40 md:w-1/4 md:left-[4.5rem] none">
-            <div>
-                <ul id="chats" class="flex flex-col space-y-4">
-                    <li
-                        class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
-                        <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
-                        <div>
-                            <p class="text-xl font-medium">Usuário 1</p>
-                            <p>vamos participar do evento?</p>
-                        </div>
-                        <input value="id-usuario" type="hidden">
-                    </li>
-                    <li
-                        class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
-                        <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
-                        <div>
-                            <p class="text-xl font-medium">Usuário 2</p>
-                            <p>Bora?</p>
-                        </div>
-                    </li>
-                    <li
-                        class="flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
-                        <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
-                        <div>
-                            <p class="text-xl font-medium">Usuário 3</p>
-                            <p>Tudo bem?</p>
-                        </div>
-                    </li>
-
-                </ul>
             </div>
         </div>
     </div>
 
 
+
+
     <section id="home-filtro" class="mx-16 md:mx-[10.3rem]">
-        <div class="mt-10">
+        <div>
             <!-- Filtro -->
             <form method="POST" action="seu-script.php">
-                <div class="w-full shadow-2xl p-6 md:p-10 rounded-lg">
+                <div class="mt-10 w-full shadow-2xl p-6 md:p-10 bg-red-800 rounded-lg">
                     <div class="flex flex-col space-y-10 justify-between md:flex-row md:space-y-0 md:space-x-10">
                         <div class="flex flex-col flex-1">
                             <label class="font-roboto text-xl font-medium" for="categoria">Categoria</label>
