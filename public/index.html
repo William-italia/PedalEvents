@@ -21,70 +21,82 @@
 
     <header class="relative">
         <div class="fixed top-0 left-0">
-            <nav id="side-menu" class="h-screen w-16 bgGradienteVertical py-4 close">
-                <ul class="h-full flex flex-col  justify-between text-white ">
+            <nav id="side-menu" class="h-screen w-16 bgGradienteVertical py-4 close ">
+                <ul id class="h-full flex flex-col  justify-between text-white ">
                     <div id="arrow-container" class="flex flex-col items-center  w-full px-4">
                         <div class="flex justify-end">
                             <li  class="group group-duration-200 relative">
-                                <i id="arrow" class="fa-solid fa-arrow-right close"></i>
+                                <i id="arrow" class="fa-solid fa-arrow-right cursor-pointer close"></i>
                                 <span id="tooltip" class="arrow absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Abrir</span>
                             </li>
                         </div>
+                        <h1 id="logo" class="hidden text-3xl font-russo mt-[4rem]"><span class="text-colorLogo">Pedal</span> Events</h1>
                     </div>
 
                     <div id="container-items" class="flex flex-col items-center p-4 space-y-10">
-                        <li class="group group-duration-200 relative">
-                            <a href="">
+                        <li class="group group-duration-200 relative cursor-pointer">
+                            <a href="./index.html">
                                 <i class="fa-solid fa-house"></i>
                                 <span id="liSpans" class="hidden">Home</span>
                             </a>
                             <span id="Tooltip" class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Home</span>
                         </li> 
-                        <li class="group relative">
-                            <a href="">
+                        <li class="group relative cursor-pointer">
+                            <a href="./eventos.html">
                                 <i class="fa-solid fa-flag"></i>
                                 <span id="liSpans" class="hidden">Eventos</span>
                             </a>
                             <span id="Tooltip" class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Eventos</span>
                         </li> 
-                        <li class="group relative">
-                            <a href="">
+                        <li class="group relative cursor-pointer">
+                            <a href="./grupos.html">
                                 <i class="fa-solid fa-people-group"></i>
                                 <span id="liSpans" class="hidden">Grupos</span>
                             </a>
                             <span id="Tooltip" class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Grupos</span>
                         </li> 
-                        <li class="group relative">
-                            <a href="">
+                        <li class="group relative cursor-pointer">
+                            <a href="./chat.html">
                                 <i
                         class="fa-solid fa-comment"></i>
                                 <span id="liSpans" class="hidden">Conversas</span>
                             </a>
                             <span id="Tooltip" class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Conversas</span>
                         </li> 
-                        <li class="group relative">
-                            <a href="">
+                        <li id="liNoticacao" class="group relative cursor-pointer">
+                            <a href="#">
                                 <i class="fa-solid fa-bell"></i>
                                 <span id="liSpans" class="hidden">Notificações</span>
                             </a>
                             <span id="Tooltip" class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Notificações</span>
                         </li> 
-                        <li class="group relative">
-                            <a href="">
+                        <li id="liAmigos" class="group relative cursor-pointer">
+                            <a href="#">
                                 <i class="fa-solid fa-user-group"></i>
                                 <span id="liSpans" class="hidden">Busca de amigos</span>
                             </a>
                             <span id="Tooltip" class="absolute w-32 text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2  opacity-0 transition-opacity duration-200 ">Busca de amigos</span>
                         </li> 
-                        <li class="group relative">
-                            <a href="">
+                        <li id="liCriar" class="group relative cursor-pointer">
+                            <a href="#">
                                 <i class="fa-solid fa-circle-plus"></i>
                                 <span id="liSpans" class="hidden">Criar</span>
                             </a>
                             <span id="Tooltip" class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Criar</span>
+                            <!-- caixa do criar -->
+                            <div id="create" class="hidden absolute w-32 rounded-xl text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D]">
+                                <ul>
+                                    <div class="border-b">
+                                        <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Evento</a></li>
+                                    </div>
+                                    <div>
+                                        <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Grupo</a></li>
+                                    </div>
+                                </ul>
+                            </div>
                         </li> 
-                        <li class="group relative">
-                            <a href="">
+                        <li class="group relative cursor-pointer">
+                            <a href="./perfil.html">
                                 <img id="perfilImg" class="w-[25px] h-[25px] md:w-[30px] md:h-[30px] inline" src="./assets/img/person-img.png" alt="">
                                 <span id="liSpans" class="hidden">Perfil</span>
                             </a>
@@ -93,132 +105,129 @@
                     </div>    
                     
                     <div id="containerMais" class="flex flex-col p-6 items-center">
-                        <li class="group relative">
-                            <a href="">
+                        <li id="liMais" class="group relative cursor-pointer">
+                            <a href="#">
                                 <i class="fa-solid fa-bars"></i>
                                 <span id="liSpans" class="hidden">Mais</span>
                             </a>
                             <span id="Tooltip" class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Mais</span>
+                             <!-- caixa do criar -->
+                             <div id="mais" class="hidden absolute w-32 rounded-xl text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D]">
+                                <ul>
+                                    <div class="border-b">
+                                        <li class="p-2 duration-200 hover:opacity-80"><a href="./login.html">Trocar Conta</a></li>
+                                    </div>
+                                    <div>
+                                        <li class="p-2 duration-200 hover:opacity-80"><a href="./login.html">Sair</a></li>
+                                    </div>
+                                </ul>
+                            </div>
                         </li> 
-                    </div>
-
-                    <!-- caixa de busca de amigos -->
-                     <!-- caixa de notificação -->
-                     <!-- caixa do criar -->
+                    </div>     
                 </ul>
+                    <!-- caixa de busca de amigos -->
+                    <div id="buscaAmigos" class="close bg-[#0065B9] flex justify-center pt-8 absolute h-full w-[24rem] top-0 left-[4rem] text-black">
+                        <div class="flex flex-col space-y-10">
+                            <form action="">
+                                <div class="w-full">
+                                    <input class="w-[22rem] p-2 rounded-lg outline-none" type="text" placeholder="Buscar amigos...">
+                                    <button type="reset" class="hidden">enviar</button>
+                                </div>
+                            </form>
+                            <div id="boxUsers" class="flex flex-col space-y-4 open">
+                                <div class="flex space-x-4 bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                                    <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                                    <div>
+                                        <p class="text-xl font-medium">Usuário 1</p>
+                                        <p>Info</p>
+                                    </div>
+                                </div>
+                                <div class="w-[22rem] flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
+                                    <img src="./assets/img/Ellipse 120.png" alt="" class="w-[3.75rem] h-[3.75rem]">
+                                    <div>
+                                        <p class="text-xl font-medium">Usuário 1</p>
+                                        <p>Info</p>
+                                    </div>
+                                </div>
+                            </div>            
+                        </div>
+                    </div>
+                    <!-- caixa de notificação -->
+                    <nav id="notificacoes" class="hidden bg-[#0065B9] flex justify-center pt-8 absolute h-full w-[24rem] top-0 left-[4rem] text-black">
+                    </nav>
             </nav>
         </div>
     </header>
 
-    <!-- <ul class="space-y-4 flex flex-col items-center h-full justify-between">
-        <li class="group relative">
-            <a href="#" class="flex items-center p-4">
-                <i id="seta" class="fa-solid fa-arrow-right text-white cursor-pointer text-2xl"></i>
-                <h1 id="logo" class="text-4xl font-russo text-white"><span class="text-colorLogo">Pedal</span> Events
-                </h1>
-            </a>
-            Tooltip para descrição quando o menu está fechado
-            <span
-                class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-black text-white text-sm rounded-lg p-2 opacity-0  md:hidden">Home</span>
-        </li>
-        <li class="group relative">
-            <a href="#" class="flex items-center p-4">
-                <i class="fa-solid fa-house"></i>
-                <span class="ml-2 hidden md:inline-block">Home</span>
-            </a>
-            Tooltip para descrição quando o menu está fechado
-            <span
-                class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-black text-white text-sm rounded-lg p-2 opacity-0  md:hidden">Home</span>
-        </li>
-        <li class="group relative">
-            <a href="#" class="flex items-center p-4">
-                <i class="fa-solid fa-house"></i>
-                <span class="ml-2 hidden md:inline-block">Home</span>
-            </a>
-            Tooltip para descrição quando o menu está fechado
-            <span
-                class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-black text-white text-sm rounded-lg p-2 opacity-0  md:hidden">Home</span>
-        </li>
-
-    </ul> -->
-
-
-
     <main>
-
-    </main>
-
-    <footer>
-
-    </footer>
-    <!-- <section id="home-banner" class="">
-        <div class="flex items-center justify-center relative">
-            <div id="pelicula" class="absolute"></div>
-            <div class="flex flex-col items-center p-20 text-black">
-                <h1 class="text-4xl text-center font-bold md:text-4xl font-roboto">Encontre seu Grupo de Ciclismo</h1>
-                <p class="text-2xl text-center md:text-xl mt-4">Participe de eventos e conecte-se com outros ciclistas
-                </p>
-                <div class="mt-8 flex space-x-8">
-                    <a href="./grupos.html"
-                        class="bg-[#003B7A] mt-6 text-white py-2 px-4 md:py-3 md:px-8 rounded-lg duration-200 hover:opacity-80">Buscar
-                        Grupos</a>
-                    <a href="./eventos.html"
-                        class="bg-[#003B7A] mt-6 text-white py-2 px-4 md:py-3 md:px-8 rounded-lg duration-200 hover:opacity-80">Buscar
-                        Eventos</a>
+        <section id="home-banner" class="">
+            <div class="flex items-center justify-center relative">
+                <div id="pelicula" class="absolute"></div>
+                <div class="flex flex-col items-center p-20 text-black">
+                    <h1 class="text-4xl text-center font-bold md:text-4xl font-roboto">Encontre seu Grupo de Ciclismo</h1>
+                    <p class="text-2xl text-center md:text-xl mt-4">Participe de eventos e conecte-se com outros ciclistas
+                    </p>
+                    <div class="mt-8 flex space-x-8">
+                        <a href="./grupos.html"
+                            class="bg-[#003B7A] mt-6 text-white py-2 px-4 md:py-3 md:px-8 rounded-lg duration-200 hover:opacity-80">Buscar
+                            Grupos</a>
+                        <a href="./eventos.html"
+                            class="bg-[#003B7A] mt-6 text-white py-2 px-4 md:py-3 md:px-8 rounded-lg duration-200 hover:opacity-80">Buscar
+                            Eventos</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section> -->
-<!-- 
-    <section id="eventos" class="mx-16 md:mx-[10.3rem] mt-10">
-        <div class="my-10 ">
-            <h1 class="text-2xl md:text-4xl mb-10 font-medium">Eventos</h1>
-
-            <div class="flex flex-col space-y-10 md:grid md:gap-4 md:grid-cols-4 md:space-y-0">
-                <div class="shadow-2xl rounded-2xl">
-                    <div class="h-[13.8rem] w-full mb-4">
-                        <img src="https://canalcafenatrilha.com.br/wp-content/uploads/2022/02/whatsapp-image-2022-02-09-at-114116.jpeg"
-                            alt="">
-                    </div>
-                    <div class="p-4">
-                        <h1 class="text-xl md:text-2xl">Trilha nas montanhas</h1>
-                        <div class="flex space-x-6 mt-2">
-                            <p class="md:text-xs">Mongaguá, sp</p>
-                            <span class="hidden">-</span>
-                            <p class="md:text-xs">26 de Agosto 19:10</p>
+        </section>
+    
+        <section id="eventos" class="mx-16 md:mx-[10.3rem] mt-10">
+            <div class="my-10 ">
+                <h1 class="text-2xl md:text-4xl mb-10 font-medium">Eventos</h1>
+    
+                <div class="flex flex-col space-y-10 md:grid md:gap-4 md:grid-cols-4 md:space-y-0">
+                    <div class="shadow-2xl rounded-2xl">
+                        <div class="h-[13.8rem] w-full mb-4">
+                            <img src="https://canalcafenatrilha.com.br/wp-content/uploads/2022/02/whatsapp-image-2022-02-09-at-114116.jpeg"
+                                alt="">
                         </div>
-                        <p class="mt-2 md:text-xs">Mountain Bike (MTB)</p>
-                        <button
-                            class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Ver
-                            Detalhes</button>
+                        <div class="p-4">
+                            <h1 class="text-xl md:text-2xl">Trilha nas montanhas</h1>
+                            <div class="flex space-x-6 mt-2">
+                                <p class="md:text-xs">Mongaguá, sp</p>
+                                <span class="hidden">-</span>
+                                <p class="md:text-xs">26 de Agosto 19:10</p>
+                            </div>
+                            <p class="mt-2 md:text-xs">Mountain Bike (MTB)</p>
+                            <button
+                                class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Ver
+                                Detalhes</button>
+                        </div>
+                    </div>
+    
+                </div>
+    
+            </div>
+        </section>
+        <section id="grupos" class="mx-16 md:mx-[10.3rem] mt-10">
+            <div class="my-10 ">
+                <h1 class="text-2xl md:text-4xl mb-10 font-medium">Grupos</h1>
+                <div class="flex flex-col space-y-10 md:space-y-0 md:flex-row md:space-x-10">
+                    <div class="md:w-[25%] shadow-2xl rounded-2xl">
+                        <div>
+                            <img src="./assets/img/bg.png">
+                        </div>
+                        <div class="p-4">
+                            <h1 class="text-xl md:text-2xl">Bicicleteiros</h1>
+                            <p class="md:text-xl">Criado em 26 de Agosto 19:10</p>
+                            <p class="md:text-xl">Participantes: 15</p>
+                            <button
+                                class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Abrir</button>
+                        </div>
                     </div>
                 </div>
-
+    
             </div>
-
-        </div>
-    </section> -->
-    <!-- <section id="grupos" class="mx-16 md:mx-[10.3rem] mt-10">
-        <div class="my-10 ">
-            <h1 class="text-2xl md:text-4xl mb-10 font-medium">Grupos</h1>
-            <div class="flex flex-col space-y-10 md:space-y-0 md:flex-row md:space-x-10">
-                <div class="md:w-[25%] shadow-2xl rounded-2xl">
-                    <div>
-                        <img src="./assets/img/bg.png">
-                    </div>
-                    <div class="p-4">
-                        <h1 class="text-xl md:text-2xl">Bicicleteiros</h1>
-                        <p class="md:text-xl">Criado em 26 de Agosto 19:10</p>
-                        <p class="md:text-xl">Participantes: 15</p>
-                        <button
-                            class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Abrir</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section> -->
-
+        </section>
+    </main>
     <script src="./assets/js/menu.js"></script>
 </body>
 
