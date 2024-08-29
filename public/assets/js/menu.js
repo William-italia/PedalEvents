@@ -58,16 +58,18 @@ document.querySelectorAll('li i').forEach(icon => {
             const listItem = icon.target.closest('li');
             const tooltip = listItem.querySelector('#Tooltip');
             if (tooltip) {
+                tooltip.classList.remove('hidden');
                 tooltip.style.opacity = '1'; // Exemplo de ação: mostrar o tooltip
             } 
         } 
-    
+        
     });
-
+    
     icon.addEventListener('mouseout', (event) => {
         const listItem = event.target.closest('li');
         const tooltip = listItem.querySelector('#Tooltip');
         if (tooltip) {
+            tooltip.classList.add('hidden');
             tooltip.style.opacity = '0'; // Exemplo de ação: esconder o tooltip
         }
     });
@@ -76,6 +78,7 @@ document.querySelectorAll('li i').forEach(icon => {
 
 document.querySelectorAll('li').forEach((li) => {
     li.addEventListener('click', () => {
+
         if(li.id === 'liCriar') {
             const boxCreate = li.querySelector('#create');    
                 boxCreate.classList.toggle('hidden');
@@ -89,22 +92,57 @@ document.querySelectorAll('li').forEach((li) => {
         if(li.id === 'liAmigos') {
             if(buscaAmigos.classList.contains('close')) {
                 buscaAmigos.classList.remove('close');
-                buscaAmigos.classList.remove('opacity-0');
-                buscaAmigos.classList.add('opacity-100');
                 buscaAmigos.classList.add('open');
-                boxUsers.classList.remove('close');
-                boxUsers.classList.add('open');
+                boxUsers.classList.remove('content-close');
+                boxUsers.classList.add('content-open');
+                
             } else {
                 buscaAmigos.classList.add('close');
-                boxUsers.classList.add('close');
-                boxUsers.classList.remove('open');
-                buscaAmigos.classList.remove('opacity-100');
                 buscaAmigos.classList.remove('open');
+                boxUsers.classList.remove('content-open');
+                boxUsers.classList.add('content-close');
             }
         }
     })
     
 });
 
+function resizeBoxSearchFriends() {
 
-arrow.addEventListener('click', openMenu);
+    if(menu.classList.contains('open')) {
+        buscaAmigos.style.left = '16rem';
+    }  
+    
+    if (menu.classList.contains('close')){
+        buscaAmigos.style.left = '4rem';
+    }
+    
+    if(window.innerWidth <= 768) {
+        buscaAmigos.style.left = '4rem';
+    }
+
+}
+
+arrow.addEventListener('click', () => {
+    openMenu();
+    resizeBoxSearchFriends();
+});
+
+window.addEventListener('resize', resizeBoxSearchFriends);
+
+
+
+// function ajustaDistanciaBuscaAmigos() {
+
+//     if (window.innerWidth <= 768 && menuBar.classList.contains('close') || menuBar.classList.contains('open')) {
+//         telaBusca.style.left = '3.5rem';
+//     }
+
+//     if (window.innerWidth > 768) {
+//         if (menuBar.classList.contains('close')) {
+//             telaBusca.style.left = '4.5rem';
+//         } else if (menuBar.classList.contains('open')) {
+//             telaBusca.style.left = '17.9rem';
+//         }
+
+//     }
