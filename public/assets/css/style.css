@@ -596,6 +596,38 @@ video {
   top: 50%;
 }
 
+.left-16 {
+  left: 4rem;
+}
+
+.left-\[16rem\] {
+  left: 16rem;
+}
+
+.left-\[1\] {
+  left: 1;
+}
+
+.left-\[\] {
+  left: ;
+}
+
+.left-\[8rem\] {
+  left: 8rem;
+}
+
+.left-\[7rem\] {
+  left: 7rem;
+}
+
+.left-\[4\.1rem\] {
+  left: 4.1rem;
+}
+
+.right-0 {
+  right: 0px;
+}
+
 .mx-16 {
   margin-left: 4rem;
   margin-right: 4rem;
@@ -619,6 +651,36 @@ video {
 .my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
+}
+
+.mx-\[16rem\] {
+  margin-left: 16rem;
+  margin-right: 16rem;
+}
+
+.mx-\[2rem\] {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.mx-\[2\.4rem\] {
+  margin-left: 2.4rem;
+  margin-right: 2.4rem;
+}
+
+.mx-\[3rem\] {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.mx-\[4rem\] {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+.mx-\[4\.1rem\] {
+  margin-left: 4.1rem;
+  margin-right: 4.1rem;
 }
 
 .mb-10 {
@@ -793,6 +855,46 @@ video {
   width: 25%;
 }
 
+.w-1\/6 {
+  width: 16.666667%;
+}
+
+.w-1\/5 {
+  width: 20%;
+}
+
+.w-\[20\%\] {
+  width: 20%;
+}
+
+.w-\[80\%\] {
+  width: 80%;
+}
+
+.w-\[100\%\] {
+  width: 100%;
+}
+
+.w-\[18\%\] {
+  width: 18%;
+}
+
+.w-\[19\%\] {
+  width: 19%;
+}
+
+.w-\[17\%\] {
+  width: 17%;
+}
+
+.w-\[16\.9\%\] {
+  width: 16.9%;
+}
+
+.w-\[16\.8\%\] {
+  width: 16.8%;
+}
+
 .max-w-\[18\.75rem\] {
   max-width: 18.75rem;
 }
@@ -933,6 +1035,21 @@ video {
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
+.border-gray-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+
+.border-gray-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(243 244 246 / var(--tw-border-opacity));
+}
+
+.border-gray-900 {
+  --tw-border-opacity: 1;
+  border-color: rgb(17 24 39 / var(--tw-border-opacity));
+}
+
 .bg-\[\#003B7A\] {
   --tw-bg-opacity: 1;
   background-color: rgb(0 59 122 / var(--tw-bg-opacity));
@@ -960,6 +1077,11 @@ video {
 .bg-red-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(153 27 27 / var(--tw-bg-opacity));
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .p-2 {
@@ -1210,6 +1332,21 @@ body {
   .md\:mx-\[10\.3rem\] {
     margin-left: 10.3rem;
     margin-right: 10.3rem;
+  }
+
+  .md\:mx-\[1rem\] {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .md\:mx-\[2rem\] {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .md\:mx-\[3rem\] {
+    margin-left: 3rem;
+    margin-right: 3rem;
   }
 
   .md\:block {
