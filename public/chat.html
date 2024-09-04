@@ -1,175 +1,398 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&display=swap"
-        rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&display=swap" rel="stylesheet" />
+  </head>
 
-<body>
-
+  <body>
     <header class="relative">
-        <div class="fixed top-0 left-0">
-            <nav id="side-menu" class="h-screen w-16 bgGradienteVertical py-4 close">
-                <ul id class="h-full flex flex-col  justify-between text-white ">
-                    <div id="arrow-container" class="flex flex-col items-center  w-full px-4">
-                        <div class="flex justify-end">
-                            <li  class="group group-duration-200 relative">
-                                <i id="arrow" class="fa-solid fa-arrow-right cursor-pointer close"></i>
-                                <span id="tooltip" class="hidden arrow absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Abrir</span>
-                            </li>
-                        </div>
-                        <h1 id="logo" class="hidden text-3xl font-russo mt-[4rem]"><span class="text-colorLogo">Pedal</span> Events</h1>
-                    </div>
+      <div class="fixed left-0 top-0">
+        <nav id="side-menu" class="bgGradienteVertical close h-screen w-16 py-4">
+          <ul id class="flex h-full flex-col justify-between text-white">
+            <div id="arrow-container" class="flex w-full flex-col items-center px-4">
+              <div class="flex justify-end">
+                <li class="group-duration-200 group relative">
+                  <i id="arrow" class="fa-solid fa-arrow-right close cursor-pointer"></i>
+                  <span id="tooltip" class="arrow absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Abrir</span>
+                </li>
+              </div>
+              <h1 id="logo" class="font-russo mt-[4rem] hidden text-3xl"><span class="text-colorLogo">Pedal</span> Events</h1>
+            </div>
 
-                    <div id="container-items" class="flex flex-col items-center p-4 space-y-10">
-                        <li class="group group-duration-200 relative cursor-pointer  ">
-                            <a href="./index.html">
-                                <i class="fa-solid fa-house"></i>
-                                <span id="liSpans" class="hidden">Home</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Home</span>
-                        </li> 
-                        <li class="group relative cursor-pointer">
-                            <a href="./eventos.html">
-                                <i class="fa-solid fa-flag"></i>
-                                <span id="liSpans" class="hidden">Eventos</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Eventos</span>
-                        </li> 
-                        <li class="group relative cursor-pointer">
-                            <a href="./grupos.html">
-                                <i class="fa-solid fa-people-group"></i>
-                                <span id="liSpans" class="hidden">Grupos</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Grupos</span>
-                        </li> 
-                        <li class="group relative cursor-pointer  icon-faded">
-                            <a href="./chat.html">
-                                <i
-                        class="fa-solid fa-comment"></i>
-                                <span id="liSpans" class="hidden">Conversas</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Conversas</span>
-                        </li> 
-                        <li id="liNoticacao" class="group relative cursor-pointer">
-                            <a href="#">
-                                <i class="fa-solid fa-bell"></i>
-                                <span id="liSpans" class="hidden">Notificações</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Notificações</span>
-                        </li> 
-                        <li id="liAmigos" class="group relative cursor-pointer">
-                            <a href="#">
-                                <i class="fa-solid fa-user-group"></i>
-                                <span id="liSpans" class="hidden">Busca de amigos</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute w-32 text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2  opacity-0 transition-opacity duration-200 ">Busca de amigos</span>
-                        </li> 
-                        <li id="liCriar" class="group relative cursor-pointer">
-                            <a href="#">
-                                <i class="fa-solid fa-circle-plus"></i>
-                                <span id="liSpans" class="hidden">Criar</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Criar</span>
-                            <!-- caixa do criar -->
-                            <div id="create" class="hidden absolute w-32 rounded-xl text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D]">
-                                <ul>
-                                    <div class="border-b">
-                                        <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Evento</a></li>
-                                    </div>
-                                    <div>
-                                        <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Grupo</a></li>
-                                    </div>
-                                </ul>
-                            </div>
-                        </li> 
-                        <li class="group relative cursor-pointer">
-                            <a href="./perfil.html">
-                                <img id="perfilImg" class="w-[25px] h-[25px] md:w-[30px] md:h-[30px] rounded-[100%] inline" src="https://avatars.githubusercontent.com/u/89314780?v=4" alt="">
-                                <span id="liSpans" class="hidden">Perfil</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Perfil</span>
-                        </li> 
-                    </div>    
-                    
-                    <div id="containerMais" class="flex flex-col p-6 items-center">
-                        <li id="liMais" class="group relative cursor-pointer">
-                            <a href="#">
-                                <i class="fa-solid fa-bars"></i>
-                                <span id="liSpans" class="hidden">Mais</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Mais</span>
-                             <!-- caixa do criar -->
-                             <div id="mais" class="hidden absolute w-32 rounded-xl text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D]">
-                                <ul>
-                                    <div class="border-b">
-                                        <li class="p-2 duration-200 hover:opacity-80"><a href="./login.html">Trocar Conta</a></li>
-                                    </div>
-                                    <div>
-                                        <li class="p-2 duration-200 hover:opacity-80"><a href="./login.html">Sair</a></li>
-                                    </div>
-                                </ul>
-                            </div>
-                        </li> 
-                    </div>     
-                </ul>
-                    <!-- caixa de busca de amigos -->
-                    <div id="buscaAmigos" class="close bg-[#0065B9] flex justify-center pt-8 absolute h-full top-0 left-[4rem] text-black overflow-y-auto">
-                        <div id="boxUsers" class="flex flex-col space-y-10 content-close">
-                            <form action="">
-                                <div class="w-full">
-                                    <input class="w-[22rem] p-2 rounded-lg outline-none" type="text" placeholder="Buscar amigos...">
-                                    <button type="reset" class="hidden">enviar</button>
-                                </div>
-                            </form>
-                            <div id="users" class="flex flex-col space-y-4 ">
-
-                                <div class="flex space-x-4 bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
-                                    <img src="./assets/img/Rectangle 3509.png" alt="" class="w-[3.75rem] h-[3.75rem] rounded-[50%]">
-                                    <div>
-                                        <p class="text-xl font-medium">Felipe</p>
-                                        <p>Praticando todos os dias!</p>
-                                    </div>
-                                </div>
-                                <div class="w-[22rem] flex space-x-4  bg-[#003B7A] p-4 rounded-2xl text-white duration-200 hover:bg-opacity-80 cursor-pointer">
-                                    <img src="./assets/img/Rectangle 3513.png" alt="" class="w-[3.75rem] h-[3.75rem] rounded-[50%]">
-                                    <div>
-                                        <p class="text-xl font-medium">João</p>
-                                        <p>Gosto de pedalar</p>
-                                    </div>
-                                </div>
-                            </div>            
-                        </div>
+            <div id="container-items" class="flex flex-col items-center space-y-10 p-4">
+              <li class="group-duration-200 group relative cursor-pointer">
+                <a href="./index.html">
+                  <i class="fa-solid fa-house"></i>
+                  <span id="liSpans" class="hidden">Home</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Home</span>
+              </li>
+              <li class="group relative cursor-pointer">
+                <a href="./eventos.html">
+                  <i class="fa-solid fa-flag"></i>
+                  <span id="liSpans" class="hidden">Eventos</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Eventos</span>
+              </li>
+              <li class="group relative cursor-pointer">
+                <a href="./grupos.html">
+                  <i class="fa-solid fa-people-group"></i>
+                  <span id="liSpans" class="hidden">Grupos</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Grupos</span>
+              </li>
+              <li class="icon-faded group relative cursor-pointer">
+                <a href="./chat.html">
+                  <i class="fa-solid fa-comment"></i>
+                  <span id="liSpans" class="hidden">Conversas</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Conversas</span>
+              </li>
+              <li id="liNoticacao" class="group relative cursor-pointer">
+                <a href="#">
+                  <i class="fa-solid fa-bell"></i>
+                  <span id="liSpans" class="hidden">Notificações</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Notificações</span>
+              </li>
+              <li id="liAmigos" class="group relative cursor-pointer">
+                <a href="#">
+                  <i class="fa-solid fa-user-group"></i>
+                  <span id="liSpans" class="hidden">Busca de amigos</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden w-32 -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-center text-sm text-white opacity-0 transition-opacity duration-200">Busca de amigos</span>
+              </li>
+              <li id="liCriar" class="group relative cursor-pointer">
+                <a href="#">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span id="liSpans" class="hidden">Criar</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Criar</span>
+                <!-- caixa do criar -->
+                <div id="create" class="absolute left-8 top-1/2 hidden w-32 -translate-y-1/2 transform rounded-xl bg-[#16161D] text-center">
+                  <ul>
+                    <div class="border-b">
+                      <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Evento</a></li>
                     </div>
-                    <!-- caixa de notificação -->
-                    <nav id="notificacoes" class="hidden bg-[#0065B9] flex justify-center pt-8 absolute h-full w-[24rem] top-0 left-[4rem] text-black">
-                    </nav>
-            </nav>
-        </div>
+                    <div>
+                      <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Grupo</a></li>
+                    </div>
+                  </ul>
+                </div>
+              </li>
+              <li class="group relative cursor-pointer">
+                <a href="./perfil.html">
+                  <img id="perfilImg" class="inline h-[25px] w-[25px] rounded-[100%] md:h-[30px] md:w-[30px]" src="https://avatars.githubusercontent.com/u/89314780?v=4" alt="" />
+                  <span id="liSpans" class="hidden">Perfil</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Perfil</span>
+              </li>
+            </div>
+
+            <div id="containerMais" class="flex flex-col items-center p-6">
+              <li id="liMais" class="group relative cursor-pointer">
+                <a href="#">
+                  <i class="fa-solid fa-bars"></i>
+                  <span id="liSpans" class="hidden">Mais</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Mais</span>
+                <!-- caixa do criar -->
+                <div id="mais" class="absolute left-8 top-1/2 hidden w-32 -translate-y-1/2 transform rounded-xl bg-[#16161D] text-center">
+                  <ul>
+                    <div class="border-b">
+                      <li class="p-2 duration-200 hover:opacity-80"><a href="./login.html">Trocar Conta</a></li>
+                    </div>
+                    <div>
+                      <li class="p-2 duration-200 hover:opacity-80"><a href="./login.html">Sair</a></li>
+                    </div>
+                  </ul>
+                </div>
+              </li>
+            </div>
+          </ul>
+          <!-- caixa de busca de amigos -->
+          <div id="buscaAmigos" class="close absolute left-[4rem] top-0 flex h-full justify-center overflow-y-auto bg-[#0065B9] pt-8 text-black">
+            <div id="boxUsers" class="content-close flex flex-col space-y-10">
+              <form action="">
+                <div class="w-full">
+                  <input class="w-[22rem] rounded-lg p-2 outline-none" type="text" placeholder="Buscar amigos..." />
+                  <button type="reset" class="hidden">enviar</button>
+                </div>
+              </form>
+              <div id="users" class="flex flex-col space-y-4">
+                <div class="flex cursor-pointer space-x-4 rounded-2xl bg-[#003B7A] p-4 text-white duration-200 hover:bg-opacity-80">
+                  <img src="./assets/img/Rectangle 3509.png" alt="" class="h-[3.75rem] w-[3.75rem] rounded-[50%]" />
+                  <div>
+                    <p class="text-xl font-medium">Felipe</p>
+                    <p>Praticando todos os dias!</p>
+                  </div>
+                </div>
+                <div class="flex w-[22rem] cursor-pointer space-x-4 rounded-2xl bg-[#003B7A] p-4 text-white duration-200 hover:bg-opacity-80">
+                  <img src="./assets/img/Rectangle 3513.png" alt="" class="h-[3.75rem] w-[3.75rem] rounded-[50%]" />
+                  <div>
+                    <p class="text-xl font-medium">João</p>
+                    <p>Gosto de pedalar</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- caixa de notificação -->
+          <nav id="notificacoes" class="absolute left-[4rem] top-0 flex hidden h-full w-[24rem] justify-center bg-[#0065B9] pt-8 text-black"></nav>
+        </nav>
+      </div>
     </header>
 
-    <main> 
-        <section class="">
-            <div class="flex w-[100%]">
-              
-            </div>
-          
-        
-        </section>
+    <main>
+      <section class="">
+        <div class="flex w-[100%]"></div>
+
+        <!doctype html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Document</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+            <link rel="stylesheet" href="./assets/css/style.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&display=swap" rel="stylesheet" />
+          </head>
+
+          <body>
+            <header class="relative">
+              <div class="fixed left-0 top-0">
+                <nav id="side-menu" class="bgGradienteVertical close h-screen w-16 py-4">
+                  <ul id class="flex h-full flex-col justify-between text-white">
+                    <div id="arrow-container" class="flex w-full flex-col items-center px-4">
+                      <div class="flex justify-end">
+                        <li class="group-duration-200 group relative">
+                          <i id="arrow" class="fa-solid fa-arrow-right close cursor-pointer"></i>
+                          <span id="tooltip" class="arrow absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Abrir</span>
+                        </li>
+                      </div>
+                      <h1 id="logo" class="font-russo mt-[4rem] hidden text-3xl"><span class="text-colorLogo">Pedal</span> Events</h1>
+                    </div>
+
+                    <div id="container-items" class="flex flex-col items-center space-y-10 p-4">
+                      <li class="group-duration-200 group relative cursor-pointer">
+                        <a href="./index.html">
+                          <i class="fa-solid fa-house"></i>
+                          <span id="liSpans" class="hidden">Home</span>
+                        </a>
+                        <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Home</span>
+                      </li>
+                      <li class="group relative cursor-pointer">
+                        <a href="./eventos.html">
+                          <i class="fa-solid fa-flag"></i>
+                          <span id="liSpans" class="hidden">Eventos</span>
+                        </a>
+                        <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Eventos</span>
+                      </li>
+                      <li class="group relative cursor-pointer">
+                        <a href="./grupos.html">
+                          <i class="fa-solid fa-people-group"></i>
+                          <span id="liSpans" class="hidden">Grupos</span>
+                        </a>
+                        <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Grupos</span>
+                      </li>
+                      <li class="icon-faded group relative cursor-pointer">
+                        <a href="./chat.html">
+                          <i class="fa-solid fa-comment"></i>
+                          <span id="liSpans" class="hidden">Conversas</span>
+                        </a>
+                        <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Conversas</span>
+                      </li>
+                      <li id="liNoticacao" class="group relative cursor-pointer">
+                        <a href="#">
+                          <i class="fa-solid fa-bell"></i>
+                          <span id="liSpans" class="hidden">Notificações</span>
+                        </a>
+                        <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Notificações</span>
+                      </li>
+                      <li id="liAmigos" class="group relative cursor-pointer">
+                        <a href="#">
+                          <i class="fa-solid fa-user-group"></i>
+                          <span id="liSpans" class="hidden">Busca de amigos</span>
+                        </a>
+                        <span id="Tooltip" class="absolute left-8 top-1/2 hidden w-32 -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-center text-sm text-white opacity-0 transition-opacity duration-200">Busca de amigos</span>
+                      </li>
+                      <li id="liCriar" class="group relative cursor-pointer">
+                        <a href="#">
+                          <i class="fa-solid fa-circle-plus"></i>
+                          <span id="liSpans" class="hidden">Criar</span>
+                        </a>
+                        <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Criar</span>
+                        <!-- caixa do criar -->
+                        <div id="create" class="absolute left-8 top-1/2 hidden w-32 -translate-y-1/2 transform rounded-xl bg-[#16161D] text-center">
+                          <ul>
+                            <div class="border-b">
+                              <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Evento</a></li>
+                            </div>
+                            <div>
+                              <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Grupo</a></li>
+                            </div>
+                          </ul>
+                        </div>
+                      </li>
+                      <li class="group relative cursor-pointer">
+                        <a href="./perfil.html">
+                          <img id="perfilImg" class="inline h-[25px] w-[25px] rounded-[100%] md:h-[30px] md:w-[30px]" src="https://avatars.githubusercontent.com/u/89314780?v=4" alt="" />
+                          <span id="liSpans" class="hidden">Perfil</span>
+                        </a>
+                        <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Perfil</span>
+                      </li>
+                    </div>
+
+                    <div id="containerMais" class="flex flex-col items-center p-6">
+                      <li id="liMais" class="group relative cursor-pointer">
+                        <a href="#">
+                          <i class="fa-solid fa-bars"></i>
+                          <span id="liSpans" class="hidden">Mais</span>
+                        </a>
+                        <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Mais</span>
+                        <!-- caixa do criar -->
+                        <div id="mais" class="absolute left-8 top-1/2 hidden w-32 -translate-y-1/2 transform rounded-xl bg-[#16161D] text-center">
+                          <ul>
+                            <div class="border-b">
+                              <li class="p-2 duration-200 hover:opacity-80"><a href="./login.html">Trocar Conta</a></li>
+                            </div>
+                            <div>
+                              <li class="p-2 duration-200 hover:opacity-80"><a href="./login.html">Sair</a></li>
+                            </div>
+                          </ul>
+                        </div>
+                      </li>
+                    </div>
+                  </ul>
+                  <!-- caixa de busca de amigos -->
+                  <div id="buscaAmigos" class="close absolute left-[4rem] top-0 flex h-full justify-center overflow-y-auto bg-[#0065B9] pt-8 text-black">
+                    <div id="boxUsers" class="content-close flex flex-col space-y-10">
+                      <form action="">
+                        <div class="w-full">
+                          <input class="w-[22rem] rounded-lg p-2 outline-none" type="text" placeholder="Buscar amigos..." />
+                          <button type="reset" class="hidden">enviar</button>
+                        </div>
+                      </form>
+                      <div id="users" class="flex flex-col space-y-4">
+                        <div class="flex cursor-pointer space-x-4 rounded-2xl bg-[#003B7A] p-4 text-white duration-200 hover:bg-opacity-80">
+                          <img src="./assets/img/Rectangle 3509.png" alt="" class="h-[3.75rem] w-[3.75rem] rounded-[50%]" />
+                          <div>
+                            <p class="text-xl font-medium">Felipe</p>
+                            <p>Praticando todos os dias!</p>
+                          </div>
+                        </div>
+                        <div class="flex w-[22rem] cursor-pointer space-x-4 rounded-2xl bg-[#003B7A] p-4 text-white duration-200 hover:bg-opacity-80">
+                          <img src="./assets/img/Rectangle 3513.png" alt="" class="h-[3.75rem] w-[3.75rem] rounded-[50%]" />
+                          <div>
+                            <p class="text-xl font-medium">João</p>
+                            <p>Gosto de pedalar</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- caixa de notificação -->
+                  <nav id="notificacoes" class="absolute left-[4rem] top-0 flex hidden h-full w-[24rem] justify-center bg-[#0065B9] pt-8 text-black"></nav>
+                </nav>
+              </div>
+            </header>
+
+            <main>
+              <section class="ml-[4rem] flex">
+                <!-- perfis de conversa -->
+                <div class="h-screen w-full bg-[#16161D] md:w-1/2">
+                  <!-- box perfil -->
+                  <div class="flex cursor-pointer items-center space-x-4 border-b-[.1rem] border-[#006ce0] p-2 py-4 duration-200 hover:bg-black">
+                    <div class="h-[4rem] w-[4rem] overflow-hidden rounded-[100%]">
+                      <img class="" src="https://images.unsplash.com/photo-1542385262-cdf06b302c2c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                    </div>
+                    <div class="text-white">
+                      <h1 class="font-bold">Lucas Andrade</h1>
+                      <small class="text-gray-300">Estou ocupado agora, te chamo mais tarde!</small>
+                    </div>
+                  </div>
+                  <!-- box perfil -->
+                  <div class="flex cursor-pointer items-center space-x-4 border-b-[.1rem] border-[#006ce0] p-2 py-4 duration-200 hover:bg-black">
+                    <div class="h-[4rem] w-[4rem] overflow-hidden rounded-[100%]">
+                      <img class="" src="https://plus.unsplash.com/premium_photo-1675130119373-61ada6685d63?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                    </div>
+                    <div class="text-white">
+                      <h1 class="font-bold">Mariana Costa</h1>
+                      <small class="text-gray-300">Ainda estou em reunião, te atualizo em breve!</small>
+                    </div>
+                  </div>
+                  <!-- box perfil -->
+                  <div class="flex cursor-pointer items-center space-x-4 border-b-[.1rem] border-[#006ce0] p-2 py-4 duration-200 hover:bg-black">
+                    <div class="h-[4rem] w-[4rem] overflow-hidden rounded-[100%]">
+                      <img class="" src="https://plus.unsplash.com/premium_photo-1664536392896-cd1743f9c02c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                    </div>
+                    <div class="text-white">
+                      <h1 class="font-bold">Ricardo Lima</h1>
+                      <small class="text-gray-300">Estou no trânsito, te falo quando chegar!</small>
+                    </div>
+                  </div>
+                  <!-- box perfil -->
+                  <div class="flex cursor-pointer items-center space-x-4 border-b-[.1rem] border-[#006ce0] p-2 py-4 duration-200 hover:bg-black">
+                    <div class="h-[4rem] w-[4rem] overflow-hidden rounded-[100%]">
+                      <img class="" src="https://images.unsplash.com/photo-1609042759065-d8dad38f5a9f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                    </div>
+                    <div class="text-white">
+                      <h1 class="font-bold">Fernanda Silva</h1>
+                      <small class="text-gray-300">Estou fora da área de cobertura, já volto!</small>
+                    </div>
+                  </div>
+                  <!-- box perfil -->
+                  <div class="flex cursor-pointer items-center space-x-4 border-b-[.1rem] border-[#006ce0] p-2 py-4 duration-200 hover:bg-black">
+                    <div class="h-[4rem] w-[4rem] overflow-hidden rounded-[100%]">
+                      <img class="" src="https://plus.unsplash.com/premium_photo-1678197937465-bdbc4ed95815?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                    </div>
+                    <div class="text-white">
+                      <h1 class="font-bold">Gabriel Oliveira</h1>
+                      <small class="text-gray-300">Estou no almoço, te dou um retorno logo!</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- boxchat -->
+                <div class="hidden h-full w-full md:relative md:block">
+                  <!-- nome do perfil aberto -->
+                  <div class="flex w-full items-center space-x-4 bg-gray-700 p-2 md:absolute">
+                    <div class="h-[2.5rem] w-[2.5rem] overflow-hidden rounded-[100%]">
+                      <img class="" src="https://images.unsplash.com/photo-1542385262-cdf06b302c2c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                    </div>
+                    <div class="text-white">
+                      <h1 class="text-lg font-medium">Lucas Andrade</h1>
+                    </div>
+                  </div>
+
+                  <!-- cotent -->
+                  <div class="z-[-1] h-screen bg-red-400 md:absolute md:top-0 md:w-[100%]"></div>
+
+                  <!-- box input -->
+                  <div class="bottom-0 w-full md:absolute">
+                    <div class="bg-red-500 p-2">
+                      <input type="text" />
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </main>
+            <script src="./assets/js/menu.js"></script>
+          </body>
+        </html>
+      </section>
     </main>
     <script src="./assets/js/menu.js"></script>
-</body>
-
+  </body>
 </html>
