@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 body {
   overflow-x: hidden;
 }
@@ -66,4 +68,10 @@ body {
 
 .bgGradienteVertical {
   background: linear-gradient(190deg, #003b7a, #006ce0);
+}
+
+.message {
+  min-width: 200px;
+  max-width: 33%;
+  width: auto;
 }
