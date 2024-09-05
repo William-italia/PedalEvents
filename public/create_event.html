@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header class="relative">
+      <div class="fixed left-0 top-0">
+        <nav id="side-menu" class="bgGradienteVertical close h-screen w-16 py-4">
+          <ul id class="flex h-full flex-col justify-between text-white">
+            <div id="arrow-container" class="flex w-full flex-col items-center px-4">
+              <div class="flex justify-end">
+                <li class="group-duration-200 group relative">
+                  <i id="arrow" class="fa-solid fa-arrow-right close cursor-pointer"></i>
+                  <span id="tooltip" class="arrow absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Abrir</span>
+                </li>
+              </div>
+              <h1 id="logo" class="font-russo mt-[4rem] hidden text-3xl"><span class="text-colorLogo">Pedal</span> Events</h1>
+            </div>
+
+            <div id="container-items" class="flex flex-col items-center space-y-10 p-4">
+              <li class="group-duration-200 icon-faded group relative cursor-pointer">
+                <a href="./index.html">
+                  <i class="fa-solid fa-house"></i>
+                  <span id="liSpans" class="hidden">Home</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Home</span>
+              </li>
+              <li class="group relative cursor-pointer">
+                <a href="./eventos.html">
+                  <i class="fa-solid fa-flag"></i>
+                  <span id="liSpans" class="hidden">Eventos</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Eventos</span>
+              </li>
+              <li class="group relative cursor-pointer">
+                <a href="./grupos.html">
+                  <i class="fa-solid fa-people-group"></i>
+                  <span id="liSpans" class="hidden">Grupos</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Grupos</span>
+              </li>
+              <li class="group relative cursor-pointer">
+                <a href="./chat.html">
+                  <i class="fa-solid fa-comment"></i>
+                  <span id="liSpans" class="hidden">Conversas</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Conversas</span>
+              </li>
+              <li id="liNoticacao" class="group relative cursor-pointer">
+                <a href="#">
+                  <i class="fa-solid fa-bell"></i>
+                  <span id="liSpans" class="hidden">Notificações</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Notificações</span>
+              </li>
+              <li id="liAmigos" class="group relative cursor-pointer">
+                <a href="#">
+                  <i class="fa-solid fa-user-group"></i>
+                  <span id="liSpans" class="hidden">Busca de amigos</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden w-32 -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-center text-sm text-white opacity-0 transition-opacity duration-200">Busca de amigos</span>
+              </li>
+              <li id="liCriar" class="group relative cursor-pointer">
+                <a href="#">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span id="liSpans" class="hidden">Criar</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Criar</span>
+                <!-- caixa do criar -->
+                <div id="create" class="absolute left-8 top-1/2 hidden w-32 -translate-y-1/2 transform rounded-xl bg-[#16161D] text-center">
+                  <ul>
+                    <div class="border-b">
+                      <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Evento</a></li>
+                    </div>
+                    <div>
+                      <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Grupo</a></li>
+                    </div>
+                  </ul>
+                </div>
+              </li>
+              <li class="group relative cursor-pointer">
+                <a href="./perfil.html">
+                  <img id="perfilImg" class="inline h-[25px] w-[25px] md:h-[30px] md:w-[30px]" src="./assets/img/person-img.png" alt="" />
+                  <span id="liSpans" class="hidden">Perfil</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Perfil</span>
+              </li>
+            </div>
+
+            <div id="containerMais" class="flex flex-col items-center p-6">
+              <li id="liMais" class="group relative cursor-pointer">
+                <a href="#">
+                  <i class="fa-solid fa-bars"></i>
+                  <span id="liSpans" class="hidden">Mais</span>
+                </a>
+                <span id="Tooltip" class="absolute left-8 top-1/2 hidden -translate-y-1/2 transform rounded-lg bg-[#16161D] p-2 text-sm text-white opacity-0 transition-opacity duration-200">Mais</span>
+                <!-- caixa do criar -->
+                <div id="mais" class="absolute left-8 top-1/2 hidden w-32 -translate-y-1/2 transform rounded-xl bg-[#16161D] text-center">
+                  <ul>
+                    <div class="border-b">
+                      <li class="p-2 duration-200 hover:opacity-80"><a href="./login.html">Trocar Conta</a></li>
+                    </div>
+                    <div>
+                      <li class="p-2 duration-200 hover:opacity-80"><a href="./login.html">Sair</a></li>
+                    </div>
+                  </ul>
+                </div>
+              </li>
+            </div>
+          </ul>
+          <!-- caixa de busca de amigos -->
+          <div id="buscaAmigos" class="close absolute left-[4rem] top-0 flex h-full justify-center overflow-y-auto bg-[#0065B9] pt-8 text-black">
+            <div id="boxUsers" class="content-close flex flex-col space-y-10">
+              <form action="">
+                <div class="w-full">
+                  <input class="w-[22rem] rounded-lg p-2 outline-none" type="text" placeholder="Buscar amigos..." />
+                  <button type="reset" class="hidden">enviar</button>
+                </div>
+              </form>
+              <div id="users" class="flex flex-col space-y-4">
+                <div class="flex cursor-pointer space-x-4 rounded-2xl bg-[#003B7A] p-4 text-white duration-200 hover:bg-opacity-80">
+                  <img src="./assets/img/Rectangle 3509.png" alt="" class="h-[3.75rem] w-[3.75rem] rounded-[50%]" />
+                  <div>
+                    <p class="text-xl font-medium">Felipe</p>
+                    <p>Praticando todos os dias!</p>
+                  </div>
+                </div>
+                <div class="flex w-[22rem] cursor-pointer space-x-4 rounded-2xl bg-[#003B7A] p-4 text-white duration-200 hover:bg-opacity-80">
+                  <img src="./assets/img/Rectangle 3513.png" alt="" class="h-[3.75rem] w-[3.75rem] rounded-[50%]" />
+                  <div>
+                    <p class="text-xl font-medium">João</p>
+                    <p>Gosto de pedalar</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- caixa de notificação -->
+          <nav id="notificacoes" class="absolute left-[4rem] top-0 flex hidden h-full w-[24rem] justify-center bg-[#0065B9] pt-8 text-black"></nav>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="create-event" class="m-[5rem]">
+        <form action="">
+          <div class="banner relative h-[25rem] rounded-t-3xl bg-red-400">
+            <button class="absolute bottom-4 right-4 bg-white px-6 py-2 hover:opacity-95">Adicionar um banner</button>
+          </div>
+          <!-- container form -->
+          <div class="flex w-full">
+            <!-- form -->
+            <div class="h-screen w-[80%] bg-red-500 p-20">
+              <div class="box-input flex flex-col">
+                <label for="">Nome Do Evento:</label>
+                <input class="" type="text" />
+              </div>
+
+              <div class="flex items-center">
+                <div class="box-input flex flex-col">
+                  <label for="">Nome Do Evento:</label>
+                  <input class="w-[50%]" type="text" />
+                </div>
+                <div class="box-input flex flex-col">
+                  <label for="">Nome Do Evento:</label>
+                  <input class="w-[50%]" type="text" />
+                </div>
+              </div>
+            </div>
+            <div></div>
+            <!-- button -->
+            <div class="h-screen w-[20%] bg-red-400"></div>
+          </div>
+        </form>
+      </section>
+    </main>
+    <script src="./assets/js/menu.js"></script>
+  </body>
+</html>
