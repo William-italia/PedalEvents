@@ -153,70 +153,52 @@
 
     <main>
       <section class="ml-[4rem] flex">
-        <div class="flex w-full">
-          <!-- perfis de conversa -->
-          <div class="h-screen w-full overflow-y-auto bg-[#003B7A] md:w-[30%]">
-            <!-- box perfil -->
-            <div class="flex cursor-pointer items-center space-x-4 border-b-[.1rem] border-[#006ce0] p-2 py-4 duration-200 hover:bg-[#2F2E41]">
-              <div class="h-[4rem] w-[4rem] overflow-hidden rounded-[100%]">
-                <img class="" src="https://images.unsplash.com/photo-1542385262-cdf06b302c2c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-              </div>
-              <div class="text-white">
-                <h1 class="font-bold">Lucas Andrade</h1>
-                <small class="text-gray-300">Estou ocupado agora, te chamo mais tarde!</small>
-              </div>
+        <div class="h-screen w-1/3 bg-[#003B7A]">
+          <!-- box perfil -->
+          <div class="flex cursor-pointer items-center space-x-4 border-b-[.1rem] border-[#006ce0] p-2 py-4 duration-200 hover:bg-[#2F2E41]">
+            <div class="h-[2.5rem] w-[2.5rem] overflow-hidden rounded-[100%]">
+              <img class="" src="https://plus.unsplash.com/premium_photo-1675130119373-61ada6685d63?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
             </div>
-            <!-- box perfil -->
-            <div class="flex cursor-pointer items-center space-x-4 border-b-[.1rem] border-[#006ce0] p-2 py-4 duration-200 hover:bg-[#2F2E41]">
-              <div class="h-[4rem] w-[4rem] overflow-hidden rounded-[100%]">
-                <img class="" src="https://plus.unsplash.com/premium_photo-1675130119373-61ada6685d63?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-              </div>
-              <div class="text-white">
-                <h1 class="font-bold">Mariana Costa</h1>
-                <small class="text-gray-300">Ainda estou em reunião, te atualizo em breve!</small>
-              </div>
-            </div>
-            <!-- box perfil -->
-            <div class="flex cursor-pointer items-center space-x-4 border-b-[.1rem] border-[#006ce0] p-2 py-4 duration-200 hover:bg-[#2F2E41]">
-              <div class="h-[4rem] w-[4rem] overflow-hidden rounded-[100%]">
-                <img class="" src="https://plus.unsplash.com/premium_photo-1664536392896-cd1743f9c02c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-              </div>
-              <div class="text-white">
-                <h1 class="font-bold">Ricardo Lima</h1>
-                <small class="text-gray-300">Estou no trânsito, te falo quando chegar!</small>
-              </div>
-            </div>
-            <!-- box perfil -->
-            <div class="flex cursor-pointer items-center space-x-4 border-b-[.1rem] border-[#006ce0] p-2 py-4 duration-200 hover:bg-[#2F2E41]">
-              <div class="h-[4rem] w-[4rem] overflow-hidden rounded-[100%]">
-                <img class="" src="https://images.unsplash.com/photo-1609042759065-d8dad38f5a9f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-              </div>
-              <div class="text-white">
-                <h1 class="font-bold">Fernanda Silva</h1>
-                <small class="text-gray-300">Estou fora da área de cobertura, já volto!</small>
-              </div>
+            <div class="text-white">
+              <h1 class="font-bold">Henrique Pereira Santos</h1>
             </div>
           </div>
-
-          <!-- container da porra do chat -->
-          <div class="h-screen w-full bg-red-600 md:w-[80%]">
-            <div class="bg-white p-2">
-              <div class="flex items-center space-x-4">
-                <div class="h-[3rem] w-[3rem] rounded-[100%] bg-gray-100">
-                  <img src="" alt="" />
-                </div>
-                <h2 class="text-xl font-medium">Mariana Costa</h2>
-              </div>
-            </div>
-
-            <div class="h-[88%] flex-1 bg-gray-200">
-              <p>bom dia</p>
-            </div>
-
-            <div class="h-[4.8%] bg-white flex items-center justify-center">
-              <input type="text" class="w-[50%] bg-red-500 rounded-[.2rem] p-1" />
+        </div>
+        <div class="h-screen w-full bg-blue-500">
+          <div class="flex h-[4rem] w-full bg-white">
+            <div class="flex items-center space-x-2">
+              <div class="ml-4 h-[2.5rem] w-[2.5rem] rounded-[100%] bg-black"></div>
+              <p class="text-lg font-medium">Henrique Pereira Santos</p>
             </div>
           </div>
+          <!-- chat box -->
+          <div class="flex h-[48.3rem] max-h-[48.3rem] w-full overflow-y-auto bg-gray-200 p-4">
+            <ul class="flex w-full flex-col justify-end space-y-4">
+              <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Oi, tudo bem?</li>
+              <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Oi! Tudo sim, e você?</li>
+              <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Tudo ótimo, acabei de terminar um projeto no trabalho. E você, o que tá fazendo?</li>
+              <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Que legal! Eu tô terminando de assistir uma série, precisava relaxar um pouco hoje.</li>
+              <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Entendo, às vezes é bom dar uma pausa. Qual série você tá assistindo?</li>
+              <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Tô vendo aquela nova na Netflix, bem legal. Você já viu?</li>
+              <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Ainda não! Vou adicionar na minha lista. Vale a pena?</li>
+              <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Super vale! A história prende bastante.</li>
+              <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Boa! Então já sei o que vou assistir no fim de semana.</li>
+              <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Haha, aproveita! E aí, mais alguma novidade?</li>
+              <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Oi, tudo bem?</li>
+              <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Oi! Tudo sim, e você?</li>
+              <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Tudo ótimo, acabei de terminar um projeto no trabalho. E você, o que tá fazendo?</li>
+              <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Que legal! Eu tô terminando de assistir uma série, precisava relaxar um pouco hoje.</li>
+              <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Entendo, às vezes é bom dar uma pausa. Qual série você tá assistindo?</li>
+              <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Tô vendo aquela nova na Netflix, bem legal. Você já viu?</li>
+              <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Ainda não! Vou adicionar na minha lista. Vale a pena?</li>
+              <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Super vale! A história prende bastante.</li>
+              <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Boa! Então já sei o que vou assistir no fim de semana.</li>
+              <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Haha, aproveita! E aí, mais alguma novidade?</li>
+            </ul>
+          </div>
+
+          <!-- box input -->
+          <div class="h-[3.5rem] w-full bg-gray-50"></div>
         </div>
       </section>
     </main>
