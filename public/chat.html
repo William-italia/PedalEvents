@@ -165,7 +165,7 @@
           </div>
         </div>
         <div class="h-screen w-full bg-blue-500">
-          <div class="flex h-[4rem] w-full bg-white">
+          <div class="flex h-[4rem] w-full border-b-2 border-gray-300 bg-white shadow-2xl">
             <div class="flex items-center space-x-2">
               <div class="ml-4 h-[2.5rem] w-[2.5rem] rounded-[100%] bg-black"></div>
               <p class="text-lg font-medium">Henrique Pereira Santos</p>
@@ -173,36 +173,37 @@
           </div>
           <!-- chat box -->
           <!-- chat box -->
-          <div class="relative flex h-[48.3rem] w-full ">
-            <div class="absolute w-full h-full overflow-y-auto bg-gray-200 p-2">
-              <ul class="flex w-full  flex-col space-y-4">
-                <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Oi, tudo bem?</li>
-                <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Oi! Tudo sim, e você?</li>
-                <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Tudo ótimo, acabei de terminar um projeto no trabalho. E você, o que tá fazendo?</li>
-                <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Que legal! Eu tô terminando de assistir uma série, precisava relaxar um pouco hoje.</li>
-                <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Entendo, às vezes é bom dar uma pausa. Qual série você tá assistindo?</li>
-                <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Tô vendo aquela nova na Netflix, bem legal. Você já viu?</li>
-                <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Ainda não! Vou adicionar na minha lista. Vale a pena?</li>
-                <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Super vale! A história prende bastante.</li>
-                <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Boa! Então já sei o que vou assistir no fim de semana.</li>
-                <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Haha, aproveita! E aí, mais alguma novidade?</li>
-                <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Oi, tudo bem?</li>
-                <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Oi! Tudo sim, e você?</li>
-                <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Tudo ótimo, acabei de terminar um projeto no trabalho. E você, o que tá fazendo?</li>
-                <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Que legal! Eu tô terminando de assistir uma série, precisava relaxar um pouco hoje.</li>
-                <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Entendo, às vezes é bom dar uma pausa. Qual série você tá assistindo?</li>
-                <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Tô vendo aquela nova na Netflix, bem legal. Você já viu?</li>
-                <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Ainda não! Vou adicionar na minha lista. Vale a pena?</li>
-                <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Super vale! A história prende bastante.</li>
-                <li class="max-w-[60%] self-end rounded-lg bg-red-400 p-2">Boa! Então já sei o que vou assistir no fim de semana.</li>
-                <li class="user max-w-[60%] self-start rounded-lg bg-blue-400 p-2">Haha, aproveita! E aí, mais alguma novidade?</li>
+          <div class="relative flex h-[48.3rem] w-full">
+            <div class="absolute h-full w-full overflow-y-auto bg-gray-200 p-2">
+              <ul class="flex w-full flex-col space-y-4">
+                <li class="me max-w-[60%] self-end rounded-lg p-2">Oi, tudo bem?</li>
+                <li class="user bg-user max-w-[60%] self-start rounded-lg p-2">Oi! Tudo sim, e você?</li>
+                <li class="me max-w-[60%] self-end rounded-lg p-2">Tudo ótimo, acabei de terminar um projeto no trabalho. E você, o que tá fazendo?</li>
+                <li class="user bg-user max-w-[60%] self-start rounded-lg p-2">Que legal! Eu tô terminando de assistir uma série, precisava relaxar um pouco hoje.</li>
+                <li class="me max-w-[60%] self-end rounded-lg p-2">Entendo, às vezes é bom dar uma pausa. Qual série você tá assistindo?</li>
+                <li class="user bg-user max-w-[60%] self-start rounded-lg p-2">Tô vendo aquela nova na Netflix, bem legal. Você já viu?</li>
+                <li class="me max-w-[60%] self-end rounded-lg p-2">Ainda não! Vou adicionar na minha lista. Vale a pena?</li>
+                <li class="user bg-user max-w-[60%] self-start rounded-lg p-2">Super vale! A história prende bastante.</li>
+                <li class="me max-w-[60%] self-end rounded-lg p-2">Boa! Então já sei o que vou assistir no fim de semana.</li>
+                <li class="user bg-user max-w-[60%] self-start rounded-lg p-2">Haha, aproveita! E aí, mais alguma novidade?</li>
+                <li class="me max-w-[60%] self-end rounded-lg p-2">Oi, tudo bem?</li>
+                <li class="user bg-user max-w-[60%] self-start rounded-lg p-2">Oi! Tudo sim, e você?</li>
+                <li class="me max-w-[60%] self-end rounded-lg p-2">Tudo ótimo, acabei de terminar um projeto no trabalho. E você, o que tá fazendo?</li>
+                <li class="user bg-user max-w-[60%] self-start rounded-lg p-2">Que legal! Eu tô terminando de assistir uma série, precisava relaxar um pouco hoje.</li>
+                <li class="me max-w-[60%] self-end rounded-lg p-2">Entendo, às vezes é bom dar uma pausa. Qual série você tá assistindo?</li>
+                <li class="user bg-user max-w-[60%] self-start rounded-lg p-2">Tô vendo aquela nova na Netflix, bem legal. Você já viu?</li>
+                <li class="me max-w-[60%] self-end rounded-lg p-2">Ainda não! Vou adicionar na minha lista. Vale a pena?</li>
+                <li class="user bg-user max-w-[60%] self-start rounded-lg p-2">Super vale! A história prende bastante.</li>
+                <li class="me max-w-[60%] self-end rounded-lg p-2">Boa! Então já sei o que vou assistir no fim de semana.</li>
+                <li class="user bg-user max-w-[60%] self-start rounded-lg p-2">Haha, aproveita! E aí, mais alguma novidade?</li>
               </ul>
             </div>
           </div>
 
           <!-- box input -->
-          <div class="flex h-[3.5rem] w-full items-center justify-center bg-gray-50">
-            <input type="text " class="w-1/2 bg-gray-400 p-2" />
+          <div class="flex h-[3.5rem] w-full items-center justify-center bg-gray-100">
+            <input type="text " placeholder="Digite uma mensagem" class="w-[80%] rounded-3xl bg-gray-300 px-6 py-2 outline-none placeholder:text-black" />
+            <button class="ml-4"><i class="fa-solid fa-paper-plane"></i></button>
           </div>
         </div>
       </section>
