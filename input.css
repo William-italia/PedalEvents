@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 body {
   overflow-x: hidden;
 }
@@ -74,4 +72,31 @@ body {
   min-width: 200px;
   max-width: 33%;
   width: auto;
+}
+
+.user {
+  background-color: white;
+}
+
+.me {
+  background-color: #006ce0;
+  color: #fff;
+}
+
+/* Estilizando o scroll para navegadores Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
