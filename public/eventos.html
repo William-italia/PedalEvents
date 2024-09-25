@@ -21,7 +21,7 @@
     <header class="relative">
         <div class="fixed top-0 left-0">
             <nav id="side-menu" class="h-screen w-16 bgGradienteVertical py-4 close ">
-                <ul id class="h-full flex flex-col  justify-between text-white ">
+                <ul id class="h-full flex flex-col  text-white ">
                     <div id="arrow-container" class="flex flex-col items-center  w-full px-4">
                         <div class="flex justify-end">
                             <li  class="group group-duration-200 relative">
@@ -32,7 +32,7 @@
                         <h1 id="logo" class="hidden text-3xl font-russo mt-[4rem]"><span class="text-colorLogo">Pedal</span> Events</h1>
                     </div>
 
-                    <div id="container-items" class="flex flex-col items-center p-4 space-y-10">
+                    <div id="container-items" class="flex flex-col items-center p-4 space-y-10 mt-[4rem]">
                         <li class="group group-duration-200 relative cursor-pointer  ">
                             <a href="./index.html">
                                 <i class="fa-solid fa-house"></i>
@@ -47,35 +47,7 @@
                             </a>
                             <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Eventos</span>
                         </li> 
-                        <li class="group relative cursor-pointer">
-                            <a href="./grupos.html">
-                                <i class="fa-solid fa-people-group"></i>
-                                <span id="liSpans" class="hidden">Grupos</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Grupos</span>
-                        </li> 
-                        <li class="group relative cursor-pointer">
-                            <a href="./chat.html">
-                                <i
-                        class="fa-solid fa-comment"></i>
-                                <span id="liSpans" class="hidden">Conversas</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Conversas</span>
-                        </li> 
-                        <li id="liNoticacao" class="group relative cursor-pointer">
-                            <a href="#">
-                                <i class="fa-solid fa-bell"></i>
-                                <span id="liSpans" class="hidden">Notificações</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Notificações</span>
-                        </li> 
-                        <li id="liAmigos" class="group relative cursor-pointer">
-                            <a href="#">
-                                <i class="fa-solid fa-user-group"></i>
-                                <span id="liSpans" class="hidden">Busca de amigos</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute w-32 text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2  opacity-0 transition-opacity duration-200 ">Busca de amigos</span>
-                        </li> 
+
                         <li id="liCriar" class="group relative cursor-pointer">
                             <a href="#">
                                 <i class="fa-solid fa-circle-plus"></i>
@@ -85,12 +57,10 @@
                             <!-- caixa do criar -->
                             <div id="create" class="hidden absolute w-32 rounded-xl text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D]">
                                 <ul>
-                                    <div class="border-b">
-                                        <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Evento</a></li>
+                                    <div class="">
+                                        <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Pedal</a></li>
                                     </div>
-                                    <div>
-                                        <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Grupo</a></li>
-                                    </div>
+                                    
                                 </ul>
                             </div>
                         </li> 
@@ -103,7 +73,7 @@
                         </li> 
                     </div>    
                     
-                    <div id="containerMais" class="flex flex-col p-6 items-center">
+                    <div id="containerMais" class="flex flex-col p-6 items-center  absolute bottom-0">
                         <li id="liMais" class="group relative cursor-pointer">
                             <a href="#">
                                 <i class="fa-solid fa-bars"></i>
@@ -226,9 +196,11 @@
                         <div class="flex space-x-6 mt-2">
                             <p class="md:text-xs">Santos, SP</p>
                             <span>-</span>
-                            <p class="md:text-xs">15 de Setembro 21:00</p>
+                            <p class="md:text-xs">15 de Setembro 21:00pm</p>
                         </div>
-                        <p class="mt-2 md:text-xs">Ciclismo Urbano</p>
+                        <div>
+                            <p class="mt-2 md:text-xs">Ciclismo Urbano</p>
+                        </div>
                         <button class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Participar</button>
                     </div>
                 </div>

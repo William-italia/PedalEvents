@@ -22,7 +22,7 @@
     <header class="relative">
         <div class="fixed top-0 left-0">
             <nav id="side-menu" class="h-screen w-16 bgGradienteVertical py-4 close ">
-                <ul id class="h-full flex flex-col  justify-between text-white ">
+                <ul id class="h-full flex flex-col  text-white ">
                     <div id="arrow-container" class="flex flex-col items-center  w-full px-4">
                         <div class="flex justify-end">
                             <li  class="group group-duration-200 relative">
@@ -33,8 +33,8 @@
                         <h1 id="logo" class="hidden text-3xl font-russo mt-[4rem]"><span class="text-colorLogo">Pedal</span> Events</h1>
                     </div>
 
-                    <div id="container-items" class="flex flex-col items-center p-4 space-y-10">
-                        <li class="group group-duration-200 relative cursor-pointer  ">
+                    <div id="container-items" class="flex flex-col items-center p-4 space-y-10 mt-[4rem]">
+                        <li class="group group-duration-200 relative cursor-pointer icon-faded ">
                             <a href="./index.html">
                                 <i class="fa-solid fa-house"></i>
                                 <span id="liSpans" class="hidden">Home</span>
@@ -48,35 +48,7 @@
                             </a>
                             <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Eventos</span>
                         </li> 
-                        <li class="group relative cursor-pointer">
-                            <a href="./grupos.html">
-                                <i class="fa-solid fa-people-group"></i>
-                                <span id="liSpans" class="hidden">Grupos</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Grupos</span>
-                        </li> 
-                        <li class="group relative cursor-pointer">
-                            <a href="./chat.html">
-                                <i
-                        class="fa-solid fa-comment"></i>
-                                <span id="liSpans" class="hidden">Conversas</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Conversas</span>
-                        </li> 
-                        <li id="liNoticacao" class="group relative cursor-pointer">
-                            <a href="#">
-                                <i class="fa-solid fa-bell"></i>
-                                <span id="liSpans" class="hidden">Notificações</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Notificações</span>
-                        </li> 
-                        <li id="liAmigos" class="group relative cursor-pointer">
-                            <a href="#">
-                                <i class="fa-solid fa-user-group"></i>
-                                <span id="liSpans" class="hidden">Busca de amigos</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute w-32 text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2  opacity-0 transition-opacity duration-200 ">Busca de amigos</span>
-                        </li> 
+
                         <li id="liCriar" class="group relative cursor-pointer">
                             <a href="#">
                                 <i class="fa-solid fa-circle-plus"></i>
@@ -95,16 +67,16 @@
                                 </ul>
                             </div>
                         </li> 
-                        <li class="group relative cursor-pointer icon-faded">
+                        <li class="group relative cursor-pointer">
                             <a href="./perfil.html">
-                                <img id="perfilImg" class="w-[25px] h-[25px] md:w-[30px] md:h-[30px] rounded-[100%] inline" src="https://avatars.githubusercontent.com/u/89314780?v=4" alt="">
+                                <img id="perfilImg" class="w-[25px] h-[25px] md:w-[30px] md:h-[30px] inline" src="./assets/img/person-img.png" alt="">
                                 <span id="liSpans" class="hidden">Perfil</span>
                             </a>
                             <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Perfil</span>
                         </li> 
                     </div>    
                     
-                    <div id="containerMais" class="flex flex-col p-6 items-center">
+                    <div id="containerMais" class="flex flex-col p-6 items-center  absolute bottom-0">
                         <li id="liMais" class="group relative cursor-pointer">
                             <a href="#">
                                 <i class="fa-solid fa-bars"></i>
@@ -160,81 +132,44 @@
         </div>
     </header>
 
-    <main> 
-        <section id="Perfil" class="mx-16 md:mx-[10.3rem] mt-10">
-            <!-- md -->
-             <div class="hidden  md:block">
-                <div class="flex w-full justify-center">
-                    <div class="flex  justify-center items-center border-b-2 py-4">
-                        <div class="w-1/4 flex items-center justify-center">
-                            <img class="h-[10rem] w-[10rem] rounded-[100%]" src="https://avatars.githubusercontent.com/u/89314780?v=4" alt="">
+    <main class=" h-[100vh] p-4"> 
+        <section id="Perfil" class="mx-16 md:mx-[10.3rem] mt-10 py-4">
+            <div class="my-10 ">
+                <h1 class="text-2xl md:text-4xl mb-10 font-medium">Meus Pedais</h1>
+                <div class="flex flex-col space-y-10 md:space-y-0 md:flex-row md:space-x-10">
+                    <div class="md:w-[25%] shadow-2xl rounded-2xl">
+                        <div>
+                            <img src="./assets/img/event-img3.png">
                         </div>
-                        <div class="w-1/2 p-4 space-y-4">
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <h1 class="font-medium text-2xl">William Itália Nogueira</h1>
-                                </div>
-                                <div class="flex">
-                                    <a href="#" class="text-center p-2 rounded-lg bg-[#003B7A] text-white cursor-pointer duration-200 hover:opacity-80">Editar perfil</a>
-                                </div>
-                            </div>
-                           
-                            <div class="mt-4">
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime veritatis consequatur, fugit dolores natus magni provident, eligendi quod voluptates delectus praesentium illo reiciendis libero esse, explicabo nulla molestiae blanditiis laudantium sunt aliquid atque numquam eum quae voluptate? Molestias pariatur corrupti ipsum, fugit ipsam laboriosam deleniti qui. Consequuntur magni facilis optio.</p>
-                            </div>
-                            <div class="flex space-x-10">
-                                <!-- seguindo -->
-                              <div>
-                                  <a class="group duration-200 " href="">
-                                      <span class="font-bold group-hover:text-colorLogo">402</span>
-                                      <span class="text-xl">seguindo</span>
-                                  </a>
-                              </div>
-                              <!-- seguidores -->
-                              <div>
-                                  <a class="group duration-200 " href="#">
-                                      <span class="font-bold group-hover:text-colorLogo">418</span>
-                                      <span class="text-xl">seguidores</span>
-                                  </a>
-                              </div>
-                          </div>
+                        <div class="p-4">
+                            <h1 class="text-xl md:text-2xl">Competição Urbana</h1>
+                            <p class="md:text-xl">Criado em 26 de Agosto 19:10</p>
+                            <p class="md:text-xl">Participantes: 15</p>
+                            <button
+                                class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Abrir</button>
                         </div>
                     </div>
                 </div>
-             </div>
-            <!-- mobile -->
-            <div class="block flex items-center justify-center h-full flex-col  md:hidden">
-                <div class=" flex flex-col items-center justify-center w-full md:items-start md:flex-row">
-                    <div class="mb-8 border-4 rounded-[100%] border-gray-300">
-                        <img class="h-[12rem] w-[12rem] rounded-[100%] " src="https://avatars.githubusercontent.com/u/89314780?v=4" alt="">
-                    </div>
-                    <div class="flex flex-col  p-4 justify-center">
-                        <h1 class="font-medium text-2xl text-center mb-4">William Itália Nogueira</h1>
-                        <div class="text-left">
-                            <p class="text-xl">Oi, meu nome é William, sou programador FullStack e eu gosto de andar de bicicleta no meu tempo livre!</p>
-                        </div>
-                        <div class="flex items-center justify-between space-x-10 mt-4">
-                            <!-- seguindo -->
-                            <div>
-                                <a class="group duration-200 " href="">
-                                    <span class="font-bold group-hover:text-colorLogo">402</span>
-                                    <span class="text-xl">seguindo</span>
-                                </a>
-                            </div>
-                            <!-- seguidores -->
-                            <div>
-                                <a class="duration-200 hover:text-colorLogo" href="#">
-                                    <span class="font-bold">418</span>
-                                    <span class="text-xl">seguidores</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a class="text-center py-2 rounded-lg bg-[#003B7A] text-white w-full cursor-pointer mt-4 duration-200 hover:opacity-80">Editar Perfil</a>
-                <div class="border-b-2 w-full mt-10"></div>
+    
             </div>
-
+            <div class="mb-10 "></div>
+                <h1 class="text-2xl md:text-4xl mb-10 font-medium">Pedais que estou participando</h1>
+                <div class="flex flex-col space-y-10 md:space-y-0 md:flex-row md:space-x-10 mb-8">
+                    <div class="md:w-[25%] shadow-2xl rounded-2xl">
+                        <div>
+                            <img src="./assets/img/event-img3.png">
+                        </div>
+                        <div class="p-4">
+                            <h1 class="text-xl md:text-2xl">Competição Urbana</h1>
+                            <p class="md:text-xl">Criado em 26 de Agosto 19:10</p>
+                            <p class="md:text-xl">Participantes: 15</p>
+                            <button
+                                class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Abrir</button>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
         </section>
     </main>
     <script src="./assets/js/menu.js"></script>
