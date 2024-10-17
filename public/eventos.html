@@ -142,21 +142,19 @@
                                 class="p-2 rounded-lg border border-gray-600 mt-2 font-roboto w-full">
                                 <option value="passeio-recreativo">Passeio Recreativo</option>
                                 <option value="ciclismo-estrada">Ciclismo de Estrada</option>
-                                <option value="mountain-bike">Mountain Bike (MTB)</option>
+                                <option value="mountain-bike">Mountain Bike</option>
                                 <option value="ciclismo-urbano">Ciclismo Urbano</option>
                                 <option value="cicloturismo">Cicloturismo</option>
                                 <option value="bmx">BMX</option>
-                                <option value="gravel">Gravel</option>
+                                <option value="gravel">Ciclismo Gravel</option>
                                 <option value="ciclismo-indoor">Ciclismo Indoor</option>
-                                <option value="trekking-ciclismo">Trekking e Ciclismo</option>
+                                <option value="trekking-ciclismo">Ciclismo de Trekking</option>
                                 <option value="evento-competitivo">Evento Competitivo</option>
                                 <option value="paraciclismo">Paraciclismo</option>
                                 <option value="ciclismo-aventura">Ciclismo de Aventura</option>
                                 <option value="downhill">Downhill</option>
-                                <option value="criterium">Criterium</option>
                                 <option value="ciclismo-de-pista">Ciclismo de Pista</option>
                                 <option value="gran-fondo">Gran Fondo</option>
-                                <option value="randonneurs">Randonneurs</option>
                             </select>
                         </div>
                         <div class="flex flex-col flex-1">
@@ -179,68 +177,61 @@
             </form>
         </div>
     </section>
+    
 
-    <section id="eventos" class="mx-16 md:mx-[10.3rem] mt-10">
-        <!-- Eventos -->
-        <div class="my-10 ">
-            <h1 class="text-2xl md:text-4xl mb-10 font-medium">Todos os eventos</h1>
+    <section id="eventos" class="mx-16 md:mx-[10.3rem] mt-10 ">
+        <!-- container events -->
+         <div class="flex items-[#0065B9] justify-whitenter w-full h-full">
+            <div class="grid md:grid-cols-4 space-y-6 md:space-y-0 gap-[2rem]">
 
-            <!-- Evento -->
-            <div class="flex flex-col space-y-10 md:grid md:gap-4 md:grid-cols-4 md:space-y-0">
-                <div class="shadow-2xl rounded-2xl">
-                    <div class="h-[13.8rem] w-full mb-4">
-                        <img class="h-[14.5rem] w-full" src="./assets/img/event-img3.png" alt="">
+                <!-- evento 1 -->
+                <div class="bg-white text- h-[36rem] md:w-[23rem] rounded-2xl card-sombra">
+                    <div class="flex items-center justify-center w-full h-[48%] mb-2">
+                            <img class="w-full h-full rounded-t-2xl" src="./assets/img/event-img2.png" alt="">
                     </div>
-                    <div class="p-4">
-                        <h1 class="text-xl md:text-2xl">Competição Urbana</h1>
-                        <div class="flex space-x-6 mt-2">
-                            <p class="md:text-xs">Santos, SP</p>
-                            <span>-</span>
-                            <p class="md:text-xs">15 de Setembro 21:00pm</p>
+                    <!-- Conteúdo do card -->
+                     <div class="flex flex-col items-center justify-between p-2">
+                        <h1 class="text-2xl font-medium text-center mb-2">Competição Urbana</h1>
+                        <div class="mt-[1rem]">
+                            <div class="flex items-center gap-2">
+                                <p  class="text-[1.2rem] font-medium">Organizador:</p>
+                                <p class="text-[1.2rem] ">João Silva</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <p class="text-[1.2rem] font-medium">Categoria</p>
+                                <p class="text-[1.2rem] ">Ciclismo Urbano</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <p class="text-[1.2rem] font-medium">Local: </p>
+                                <p class="text-[1.2rem] ">Santos, SP</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <P class="text-[1.2rem] font-medium">Data e hora:</P>
+                                <P class="text-[1.2rem] ">15 de Setembro, 21:00</P>
+                            </div>
+                            <div class="flex gap-2">
+                                <div class="flex items-center gap-2">
+                                    <p class="text-[1.2rem] font-medium">Dificuldade:</p>
+                                    <p class="text-[1.2rem] ">Intermediário</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <p class="text-[1.2rem] font-medium">Vagas:</p>
+                                    <p class="text-[1.2rem] ">50</p>
+                                </div> 
+                            </div>
                         </div>
-                        <div>
-                            <p class="mt-2 md:text-xs">Ciclismo Urbano</p>
-                        </div>
-                        <button class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Participar</button>
-                    </div>
+                        <a href="" class="mt-[1rem] bg-[#0065B9] text-white duration-200 hover:opacity-80 block w-full  py-2 text-center p-3 rounded-[.8rem]">Entrar no Pedal</a>
+                     </div>
                 </div>
                 
-                <div class="shadow-2xl rounded-2xl">
-                    <div class="h-[13.8rem] w-full mb-4">
-                        <img class="h-[14.5rem] w-full" src="./assets/img/event-img4.png" alt="">
-                    </div>
-                    <div class="p-4">
-                        <h1 class="text-xl md:text-2xl">Desafio da Serra</h1>
-                        <div class="flex space-x-6 mt-2">
-                            <p class="md:text-xs">Guarujá, SP</p>
-                            <span>-</span>
-                            <p class="md:text-xs">10 de Outubro 08:30</p>
-                        </div>
-                        <p class="mt-2 md:text-xs">Ciclismo de Estrada</p>
-                        <button class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Participar</button>
-                    </div>
-                </div>
                 
-                <div class="shadow-2xl rounded-2xl">
-                    <div class="h-[13.8rem] w-full mb-4">
-                        <img class="h-[14.5rem] w-full" src="./assets/img/event-img1.png" alt="">
-                    </div>
-                    <div class="p-4">
-                        <h1 class="text-xl md:text-2xl">Desafio do morro</h1>
-                        <div class="flex space-x-6 mt-2">
-                            <p class="md:text-xs">Campos do Jordão, SP</p>
-                            <span>-</span>
-                            <p class="md:text-xs">01 de Novembro 07:00</p>
-                        </div>
-                        <p class="mt-2 md:text-xs">Mountain Bike (MTB)</p>
-                        <button class="bg-[#003B7A] w-full mt-6 text-white py-2 px-4 rounded-lg duration-200 hover:opacity-80">Participar</button>
-                    </div>
-                </div>
 
+    
             </div>
-
-        </div>
+         </div>
+       
     </section>
+    
 
     <script src="./assets/js/home.js"></script>
 </body>
