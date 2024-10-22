@@ -18,12 +18,14 @@ CREATE TABLE usuarios (
 CREATE TABLE eventos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
+    usuario_id INT, 
     data DATETIME NOT NULL,
     local VARCHAR(255) NOT NULL,
     limite_vagas INT NOT NULL,
     imagem VARCHAR(255),  
     descricao TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
 );
 
 
