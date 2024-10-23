@@ -10,12 +10,15 @@ document.getElementById('create-link').addEventListener('click', function(event)
         const newLink = document.createElement('li');
     
         newLink.innerHTML = `
-            <div class="my-4 relative border-b-2">
-                <label for="">Nome:</label>
-                <input type="text" name="links[${linkIndex}][nome]" class="border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mr-[1.4rem] p-[.3rem]">
-                <label for="">Link:</label>
-                <input type="text" name="links[${linkIndex}][url]" class=" mb-4 border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mr-[1.4rem] p-[.3rem] border-b-2">
-            </div>
+            <div class="flex flex-col space-y-2 my-4">
+                                            <label for="">Nome:</label>
+                                            <input name="links[0][nome]" type="text"
+                                                class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+
+                                            <label class="" for="">Link:</label>
+                                            <input name="links[0][url]" type="text"
+                                                class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                        </div>
         `;
     
         linksList.appendChild(newLink);

@@ -146,7 +146,7 @@
                                             <!-- input 2 -->
                                             <div class="flex flex-col">
                                                 <label for="date">Data:</label>
-                                                <input type="text" name="date" id="date"
+                                                <input type="datetime-local" name="date" id="date"
                                                     class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
                                             </div>
                                         </div>
@@ -240,7 +240,21 @@
                             </div>
                             <!-- links box -->
                             <div>
-                                links
+                                <ul id="links">
+                                    <li>
+                                        <div class="flex flex-col space-y-2 my-4">
+                                            <label for="">Nome:</label>
+                                            <input name="links[0][nome]" type="text"
+                                                class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+
+                                            <label class="" for="">Link:</label>
+                                            <input name="links[0][url]" type="text"
+                                                class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                        </div>
+                                    </li>
+                                </ul>
+                                <button id="create-link" class="p-2 bg-[#00D1FF] rounded-[4px] shadow-xl">Adicionar
+                                    Link</button>
                             </div>
                         </div>
                     </div>
