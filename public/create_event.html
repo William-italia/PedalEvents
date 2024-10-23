@@ -63,7 +63,7 @@
                             <div id="create"
                                 class="hidden absolute w-32 rounded-xl text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D]">
                                 <ul>
-                                    <div class="">
+                                    <div class="flex flex-col">
                                         <li class="p-2 duration-200 hover:opacity-80"><a
                                                 href="./create_event.html">Criar Pedal</a></li>
                                     </div>
@@ -104,144 +104,149 @@
             </nav>
         </div>
     </header>
+
     <script src="./assets/js/menu.js"></script>
 
     <section id="home-filtro" class="mx-16 md:mx-[10.3rem]">
-        <div class="my-10 flex items-center justify-center">
-            <div class="w-[70%] h-full rounded-2xl">
-                <!-- banner -->
-                <div class="bg-gray-600 w-[100%] h-[30rem] rounded-t-2xl flex items-center justify-center relative overflow-hidden h-[500px] bg-cover bg-center"
-                    style="background-image: url('./assets/img/event-img1.png');">
-                    <span
-                        class="absolute bottom-[10px] right-[10px] px-6 py-4 bg-white font-medium shadow-2xl rounded-xl cursor-pointer">Adicione
-                        um banner</span>
-                </div>
-
-                <!-- content -->
-                <div class="border-2 shadow-2xl p-[2rem] rounded-b-2xl">
-                    <form action="teste.php" method="post">
-                        <div class="flex">
-                            <div class="w-full w-[72%]">
-                                <!-- box-inputs -->
-                                <div class="flex flex-col justify-center">
-                                    <div class="flex flex-col">
-                                        <label class="mb-2" for="">Nome do Evento:</label>
-                                        <input name="nome_evento"
-                                            class="border-[#D9D9D9] border-2 rounded-[.2rem] mr-[1.4rem] p-[.3rem]"
-                                            type="text" value="Ciclismo na Praia">
-                                    </div>
-                                    <div class="flex items-center py-4">
-                                        <div class="flex flex-col">
-                                            <label class="mb-2" for="">Organizador:</label>
-                                            <input name="organizador"
-                                                class="border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mr-[1.4rem] p-[.3rem]"
-                                                type="text" value="João Silva">
-                                        </div>
-                                        <div class="flex flex-col">
-                                            <label class="mb-2" for="">Data:</label>
-                                            <input name="data_evento"
-                                                class="border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mr-[1.4rem] p-[.3rem]"
-                                                type="datetime-local" value="2024-12-01T10:00">
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center py-4">
-                                        <div class="flex flex-col">
-                                            <label class="mb-2" for="">Cidade:</label>
-                                            <input name="cidade"
-                                                class="border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mr-[1.4rem] p-[.3rem]"
-                                                type="text" value="São Paulo">
-                                        </div>
-                                        <div class="flex flex-col">
-                                            <label class="mb-2" for="">Endereço do Evento:</label>
-                                            <input name="endereco"
-                                                class="border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mr-[1.4rem] p-[.3rem]"
-                                                type="text" value="Avenida das Nações, 1234">
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center py-4">
-                                        <div class="flex flex-col">
-                                            <label class="mb-2" for="">Nível:</label>
-                                            <input name="nivel"
-                                                class="border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mr-[1.4rem] p-[.3rem]"
-                                                type="text" value="Intermediário">
-                                        </div>
-                                        <div class="flex flex-col">
-                                            <label class="mb-2" for="">Categoria:</label>
-                                            <input name="categoria"
-                                                class="border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mr-[1.4rem] p-[.3rem]"
-                                                type="text" value="Ciclismo de Estrada">
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center py-4">
-                                        <div class="flex flex-col">
-                                            <label class="mb-2" for="">Vagas:</label>
-                                            <input name="vagas"
-                                                class="border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mr-[1.4rem] p-[.3rem]"
-                                                type="text" value="50">
-                                        </div>
-                                        <div class="flex flex-col">
-                                            <label class="mb-2" for="">KM:</label>
-                                            <input name="km"
-                                                class="border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mr-[1.4rem] p-[.3rem]"
-                                                type="text" value="15">
-                                        </div>
-                                    </div>
+        <!-- global container -->
+        <div class="flex items-center justify-center my-10 w-full">
+            <!-- form start -->
+            <form action="" method="post" enctype="multipart/form-data" class="w-full flex items-center justify-center">
+                <!-- father box -->
+                <div class="w-[70%] flex flex-col items-center justify-center">
+                    <!-- banner box -->
+                    <div class="w-full bg-gray-600 h-[500px] rounded-t-xl relative">
+                        <input type="file" name="arquivo" id="arquivo" class="hidden">
+                        <label for="arquivo"
+                            class="absolute bottom-[2rem] right-[2rem] bg-white py-4 px-10 shadow-xl rounded-lg cursor-pointer">adicionar
+                            banner</label>
+                    </div>
+                    <!-- father boxs (form and links) -->
+                    <div class="flex w-full border-l-2 border-r-2 border-b-2 rounded-b-xl">
+                        <!-- father form box -->
+                        <div class="w-[70%] mx-6 p-4">
+                            <!-- form box -->
+                            <div class="w-full">
+                                <div class="flex flex-col">
+                                    <label for="nameEvent">Nome do Evento:</label>
+                                    <input type="text" name="nameEvent" id="nameEvent"
+                                        class="border-[#D9D9D9] border-2 rounded-[.2rem] p-[.3rem] mb-[16px]">
                                 </div>
 
-                                <div class="mt-10 mr-[1.8rem]">
-                                    <ul id="topicos">
-                                        <li>
+                                <div class="flex space-x-2">
+                                    <div class="w-[50%] flex flex-col">
+                                        <!-- duo input 1-->
+                                        <div class="flex flex-col space-y-4">
+                                            <!-- input 1 -->
                                             <div class="flex flex-col">
-                                                <label class="mb-2" for="">Título do Tópico:</label>
-                                                <input name="titulo_topico"
-                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mr-[1.4rem] p-[.3rem]"
-                                                    type="text" value="Informações Gerais">
+                                                <label for="organizer">Organizador:</label>
+                                                <input type="text" name="organizer" id="organizer"
+                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
                                             </div>
-
-                                            <div class="flex flex-col my-4">
-                                                <label for="">Conteúdo:</label>
-                                                <textarea name="conteudo_topico"
-                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem] mr-[1.4rem] p-[.3rem] w-full h-[300px]">Venha participar do nosso evento de ciclismo na praia. Todos os níveis são bem-vindos!</textarea>
+                                            <!-- input 2 -->
+                                            <div class="flex flex-col">
+                                                <label for="date">Data:</label>
+                                                <input type="text" name="date" id="date"
+                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
                                             </div>
-                                        </li>
-                                    </ul>
+                                        </div>
+                                        <!-- duo input 2-->
+                                        <div class="flex flex-col space-y-4">
+                                            <!-- input 3 -->
+                                            <div class="flex flex-col mt-[16px]">
+                                                <label for="city">Cidade:</label>
+                                                <input type="text" name="city" id="city"
+                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                            </div>
+                                            <!-- input 4 -->
+                                            <div class="flex flex-col">
+                                                <label for="address">endereço:</label>
+                                                <input type="text" name="address" id="address"
+                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                    <button id="create-topic" class="px-6 py-2 rounded-xl bg-[#00D1FF]">Adicionar
-                                        Tópico</button>
+                                    <div class="w-[50%]">
+                                        <!-- duo input 3-->
+                                        <div class="flex flex-col space-y-4 ">
+                                            <!-- input 5 -->
+                                            <div class="flex flex-col">
+                                                <label for="difficulty">Dificuldade:</label>
+                                                <select name="difficulty" id="difficulty"
+                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.33rem]">
+                                                    <option value="easy">Fácil</option>
+                                                    <option value="intermediary">Intermediário</option>
+                                                    <option value="difficult">Difícil</option>
+                                                </select>
+                                            </div>
+                                            <!-- input 6 -->
+                                            <div class="flex flex-col">
+                                                <label for="category">Categoria</label>
+                                                <select name="category" id="category"
+                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.33rem]">
+                                                    <option value="passeio-recreativo">Passeio Recreativo</option>
+                                                    <option value="ciclismo-estrada">Ciclismo de Estrada</option>
+                                                    <option value="mountain-bike">Mountain Bike</option>
+                                                    <option value="ciclismo-urbano">Ciclismo Urbano</option>
+                                                    <option value="cicloturismo">Cicloturismo</option>
+                                                    <option value="bmx">BMX</option>
+                                                    <option value="gravel">Ciclismo Gravel</option>
+                                                    <option value="ciclismo-indoor">Ciclismo Indoor</option>
+                                                    <option value="trekking-ciclismo">Ciclismo de Trekking</option>
+                                                    <option value="evento-competitivo">Evento Competitivo</option>
+                                                    <option value="paraciclismo">Paraciclismo</option>
+                                                    <option value="ciclismo-aventura">Ciclismo de Aventura</option>
+                                                    <option value="downhill">Downhill</option>
+                                                    <option value="ciclismo-de-pista">Ciclismo de Pista</option>
+                                                    <option value="gran-fondo">Gran Fondo</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- duo input 4 -->
+                                        <div class="flex flex-col space-y-4 mt-[16px]">
+                                            <!-- input 7 -->
+                                            <div class="flex flex-col">
+                                                <label for="slots">Vagas:</label>
+                                                <input type="text" name="slots" id="slots"
+                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                            </div>
+                                            <!-- input 8 -->
+                                            <div class="flex flex-col">
+                                                <label for="km">Km:</label>
+                                                <input type="text" name="km" id="km"
+                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="border-l-2 px-4 ">
+                                <!-- topics box -->
                                 <div>
-                                    <p>Inscrições abertas!</p>
-                                    <p
-                                        class="text-center w-full p-2 bg-[#AAAAAA] text-white text-lg my-4 cursor-pointer">
-                                        Inscreva-se</p>
-                                    <p class="border-b-2 pb-10">Evento ficará aberto até 28/12/2024 ou até o limite de
-                                        vagas for atingido!</p>
+                                    topicos
                                 </div>
-                                <div class="flex flex-col ">
-                                    <ul id="links">
-                                        <li>
-                                            <div class="my-4 relative border-b-2">
-                                                <label for="">Nome:</label>
-                                                <input name="links[0][nome]" type="text"
-                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mb-4 mr-[1.4rem] p-[.3rem]">
 
-                                                <label class="" for="">Link:</label>
-                                                <input name="links[0][url]" type="text"
-                                                    class="mb-4 border-[#D9D9D9] border-2 rounded-[.2rem] w-[20rem] mr-[1.4rem] p-[.3rem]">
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <button id="create-link" class="p-2 bg-[#00D1FF]">Adicionar Link</button>
-                                </div>
                             </div>
                         </div>
-                    </form>
+                        <!-- links box -->
+                        <div class="w-[30%] bg-slate-0 border-l-2 p-4">
+                            <div>
+                                <p>Inscrições abertas!</p>
+                                <p
+                                    class="text-center w-full p-2 bg-[#AAAAAA] text-white text-lg my-4 cursor-pointer shadow-xl text-gray-300">
+                                    Inscreva-se</p>
+                                <p class="border-b-2 py-4">Evento ficará aberto até 28/12/2024 ou até o limite de
+                                    vagas for atingido!</p>
+                            </div>
+                            <!-- links box -->
+                            <div>
+                                links
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
-            </div>
+            </form>
         </div>
     </section>
 
