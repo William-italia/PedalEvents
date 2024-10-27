@@ -108,208 +108,335 @@
     <script src="./assets/js/menu.js"></script>
 
     <section id="home-filtro" class="mx-16 md:mx-[10.3rem]">
-        <!-- global container -->
-        <div class="flex items-center justify-center my-10 w-full ">
-            <!-- form start -->
-            <form id="form-event" action="" method="post" enctype="multipart/form-data"
-                class="w-full flex items-center justify-center">
-                <!-- father box -->
-                <div class="w-[100%] md:w-[70%] flex flex-col items-center justify-center">
-                    <!-- banner box -->
-                    <div id="imgPreviewElement"
-                        class="w-full bg-gray-600 h-[500px] rounded-t-xl relative bg-cover bg-center">
-                        <input id="inputImg" type="file" name="arquivo" class="hidden" accept="image/*">
-                        <label
-                            class="absolute bottom-[2rem] right-[2rem] bg-white py-4 px-10 shadow-xl rounded-lg cursor-pointer hover:bg-slate-500 duration-300"
-                            for="inputImg">adicionar
-                            banner</label>
-                    </div>
-                    <!-- father boxs (form and links) -->
-                    <div class="flex flex-col md:flex-row  w-full border-l-2 border-r-2 border-b-2 rounded-b-xl">
-                        <!-- father form box -->
-                        <div class="w-[70%] mx-6 p-4">
-                            <!-- form box -->
-                            <div class="w-full">
-                                <div class="flex flex-col">
-                                    <label class="font-roboto font-medium text-lg mb-2" for="nameEvent">Nome do
-                                        Evento:</label>
-                                    <input type="text" name="nameEvent" id="nameEvent"
-                                        class="border-[#D9D9D9] border-2 rounded-[.2rem] p-[.3rem] mb-[16px]">
-                                </div>
+        <div>
+            <!-- global container -->
+            <div class="flex items-center justify-center my-10 w-full ">
+                <!-- form start -->
+                <form id="form-event" action="" method="post" enctype="multipart/form-data"
+                    class="w-full flex items-center justify-center">
+                    <!-- father box -->
+                    <div class="w-[100%] md:w-[70%] flex flex-col items-center justify-center">
+                        <!-- banner box -->
+                        <div id="imgPreviewElement"
+                            class="w-full bg-gray-600 h-[500px] rounded-t-xl relative bg-cover bg-center">
+                            <input required id="inputImg" type="file" name="arquivo" class="hidden" accept="image/*">
+                            <label
+                                class="absolute bottom-[2rem] right-[2rem] bg-white py-4 px-10 shadow-xl rounded-lg cursor-pointer hover:bg-slate-500 duration-300"
+                                for="inputImg">adicionar
+                                banner</label>
+                        </div>
+                        <!-- father boxs (form and links) -->
+                        <div class="flex flex-col md:flex-row  w-full border-l-2 border-r-2 border-b-2 rounded-b-xl">
+                            <!-- father form box -->
+                            <div class="w-[70%] mx-6 p-4">
+                                <!-- form box -->
+                                <div class="w-full">
+                                    <div class="flex flex-col">
+                                        <label class="font-roboto font-medium text-lg mb-2" for="nameEvent">Nome do
+                                            Evento:</label>
+                                        <input required type="text" name="nameEvent"
+                                            class="border-[#D9D9D9] border-2 rounded-[.2rem] p-[.3rem] mb-[16px]">
+                                    </div>
 
-                                <div class="md:flex md:space-x-2">
-                                    <div class="w-[50%] flex flex-col">
-                                        <!-- duo input 1-->
-                                        <div class="flex flex-col space-y-4">
-                                            <!-- input 1 -->
-                                            <div class="flex flex-col">
-                                                <label class="font-roboto font-medium text-lg mb-2"
-                                                    for="organizer">Organizador:</label>
-                                                <input type="text" name="organizer" id="organizer"
-                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                    <div class="md:flex md:space-x-2">
+                                        <div class="w-[50%] flex flex-col">
+                                            <!-- duo input 1-->
+                                            <div class="flex flex-col space-y-4">
+                                                <!-- input 1 -->
+                                                <div class="flex flex-col">
+                                                    <label class="font-roboto font-medium text-lg mb-2"
+                                                        for="organizer">Organizador:</label>
+                                                    <input required type="text" name="organizer"
+                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                                </div>
+                                                <!-- input 2 -->
+                                                <div class="flex flex-col">
+                                                    <label class="font-roboto font-medium text-lg mb-2"
+                                                        for="date">Data:</label>
+                                                    <input required type="datetime-local" name="date"
+                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]"
+                                                        min="">
+                                                </div>
                                             </div>
-                                            <!-- input 2 -->
-                                            <div class="flex flex-col">
-                                                <label class="font-roboto font-medium text-lg mb-2"
-                                                    for="date">Data:</label>
-                                                <input type="datetime-local" name="date" id="date"
-                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                            <!-- duo input 2-->
+                                            <div class="flex flex-col space-y-4">
+                                                <!-- input 3 -->
+                                                <div class="flex flex-col mt-[16px]">
+                                                    <label class="font-roboto font-medium text-lg mb-2"
+                                                        for="city">Cidade:</label>
+                                                    <input required type="text" name="city"
+                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                                </div>
+                                                <!-- input 4 -->
+                                                <div class="flex flex-col">
+                                                    <label class="font-roboto font-medium text-lg mb-2"
+                                                        for="address">Endereço:</label>
+                                                    <input required type="text" name="address"
+                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                                </div>
                                             </div>
                                         </div>
-                                        <!-- duo input 2-->
-                                        <div class="flex flex-col space-y-4">
-                                            <!-- input 3 -->
-                                            <div class="flex flex-col mt-[16px]">
-                                                <label class="font-roboto font-medium text-lg mb-2"
-                                                    for="city">Cidade:</label>
-                                                <input type="text" name="city" id="city"
-                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+
+                                        <div class="w-[50%]">
+                                            <!-- duo input 3-->
+                                            <div class="flex flex-col space-y-4 ">
+                                                <!-- input 5 -->
+                                                <div class="flex flex-col">
+                                                    <label class="font-roboto font-medium text-lg mb-2"
+                                                        for="difficulty">Dificuldade:</label>
+                                                    <select name="difficulty"
+                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.33rem]">
+                                                        <option value="easy">Fácil</option>
+                                                        <option value="intermediary">Intermediário</option>
+                                                        <option value="difficult">Difícil</option>
+                                                    </select>
+                                                </div>
+                                                <!-- input 6 -->
+                                                <div class="flex flex-col">
+                                                    <label class="font-roboto font-medium text-lg mb-2"
+                                                        for="category">Categoria</label>
+                                                    <select name="category"
+                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.40rem]">
+                                                        <option value="passeio-recreativo">Passeio Recreativo</option>
+                                                        <option value="ciclismo-estrada">Ciclismo de Estrada</option>
+                                                        <option value="mountain-bike">Mountain Bike</option>
+                                                        <option value="ciclismo-urbano">Ciclismo Urbano</option>
+                                                        <option value="cicloturismo">Cicloturismo</option>
+                                                        <option value="bmx">BMX</option>
+                                                        <option value="gravel">Ciclismo Gravel</option>
+                                                        <option value="ciclismo-indoor">Ciclismo Indoor</option>
+                                                        <option value="trekking-ciclismo">Ciclismo de Trekking</option>
+                                                        <option value="evento-competitivo">Evento Competitivo</option>
+                                                        <option value="paraciclismo">Paraciclismo</option>
+                                                        <option value="ciclismo-aventura">Ciclismo de Aventura</option>
+                                                        <option value="downhill">Downhill</option>
+                                                        <option value="ciclismo-de-pista">Ciclismo de Pista</option>
+                                                        <option value="gran-fondo">Gran Fondo</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <!-- input 4 -->
-                                            <div class="flex flex-col">
-                                                <label class="font-roboto font-medium text-lg mb-2"
-                                                    for="address">Endereço:</label>
-                                                <input type="text" name="address" id="address"
-                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                            <!-- duo input 4 -->
+                                            <div class="flex flex-col space-y-4 mt-[16px]">
+                                                <!-- input 7 -->
+                                                <div class="flex flex-col">
+                                                    <label class="font-roboto font-medium text-lg mb-2"
+                                                        for="slots">Vagas:</label>
+                                                    <input required type="number" name="slots" min="5" max="100"
+                                                        value="6"
+                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                                </div>
+                                                <!-- input 8 -->
+                                                <div class="flex flex-col">
+                                                    <label class="font-roboto font-medium text-lg mb-2"
+                                                        for="km">Distância
+                                                        Percorrida (km): </label>
+                                                    <input required type="number" name="km" min="4" max="100" value="30"
+                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="w-[50%]">
-                                        <!-- duo input 3-->
-                                        <div class="flex flex-col space-y-4 ">
-                                            <!-- input 5 -->
-                                            <div class="flex flex-col">
-                                                <label class="font-roboto font-medium text-lg mb-2"
-                                                    for="difficulty">Dificuldade:</label>
-                                                <select name="difficulty" id="difficulty"
-                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.33rem]">
-                                                    <option value="easy">Fácil</option>
-                                                    <option value="intermediary">Intermediário</option>
-                                                    <option value="difficult">Difícil</option>
-                                                </select>
-                                            </div>
-                                            <!-- input 6 -->
-                                            <div class="flex flex-col">
-                                                <label class="font-roboto font-medium text-lg mb-2"
-                                                    for="category">Categoria</label>
-                                                <select name="category" id="category"
-                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.40rem]">
-                                                    <option value="passeio-recreativo">Passeio Recreativo</option>
-                                                    <option value="ciclismo-estrada">Ciclismo de Estrada</option>
-                                                    <option value="mountain-bike">Mountain Bike</option>
-                                                    <option value="ciclismo-urbano">Ciclismo Urbano</option>
-                                                    <option value="cicloturismo">Cicloturismo</option>
-                                                    <option value="bmx">BMX</option>
-                                                    <option value="gravel">Ciclismo Gravel</option>
-                                                    <option value="ciclismo-indoor">Ciclismo Indoor</option>
-                                                    <option value="trekking-ciclismo">Ciclismo de Trekking</option>
-                                                    <option value="evento-competitivo">Evento Competitivo</option>
-                                                    <option value="paraciclismo">Paraciclismo</option>
-                                                    <option value="ciclismo-aventura">Ciclismo de Aventura</option>
-                                                    <option value="downhill">Downhill</option>
-                                                    <option value="ciclismo-de-pista">Ciclismo de Pista</option>
-                                                    <option value="gran-fondo">Gran Fondo</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- duo input 4 -->
-                                        <div class="flex flex-col space-y-4 mt-[16px]">
-                                            <!-- input 7 -->
-                                            <div class="flex flex-col">
-                                                <label class="font-roboto font-medium text-lg mb-2"
-                                                    for="slots">Vagas:</label>
-                                                <input type="number" name="slots" id="slots" min="5" max="100" value="6"
-                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
-                                            </div>
-                                            <!-- input 8 -->
-                                            <div class="flex flex-col">
-                                                <label class="font-roboto font-medium text-lg mb-2" for="km">Distância
-                                                    Percorrida (km): </label>
-                                                <input type="number" name="km" id="km" min="4" max="100" value="30"
-                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
-                                            </div>
-                                        </div>
+                                    <!-- topics - father box -->
+                                    <div class="mt-10">
+                                        <ul id="topics">
+                                            <li>
+                                                <div class="flex flex-col mb-10">
+                                                    <div class="w-[50%] flex flex-col">
+                                                        <label class="font-roboto font-medium text-lg mb-2"
+                                                            for="topico">Titulo do
+                                                            Topico</label>
+                                                        <input required type="text" name="topico[0][titulo]"
+                                                            class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] mb-4">
+                                                    </div>
+                                                    <div>
+                                                        <label class="font-roboto font-medium text-lg mb-2"
+                                                            for="conteudo">Conteúdo</label>
+                                                        <textarea required name="topico[0][conteudo]"
+                                                            class="border-[#D9D9D9] border-2 rounded-[.2rem] mr-[1.4rem] p-[.3rem] w-full h-[400px] mt-2"></textarea>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <button id="create-topic"
+                                            class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-[40%] mt-2"
+                                            type="button">Adicionar
+                                            Topico</button>
+                                    </div>
+
+                                    <!-- father box buttons -->
+                                    <div class="flex items-center justify-center space-x-4 w-full mt-10">
+                                        <button
+                                            class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-[50%]"
+                                            type="button" onclick="preview()">Previzualizar</button>
+                                        <button
+                                            class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-[50%]">Criar
+                                            Evento!</button>
                                     </div>
                                 </div>
-
-                                <!-- topics - father box -->
-                                <div class="mt-10">
-                                    <ul id="topics">
+                            </div>
+                            <!-- links box -->
+                            <div class="w-[30%] bg-slate-0 border-l-2 p-4">
+                                <div>
+                                    <p>Inscrições abertas!</p>
+                                    <p
+                                        class="text-center w-full p-2 bg-[#AAAAAA] text-lg my-4 cursor-pointer shadow-xl text-gray-300">
+                                        Inscreva-se</p>
+                                    <p class="border-b-2 py-4">Evento ficará aberto até 28/12/2024 ou até o limite de
+                                        vagas for atingido!</p>
+                                </div>
+                                <!-- links box -->
+                                <div>
+                                    <ul id="links">
                                         <li>
-                                            <div class="flex flex-col mb-10">
-                                                <div class="w-[50%] flex flex-col">
-                                                    <label class="font-roboto font-medium text-lg mb-2"
-                                                        for="topico">Titulo do
-                                                        Topico</label>
-                                                    <input type="text" name="topico[0][titulo]" id="topico"
-                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] mb-4">
+                                            <div class="flex flex-col space-y-2 my-4 relative">
+                                                <div class="flex justify-between">
+                                                    <label class="font-roboto font-medium text-lg "
+                                                        for="link">Nome:</label>
+                                                    <span class="cursor-pointer text-red-600" id="delete-link"><i
+                                                            class="fa-solid fa-trash"></i></span>
                                                 </div>
-                                                <div>
-                                                    <label class="font-roboto font-medium text-lg mb-2"
-                                                        for="conteudo">Conteúdo</label>
-                                                    <textarea name="topico[0][conteudo]" id="conteudo"
-                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem] mr-[1.4rem] p-[.3rem] w-full h-[400px] mt-2"></textarea>
-                                                </div>
+                                                <input name="links[0][nome]" type="text"
+                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+
+                                                <label class="font-roboto font-medium text-lg " for="link">Link:</label>
+                                                <input name="links[0][url]" type="text"
+                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
                                             </div>
                                         </li>
                                     </ul>
-                                    <button id="create-topic"
-                                        class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-[40%] mt-2"
+                                    <button id="create-link"
+                                        class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-2"
                                         type="button">Adicionar
-                                        Topico</button>
-                                </div>
-
-                                <!-- father box buttons -->
-                                <div class="flex items-center justify-center space-x-4 w-full mt-10">
-                                    <button
-                                        class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-[50%]"
-                                        onclick="pegarValores()" type="button">Previzualizar</button>
-                                    <button
-                                        class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-[50%]">Criar
-                                        Evento!</button>
+                                        Link</button>
                                 </div>
                             </div>
                         </div>
-                        <!-- links box -->
-                        <div class="w-[30%] bg-slate-0 border-l-2 p-4">
-                            <div>
-                                <p>Inscrições abertas!</p>
-                                <p
-                                    class="text-center w-full p-2 bg-[#AAAAAA] text-lg my-4 cursor-pointer shadow-xl text-gray-300">
-                                    Inscreva-se</p>
-                                <p class="border-b-2 py-4">Evento ficará aberto até 28/12/2024 ou até o limite de
-                                    vagas for atingido!</p>
-                            </div>
-                            <!-- links box -->
-                            <div>
-                                <ul id="links">
-                                    <li>
-                                        <div class="flex flex-col space-y-2 my-4 relative">
-                                            <div class="flex justify-between">
-                                                <label class="font-roboto font-medium text-lg " for="link">Nome:</label>
-                                                <span class="cursor-pointer text-red-600" id="delete-link"><i
-                                                        class="fa-solid fa-trash"></i></span>
-                                            </div>
-                                            <input name="links[0][nome]" type="text"
-                                                class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
 
-                                            <label class="font-roboto font-medium text-lg " for="link">Link:</label>
-                                            <input name="links[0][url]" type="text"
-                                                class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
-                                        </div>
-                                    </li>
-                                </ul>
-                                <button id="create-link"
-                                    class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-2"
-                                    type="button">Adicionar
-                                    Link</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- preview -->
+            <div class="">
+                <!-- global container -->
+                <div class="flex items-center justify-center my-10 w-full ">
+                    <!-- form start -->
+                    <div class="w-full flex items-center justify-center">
+                        <!-- father box -->
+                        <div class="w-[100%] md:w-[70%] flex flex-col items-center justify-center">
+                            <!-- banner box -->
+                            <div style="background-image: url(./assets/img/event-img3.png);" id="imgPreviewElement"
+                                class="w-full bg-gray-600 h-[500px] rounded-t-xl relative bg-cover bg-center">
                             </div>
+                            <!-- father boxs (form and links) -->
+                            <div
+                                class="flex flex-col md:flex-row  w-full border-l-2 border-r-2 border-b-2 rounded-b-xl">
+                                <!-- father form box -->
+                                <div class="w-[70%] mx-6 p-4">
+                                    <!-- form box -->
+                                    <div class="w-full">
+                                        <div class="flex flex-col">
+                                            <!-- titulo -->
+                                            <p class="font-roboto font-bold text-3xl my-4">
+                                                <span id="nameEvent"></span>
+                                            </p>
+                                        </div>
+
+                                        <div class="grid grid-cols-2 gap-6 mt-4 text-xl">
+                                            <!-- organizador -->
+                                            <div><i class="mr-2 fa-solid fa-bookmark"></i>
+                                                <span id="organizer"></span>
+                                            </div>
+                                            <!-- Dificuldade -->
+                                            <div>
+                                                <i class="mr-2 fa-solid fa-trophy"></i>
+                                                <span id="difficult"></span>
+                                            </div>
+
+                                            <!-- Data -->
+                                            <div>
+                                                <i class="mr-2 fa-solid fa-calendar-days"></i>
+                                                <span id="date"></span>
+                                            </div>
+
+                                            <!-- Categoria -->
+                                            <div>
+                                                <i class="mr-2 fa-solid fa-layer-group"></i>
+                                                <span id="category"></span>
+                                            </div>
+
+                                            <!-- Cidade -->
+                                            <div>
+                                                <i class="mr-2 fa-solid fa-city"></i>
+                                                <span id="city"></span>
+                                            </div>
+
+                                            <!-- Vagas -->
+                                            <div>
+                                                <i class="mr-2 fa-solid fa-user"></i>
+                                                <span id="slots"></span>
+                                            </div>
+
+                                            <!-- Endereço -->
+                                            <div>
+                                                <i class="mr-2 fa-solid fa-map"></i>
+                                                <span id="address"></span>
+                                            </div>
+
+                                            <!-- Distância -->
+                                            <div>
+                                                <i class="mr-2 fa-solid fa-bicycle"></i>
+                                                <span id="km"></span>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- topics - father box -->
+                                        <div class="mt-10">
+                                            <ul>
+                                                <li>
+                                                    <div class="flex flex-col mb-10">
+                                                        <h2 class="text-xl underline mb-6 font-medium ">
+                                                        </h2>
+                                                        <p class="font-roboto text-1xl  leading-7"></p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <!-- links box -->
+                                <div class="w-[30%] bg-slate-0 border-l-2 p-4">
+                                    <div>
+                                        <p>Inscrições Abertas</p>
+                                        <p
+                                            class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
+                                            Inscreva-se</p>
+                                        <p class="border-b-2 py-4">Evento ficará aberto até placeholder ou até o limite
+                                            de
+                                            vagas for atingido!</p>
+                                    </div>
+                                    <!-- links box -->
+                                    <div>
+                                        <ul class="flex flex-col gap-4 text-1xl mt-8">
+                                            <h2 class="text-xl font-roboto font-medium">Links importantes:</h2>
+                                            <li>
+                                                <a href="" target="_blank"><i
+                                                        class="fa-solid fa-up-right-from-square mr-2"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-
                 </div>
-            </form>
+            </div>
         </div>
     </section>
 

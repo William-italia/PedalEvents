@@ -2,6 +2,7 @@ const btnAddLink = document.getElementById('create-link');
 const btnRemoveLink = document.getElementById('delete-link');
 const btnRemoveTopic = document.getElementById('delete-topic');
 const btnAddTopic = document.getElementById('create-topic');
+const btnPreview = document.getElementById('btnPreview');
 
 // banner function
 function previewImage() {
@@ -89,13 +90,13 @@ function createTopic() {
                         for="topico">Titulo do
                         Topico</label>
 
-                    <input type="text" name="topico[0][titulo]" id="topico"
+                    <input type="text" name="topico[${lis.length}][titulo]" 
                         class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] mb-4">
                 </div>
                 <div>
                     <label class="font-roboto font-medium text-lg mb-2"
                         for="conteudo">Conteúdo</label>
-                    <textarea name="topico[0][conteudo]" id="conteudo"
+                    <textarea name="topico[${lis.length}][conteudo]" 
                         class="border-[#D9D9D9] border-2 rounded-[.2rem] mr-[1.4rem] p-[.3rem] w-full h-[400px] mt-2"></textarea>
                 </div>
             </div>`
@@ -112,7 +113,6 @@ function createTopic() {
     }
     
 }
-
 
 function removeTopic(e) {
     const btnDelete = e.target;
@@ -132,8 +132,64 @@ function removeTopic(e) {
     }
 }
 
+function getForm() {
+    const form = document.getElementById('form-event');
+    const formData = {
+        topicos: [],
+        links: []
+    };
+
+    const inputs = form.querySelectorAll('input, textarea, select');
+
+    inputs.forEach(input => {
+        if (!input.name.startsWith('topico') && !input.name.startsWith('links')) {
+            formData[input.name] = input.value;
+        } else if (input.name.startsWith('topico')) {
+            const topicIndex = parseInt(input.name.match(/\[(\d+)\]/)[1]);
+            if (!formData.topicos[topicIndex]) {
+                formData.topicos[topicIndex] = {};
+            }
+            if (input.name.includes('titulo')) {
+                formData.topicos[topicIndex].titulo = input.value;
+            } else if (input.name.includes('conteudo')) {
+                formData.topicos[topicIndex].conteudo = input.value;
+            }
+        } else if (input.name.startsWith('links')) {
+            const linkIndex = parseInt(input.name.match(/\[(\d+)\]/)[1]);
+            if (!formData.links[linkIndex]) {
+                formData.links[linkIndex] = {};
+            }
+            if (input.name.includes('nome')) {
+                formData.links[linkIndex].nome = input.value;
+            } else if (input.name.includes('url')) {
+                formData.links[linkIndex].url = input.value;
+            }
+        }
+    });
+
+    return formData; // Retorna os dados do formulário
+}
+
 function preview() {
+    const formData = getForm(); // Obtém os dados do formulário
+    console.log(formData);
     
+    // Atualiza o HTML
+    createSPAN('nameEvent', formData.nameEvent);
+    createSPAN('organizer', formData.organizer);
+    createSPAN('difficult', formData.difficulty);
+    createSPAN('date', formData.date);
+    createSPAN('category', formData.category);
+    createSPAN('city', formData.city);
+    createSPAN('slots', `Vagas: ${formData.slots}`);
+    createSPAN('address', formData.address);
+    createSPAN('km', `${formData.km} Km`);
+}
+
+function createSPAN(elementId, content) {
+    const element = document.getElementById(elementId);
+    element.innerHTML = ''; // Limpa o conteúdo anterior, mas mantém o ícone
+    element.innerText = content;
 }
 
 
@@ -145,7 +201,6 @@ function initializePage() {
     btnAddTopic.addEventListener('click', createTopic);
     btnRemoveLink.addEventListener('click', removeLink);
     btnRemoveTopic.addEventListener('click', removeTopic);
-
     
 }
 
