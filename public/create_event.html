@@ -21,7 +21,7 @@
     <header class="relative">
         <div class="fixed top-0 left-0">
             <nav id="side-menu" class="h-screen w-16 bgGradienteVertical py-4 close ">
-                <ul id class="h-full flex flex-col  text-white ">''
+                <ul id class="h-full flex flex-col  text-white ">
                     <div id="arrow-container" class="flex flex-col items-center  w-full px-4">
                         <div class="flex justify-end">
                             <li class="group group-duration-200 relative">
@@ -170,7 +170,7 @@
                                                 <!-- input 4 -->
                                                 <div class="flex flex-col">
                                                     <label class="font-roboto font-medium text-lg mb-2"
-                                                        for="address">Endereço:</label>
+                                                        for="address">ponto de encontro:</label>
                                                     <input required type="text" name="address"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
                                                 </div>
@@ -186,9 +186,9 @@
                                                         for="difficulty">Dificuldade:</label>
                                                     <select name="difficulty"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.33rem]">
-                                                        <option value="easy">Fácil</option>
-                                                        <option value="intermediary">Intermediário</option>
-                                                        <option value="difficult">Difícil</option>
+                                                        <option value="Fácil">Fácil</option>
+                                                        <option value="Intermediário">Intermediário</option>
+                                                        <option value="Difícil">Difícil</option>
                                                     </select>
                                                 </div>
                                                 <!-- input 6 -->
@@ -277,16 +277,10 @@
                             </div>
                             <!-- links box -->
                             <div class="w-[30%] bg-slate-0 border-l-2 p-4">
-                                <div>
-                                    <p>Inscrições abertas!</p>
-                                    <p
-                                        class="text-center w-full p-2 bg-[#AAAAAA] text-lg my-4 cursor-pointer shadow-xl text-gray-300">
-                                        Inscreva-se</p>
-                                    <p class="border-b-2 py-4">Evento ficará aberto até 28/12/2024 ou até o limite de
-                                        vagas for atingido!</p>
-                                </div>
+
                                 <!-- links box -->
                                 <div>
+                                    <h2 class="text-xl font-roboto font-medium mt-8">Links importantes:</h2>
                                     <ul id="links">
                                         <li>
                                             <div class="flex flex-col space-y-2 my-4 relative">
@@ -318,7 +312,7 @@
             </div>
 
             <!-- preview -->
-            <div class="">
+            <div id="box-preview" class="hidden">
                 <!-- global container -->
                 <div class="flex items-center justify-center my-10 w-full ">
                     <!-- form start -->
@@ -326,7 +320,7 @@
                         <!-- father box -->
                         <div class="w-[100%] md:w-[70%] flex flex-col items-center justify-center">
                             <!-- banner box -->
-                            <div style="background-image: url(./assets/img/event-img3.png);" id="imgPreviewElement"
+                            <div id="imgPreviewElement"
                                 class="w-full bg-gray-600 h-[500px] rounded-t-xl relative bg-cover bg-center">
                             </div>
                             <!-- father boxs (form and links) -->
@@ -394,14 +388,8 @@
 
                                         <!-- topics - father box -->
                                         <div class="mt-10">
-                                            <ul>
-                                                <li>
-                                                    <div class="flex flex-col mb-10">
-                                                        <h2 class="text-xl underline mb-6 font-medium ">
-                                                        </h2>
-                                                        <p class="font-roboto text-1xl  leading-7"></p>
-                                                    </div>
-                                                </li>
+                                            <ul id="preview-topics">
+
                                             </ul>
 
                                         </div>
@@ -416,18 +404,15 @@
                                         <p
                                             class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
                                             Inscreva-se</p>
-                                        <p class="border-b-2 py-4">Evento ficará aberto até placeholder ou até o limite
+                                        <p id="desc" class="border-b-2 py-4">Evento ficará aberto até ou até o limite
                                             de
                                             vagas for atingido!</p>
                                     </div>
                                     <!-- links box -->
                                     <div>
-                                        <ul class="flex flex-col gap-4 text-1xl mt-8">
-                                            <h2 class="text-xl font-roboto font-medium">Links importantes:</h2>
-                                            <li>
-                                                <a href="" target="_blank"><i
-                                                        class="fa-solid fa-up-right-from-square mr-2"></i></a>
-                                            </li>
+                                        <h2 class="text-xl font-roboto font-medium mt-8">Links importantes:</h2>
+                                        <ul id="preview-links" class="flex flex-col gap-4 text-1xl mt-8">
+
                                         </ul>
                                     </div>
                                 </div>

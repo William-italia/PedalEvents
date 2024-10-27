@@ -3,19 +3,22 @@ const btnRemoveLink = document.getElementById('delete-link');
 const btnRemoveTopic = document.getElementById('delete-topic');
 const btnAddTopic = document.getElementById('create-topic');
 const btnPreview = document.getElementById('btnPreview');
+const previewLinks = document.getElementById('preview-links');
+const previewTopics = document.getElementById('preview-topics');
+
 
 // banner function
 function previewImage() {
-
     const inputImg = document.getElementById('inputImg');
     const file = inputImg.files[0];
-    const imgPreviewElement = document.getElementById('imgPreviewElement'); 
+    const imgPreviewElements = document.querySelectorAll('#imgPreviewElement'); // plural para indicar uma lista
 
-    if(file) {
-
+    if (file) {
         const imgUrl = URL.createObjectURL(file);
-        imgPreviewElement.style.backgroundImage = `url(${imgUrl})`;
-        imgPreviewElement.classList.add('');
+        
+        imgPreviewElements.forEach(imgPreviewElement => {
+            imgPreviewElement.style.backgroundImage = `url(${imgUrl})`;
+        });
     }
 }
 
@@ -167,30 +170,100 @@ function getForm() {
         }
     });
 
-    return formData; // Retorna os dados do formulário
+    return formData; 
 }
 
 function preview() {
-    const formData = getForm(); // Obtém os dados do formulário
+    const formData = getForm();
     console.log(formData);
     
     // Atualiza o HTML
-    createSPAN('nameEvent', formData.nameEvent);
-    createSPAN('organizer', formData.organizer);
-    createSPAN('difficult', formData.difficulty);
-    createSPAN('date', formData.date);
-    createSPAN('category', formData.category);
-    createSPAN('city', formData.city);
-    createSPAN('slots', `Vagas: ${formData.slots}`);
-    createSPAN('address', formData.address);
-    createSPAN('km', `${formData.km} Km`);
+    selectSPAN('nameEvent', formData.nameEvent);
+    selectSPAN('organizer', formData.organizer);
+    selectSPAN('difficult', formData.difficulty);
+    selectSPAN('date', formataData(formData.date));
+    selectSPAN('category', formData.category);
+    selectSPAN('city', formData.city);
+    selectSPAN('slots', `Vagas: ${formData.slots}`);
+    selectSPAN('address', formData.address);
+    selectSPAN('km', `${formData.km} Km`);
+
+    const desc = document.getElementById('desc');
+    desc.innerText = `Evento ficará aberto até ${formData.date} ou até o limite de vagas for atingido!`;
+
+    previewLinks.innerHTML = ''; 
+    previewTopics.innerHTML = ''; 
+
+    formData.links.forEach(link => {
+        if (link.nome !== '') {
+            const li = document.createElement('li');
+            const a = createA(link.nome, link.url);
+            li.appendChild(a);
+            previewLinks.appendChild(li);
+        } 
+    });
+
+    formData.topicos.forEach(topic => {
+        if(topic.titulo != '' && topic.conteudo != '' ) {
+            const li = document.createElement('li');
+            const div = document.createElement('div');
+
+            div.innerHTML = `
+            <div class="flex flex-col mb-10">
+                <h2 class="text-xl underline mb-6 font-medium ">
+                    ${topic.titulo}
+                </h2>
+                <p class="font-roboto text-1xl  leading-7">${topic.conteudo}</p>
+            </div>
+
+            `;
+
+            li.appendChild(div);
+
+            previewTopics.appendChild(li);
+        }
+    });
+
+    const boxPreview = document.getElementById('box-preview').classList.remove('hidden');
 }
 
-function createSPAN(elementId, content) {
+function formataData(data) {
+    // Converte para Date caso ainda seja uma string ou outro formato
+    data = new Date(data);
+
+    // Verifica se a conversão foi bem-sucedida
+    if (isNaN(data.getTime())) {
+        console.error("Data inválida:", data);
+        return "Data inválida";
+    }
+
+    const dia = zeroEsquerda(data.getDate());
+    const mes = zeroEsquerda(data.getMonth() + 1);
+    const ano = data.getFullYear();
+    const hora = zeroEsquerda(data.getHours());
+    const min = zeroEsquerda(data.getMinutes());
+
+    return `${dia}/${mes}/${ano} às ${hora}:${min}`;
+}
+
+function zeroEsquerda(num) {
+    return num >= 10 ? num : `0${num}`;
+}
+
+function createA(content, url) {
+    const a = document.createElement('a');
+    a.innerHTML = `<i class="fa-solid fa-up-right-from-square mr-2"></i> ${content}`;
+    a.href = url;
+    return a;
+}
+
+
+function selectSPAN(elementId, content) {
     const element = document.getElementById(elementId);
     element.innerHTML = ''; // Limpa o conteúdo anterior, mas mantém o ícone
     element.innerText = content;
 }
+
 
 
 function initializePage() {
