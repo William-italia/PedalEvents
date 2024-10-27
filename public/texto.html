@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pré-visualização</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .preview {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            background: #f9f9f9;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Formulário de Link</h1>
+
+    <div class="input-group">
+        <label for="inputName">Nome:</label>
+        <input type="text" id="inputName" placeholder="Digite seu nome">
+    </div>
+
+    <div class="input-group">
+        <label for="inputLink">Link:</label>
+        <input type="text" id="inputLink" placeholder="Digite um link">
+    </div>
+
+    <button id="create-link">Criar Link</button>
+
+    <div class="preview" id="previewContainer">
+        <h3>Pré-visualização:</h3>
+        <div id="previewContent"></div>
+    </div>
+
+    <script>
+        const btnAddLink = document.getElementById('create-link');
+        const previewContainer = document.getElementById('previewContent');
+
+        function updatePreview() {
+            const inputName = document.getElementById('inputName').value;
+            const inputLink = document.getElementById('inputLink').value;
+
+            // Atualiza o conteúdo da pré-visualização
+            previewContainer.innerHTML = `
+                <div>
+                    <strong>${inputName}</strong><br>
+                    <a href="${inputLink}" target="_blank">${inputLink}</a>
+                </div>
+            `;
+        }
+
+        function createLink() {
+            updatePreview(); // Atualiza a pré-visualização ao criar o link
+        }
+
+        // Adiciona o evento de clique ao botão
+        btnAddLink.addEventListener('click', createLink);
+
+        // Adiciona evento de input para atualização em tempo real
+        document.getElementById('inputName').addEventListener('input', updatePreview);
+        document.getElementById('inputLink').addEventListener('input', updatePreview);
+    </script>
+
+</body>
+
+</html>
