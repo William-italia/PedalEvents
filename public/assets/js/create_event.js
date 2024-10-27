@@ -183,13 +183,26 @@ function preview() {
     selectSPAN('difficult', formData.difficulty);
     selectSPAN('date', formataData(formData.date));
     selectSPAN('category', formData.category);
-    selectSPAN('city', formData.city);
+    if(formData.city != '') {
+        selectSPAN('city', `${formData.city.trim()}, ${formData.estado.toUpperCase()}`);
+    }
     selectSPAN('slots', `Vagas: ${formData.slots}`);
-    selectSPAN('address', formData.address);
+    if(formData.neighborhood != '') {
+        selectSPAN('address', `${formData.address} - ${formData.neighborhood}`);
+    } else {
+        selectSPAN('address', `${formData.address}`);
+    }
+
+    if(formData.neighborhoodEnd != '') {
+        selectSPAN('addressEnd', `${formData.addressEnd} - ${formData.neighborhoodEnd}`);
+    } else {
+        selectSPAN('addressEnd', `${formData.addressEnd}`);
+    }
+
     selectSPAN('km', `${formData.km} Km`);
 
     const desc = document.getElementById('desc');
-    desc.innerText = `Evento ficará aberto até ${formData.date} ou até o limite de vagas for atingido!`;
+    desc.innerText = `Evento ficará aberto até ${formataData(formData.dateLimit)} ou até o limite de vagas for atingido!`;
 
     previewLinks.innerHTML = ''; 
     previewTopics.innerHTML = ''; 
@@ -243,7 +256,12 @@ function formataData(data) {
     const hora = zeroEsquerda(data.getHours());
     const min = zeroEsquerda(data.getMinutes());
 
-    return `${dia}/${mes}/${ano} às ${hora}:${min}`;
+    if(hora) {
+        return `${dia}/${mes}/${ano} às ${hora}:${min}`;
+    } else {
+        return `${dia}/${mes}/${ano}`;
+    }
+
 }
 
 function zeroEsquerda(num) {
@@ -261,8 +279,9 @@ function createA(content, url) {
 function selectSPAN(elementId, content) {
     const element = document.getElementById(elementId);
     element.innerHTML = ''; // Limpa o conteúdo anterior, mas mantém o ícone
-    element.innerText = content;
+    element.innerHTML = content;
 }
+
 
 
 

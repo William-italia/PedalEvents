@@ -72,7 +72,7 @@
                         </li>
                         <li class="group relative cursor-pointer">
                             <a href="./perfil.html">
-                                <img id="perfilImg" class="w-[25px] h-[25px] md:w-[30px] md:h-[30px] inline"
+                                <img id="perfilImg" class="w-[40px] h-[40px] md:w-[30px] md:h-[30px] inline"
                                     src="./assets/img/person-img.png" alt="">
                                 <span id="liSpans" class="hidden">Perfil</span>
                             </a>
@@ -151,8 +151,9 @@
                                                 </div>
                                                 <!-- input 2 -->
                                                 <div class="flex flex-col">
-                                                    <label class="font-roboto font-medium text-lg mb-2"
-                                                        for="date">Data:</label>
+                                                    <label class="font-roboto font-medium text-lg mb-2" for="date">Data
+                                                        do Pedal
+                                                        :</label>
                                                     <input required type="datetime-local" name="date"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]"
                                                         min="">
@@ -162,22 +163,60 @@
                                             <div class="flex flex-col space-y-4">
                                                 <!-- input 3 -->
                                                 <div class="flex flex-col mt-[16px]">
-                                                    <label class="font-roboto font-medium text-lg mb-2"
-                                                        for="city">Cidade:</label>
-                                                    <input required type="text" name="city"
-                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                                    <div class="flex items-center  w-[100%]">
+                                                        <label class="font-roboto font-medium text-lg mb-2"
+                                                            for="city">Cidade:</label>
+                                                    </div>
+                                                    <div class="flex items-center  w-[100%]">
+                                                        <input required type="text" name="city"
+                                                            class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] w-full "
+                                                            placeholder="São Paulo">
+                                                        <input type="text" name="estado"
+                                                            class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] w-[16%] text-center"
+                                                            placeholder="SP">
+                                                    </div>
                                                 </div>
                                                 <!-- input 4 -->
                                                 <div class="flex flex-col">
+                                                    <div class="flex flex-col">
+
+                                                        <div class="flex flex-row items-center mt-2 w-full ">
+                                                            <div class="">
+                                                                <label class="font-roboto font-medium text-lg mb-2"
+                                                                    for="address-end">Ponto de Encontro:</label>
+                                                                <input required type="text" name="address"
+                                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] w-[100%]">
+                                                            </div>
+
+                                                            <div class="flex flex-col ">
+                                                                <label class="font-roboto font-medium text-lg "
+                                                                    for="">Bairro:</label>
+                                                                <input required type="text" name="neighborhood"
+                                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] w-[100%]">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <!-- input 5 -->
+                                                <div class="flex flex-col">
+                                                    <label class="font-roboto font-medium text-lg mb-2" for="age">Idade
+                                                        Minima:</label>
+                                                    <input required type="number" name="age"
+                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                                </div>
+                                                <!-- input 9 -->
+                                                <div class="flex flex-col">
                                                     <label class="font-roboto font-medium text-lg mb-2"
-                                                        for="address">ponto de encontro:</label>
-                                                    <input required type="text" name="address"
+                                                        for="km">Distância
+                                                        Estimada (km): </label>
+                                                    <input required type="number" name="km" min="4" max="100" value="30"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="w-[50%]">
+                                        <div class="flex flex-col w-[50%]">
                                             <!-- duo input 3-->
                                             <div class="flex flex-col space-y-4 ">
                                                 <!-- input 5 -->
@@ -194,47 +233,88 @@
                                                 <!-- input 6 -->
                                                 <div class="flex flex-col">
                                                     <label class="font-roboto font-medium text-lg mb-2"
+                                                        for="dateLimit">Fim
+                                                        das Inscrições
+                                                        :</label>
+                                                    <input required type="date" name="dateLimit"
+                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]"
+                                                        min="">
+                                                </div>
+                                                <div class="flex flex-col">
+                                                    <label class="font-roboto font-medium text-lg mb-2"
                                                         for="category">Categoria</label>
                                                     <select name="category"
-                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.40rem]">
+                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.33rem]">
                                                         <option value="passeio-recreativo">Passeio Recreativo</option>
+                                                        <option value="treino-livre">Treino Livre</option>
                                                         <option value="ciclismo-estrada">Ciclismo de Estrada</option>
-                                                        <option value="mountain-bike">Mountain Bike</option>
                                                         <option value="ciclismo-urbano">Ciclismo Urbano</option>
                                                         <option value="cicloturismo">Cicloturismo</option>
-                                                        <option value="bmx">BMX</option>
-                                                        <option value="gravel">Ciclismo Gravel</option>
+                                                        <option value="gravel">Gravel</option>
                                                         <option value="ciclismo-indoor">Ciclismo Indoor</option>
                                                         <option value="trekking-ciclismo">Ciclismo de Trekking</option>
-                                                        <option value="evento-competitivo">Evento Competitivo</option>
+                                                        <option value="evento-competitivo">Competição</option>
                                                         <option value="paraciclismo">Paraciclismo</option>
-                                                        <option value="ciclismo-aventura">Ciclismo de Aventura</option>
+                                                        <option value="ciclismo-aventura">Aventura</option>
+                                                        <option value="mountain-bike-cross-country">Mountain Bike -
+                                                            Cross Country</option>
+                                                        <option value="mountain-bike-marathon">Mountain Bike - Maratona
+                                                        </option>
                                                         <option value="downhill">Downhill</option>
-                                                        <option value="ciclismo-de-pista">Ciclismo de Pista</option>
+                                                        <option value="bmx-race">BMX - Race</option>
+                                                        <option value="bmx-freestyle">BMX - Freestyle</option>
                                                         <option value="gran-fondo">Gran Fondo</option>
+                                                        <option value="contra-relogio">Contra-Relógio</option>
+                                                        <option value="treino-de-subida">Treino de Subida</option>
+                                                        <option value="sprint">Sprint</option>
+                                                        <option value="ciclismo-de-pista">Ciclismo de Pista</option>
+                                                        <option value="gravel">Gravel</option>
+                                                        <option value="exploracao-de-trilha">Exploração de Trilha
+                                                        </option>
+                                                        <option value="bikepacking">Bikepacking</option>
+                                                        <option value="treinamento">Treinamento Geral</option>
+                                                        <option value="ciclismo-noturno">Ciclismo Noturno</option>
+
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <!-- duo input 4 -->
                                             <div class="flex flex-col space-y-4 mt-[16px]">
                                                 <!-- input 7 -->
-                                                <div class="flex flex-col">
-                                                    <label class="font-roboto font-medium text-lg mb-2"
-                                                        for="slots">Vagas:</label>
-                                                    <input required type="number" name="slots" min="5" max="100"
-                                                        value="6"
-                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
+                                                <div>
+                                                    <div class="flex flex-col">
+
+                                                        <div class="flex flex-row items-center mt-2 w-full">
+                                                            <div class="">
+                                                                <label class="font-roboto font-medium text-lg mb-2"
+                                                                    for="address-end">Ponto de Chegada:</label>
+                                                                <input required type="text" name="addressEnd"
+                                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] w-[100%]">
+                                                            </div>
+
+                                                            <div class="flex flex-col ">
+                                                                <label class="font-roboto font-medium text-lg "
+                                                                    for="neighborhoodEnd">Bairro:</label>
+                                                                <input required type="text" name="neighborhoodEnd"
+                                                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] w-[100%]">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
                                                 </div>
                                                 <!-- input 8 -->
                                                 <div class="flex flex-col">
                                                     <label class="font-roboto font-medium text-lg mb-2"
-                                                        for="km">Distância
-                                                        Percorrida (km): </label>
-                                                    <input required type="number" name="km" min="4" max="100" value="30"
+                                                        for="slots">Limite de Vagas:</label>
+                                                    <input required type="number" name="slots" min="5" max="100"
+                                                        value="6"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
                                                 </div>
                                             </div>
+
                                         </div>
+
                                     </div>
 
                                     <!-- topics - father box -->
@@ -257,6 +337,7 @@
                                                     </div>
                                                 </div>
                                             </li>
+
                                         </ul>
                                         <button id="create-topic"
                                             class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-[40%] mt-2"
@@ -339,48 +420,82 @@
 
                                         <div class="grid grid-cols-2 gap-6 mt-4 text-xl">
                                             <!-- organizador -->
-                                            <div><i class="mr-2 fa-solid fa-bookmark"></i>
+                                            <div class="flex flex-row items-center">
+                                                <!-- <i class="mr-2 fa-solid fa-bookmark"></i> -->
+                                                <img class="mr-2"
+                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Pilot.png"
+                                                    alt="Pilot" width="40" height="40" class="inline-block" />
                                                 <span id="organizer"></span>
                                             </div>
                                             <!-- Dificuldade -->
-                                            <div>
-                                                <i class="mr-2 fa-solid fa-trophy"></i>
+                                            <div class="flex flex-row items-center">
+                                                <!-- <i class="mr-2 fa-solid fa-trophy"></i> -->
+                                                <img class="mr-2"
+                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Man%20Climbing.png"
+                                                    alt="Man Climbing" width="40" height="40" class="inline-block" />
                                                 <span id="difficult"></span>
                                             </div>
 
                                             <!-- Data -->
-                                            <div>
-                                                <i class="mr-2 fa-solid fa-calendar-days"></i>
+                                            <div class="flex flex-row items-center">
+                                                <!-- <i class="mr-2 fa-solid fa-calendar-days"></i> -->
+                                                <img class="mr-2"
+                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Tear-Off%20Calendar.png"
+                                                    alt="Tear-Off Calendar" width="40" height="40"
+                                                    class="inline-block" />
                                                 <span id="date"></span>
                                             </div>
 
                                             <!-- Categoria -->
-                                            <div>
-                                                <i class="mr-2 fa-solid fa-layer-group"></i>
+                                            <div class="flex flex-row items-center">
+                                                <!-- <i class="mr-2 fa-solid fa-layer-group"></i> -->
+                                                <img class="mr-2"
+                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Joystick.png"
+                                                    alt="Joystick" width="40" height="40" class="inline-block" />
                                                 <span id="category"></span>
                                             </div>
 
                                             <!-- Cidade -->
-                                            <div>
-                                                <i class="mr-2 fa-solid fa-city"></i>
+                                            <div class="flex flex-row items-center">
+                                                <!-- <i class="mr-2 fa-solid fa-city"></i> -->
+                                                <img class="mr-2"
+                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/World%20Map.png"
+                                                    alt="World Map" width="40" height="40" class="inline-block" />
                                                 <span id="city"></span>
                                             </div>
 
                                             <!-- Vagas -->
-                                            <div>
-                                                <i class="mr-2 fa-solid fa-user"></i>
+                                            <div class="flex flex-row items-center">
+                                                <!-- <i class="mr-2 fa-solid fa-user"></i> -->
+                                                <img class="mr-2"
+                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png"
+                                                    alt="Bar Chart" width="40" height="40" class="inline-block" />
                                                 <span id="slots"></span>
                                             </div>
 
                                             <!-- Endereço -->
-                                            <div>
-                                                <i class="mr-2 fa-solid fa-map"></i>
+                                            <div class="flex flex-row items-center">
+                                                <!-- <i class="mr-2 fa-solid fa-location-dot"></i> -->
+                                                <img class="mr-2"
+                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Pushpin.png"
+                                                    alt="Pushpin" width="40" height="40" class="inline-block" />
                                                 <span id="address"></span>
                                             </div>
+                                            <div class="flex flex-row items-center">
+                                                <!-- <i class="mr-2 fa-solid fa-flag"></i> -->
+                                                <img class="mr-2"
+                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Chequered%20Flag.png"
+                                                    alt="Chequered Flag" width="40" height="40" class="inline-block" />
+                                                <span id="addressEnd"></span>
+                                            </div>
+
 
                                             <!-- Distância -->
-                                            <div>
-                                                <i class="mr-2 fa-solid fa-bicycle"></i>
+                                            <div class="flex flex-row items-center">
+                                                <!-- <i class="mr-2 fa-solid fa-bicycle"></i> -->
+                                                <img class="mr-2"
+                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Man%20Biking.png"
+                                                    alt="Man Biking" width="40" height="40" class="inline-block" />
                                                 <span id="km"></span>
                                             </div>
 
