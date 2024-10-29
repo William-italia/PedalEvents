@@ -297,5 +297,3 @@ function initializePage() {
 }
 
 initializePage();
-
-
