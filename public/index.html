@@ -7,113 +7,188 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="../input.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&display=swap"
         rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Protest+Revolution&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-
-    <header class="relative">
-        <div class="fixed top-0 left-0">
-            <nav id="side-menu" class="h-screen w-16 bgGradienteVertical py-4 close ">
-                <ul id class="h-full flex flex-col  text-white ">
-                    <div id="arrow-container" class="flex flex-col items-center  w-full px-4">
-                        <div class="flex justify-end">
-                            <li  class="group group-duration-200 relative">
-                                <i id="arrow" class="fa-solid fa-arrow-right cursor-pointer close"></i>
-                                <span id="tooltip" class="hidden arrow absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Abrir</span>
-                            </li>
-                        </div>
-                        <h1 id="logo" class="hidden text-3xl font-russo mt-[4rem]"><span class="text-colorLogo">Pedal</span> Events</h1>
-                    </div>
-
-                    <div id="container-items" class="flex flex-col items-center p-4 space-y-10 mt-[4rem]">
-                        <li class="group group-duration-200 relative cursor-pointer icon-faded ">
-                            <a href="./index.html">
-                                <i class="fa-solid fa-house"></i>
-                                <span id="liSpans" class="hidden">Home</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Home</span>
-                        </li> 
-                        <li class="group relative cursor-pointer">
-                            <a href="./eventos.html">
-                                <i class="fa-solid fa-flag"></i>
-                                <span id="liSpans" class="hidden">Eventos</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Eventos</span>
-                        </li> 
-
-                        <li id="liCriar" class="group relative cursor-pointer">
-                            <a href="#">
-                                <i class="fa-solid fa-circle-plus"></i>
-                                <span id="liSpans" class="hidden">Criar</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Criar</span>
-                            <!-- caixa do criar -->
-                            <div id="create" class="hidden absolute w-32 rounded-xl text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D]">
-                                <ul>
-                                    <div class="">
-                                        <li class="p-2 duration-200 hover:opacity-80"><a href="">Criar Pedal</a></li>
-                                    </div>
-                                    
-                                </ul>
-                            </div>
-                        </li> 
-                        <li class="group relative cursor-pointer">
-                            <a href="./perfil.html">
-                                <img id="perfilImg" class="w-[25px] h-[25px] md:w-[30px] md:h-[30px] inline" src="./assets/img/person-img.png" alt="">
-                                <span id="liSpans" class="hidden">Perfil</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Perfil</span>
-                        </li> 
-                    </div>    
-                    
-                    <div id="containerMais" class="flex flex-col p-6 items-center  absolute bottom-0">
-                        <li id="liMais" class="group relative cursor-pointer">
-                            <a href="#">
-                                <i class="fa-solid fa-bars"></i>
-                                <span id="liSpans" class="hidden">Mais</span>
-                            </a>
-                            <span id="Tooltip" class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Mais</span>
-                             <!-- caixa do criar -->
-                             <div id="mais" class="hidden absolute w-32 rounded-xl text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D]">
-                                <ul>
-                                    <div>
-                                        <li class="p-2 duration-200 hover:opacity-80"><a href="./login.html">Sair</a></li>
-                                    </div>
-                                </ul>
-                            </div>
-                        </li> 
-                    </div>     
-            </nav>
-        </div>
+    <header id="apresentation" class="relative">
+        <nav id="navbar" class="fixed w-full  h-16 flex flex-col justify-center z-50">
+            <!-- container -->
+            <div class="flex justify-between items-center mx-16">
+                <div><img src="./assets/img/Pedal Events.svg" alt="Pedal Events" class="w-[10rem]"></div>
+                <ul class="flex items-center space-x-8 font-normal text-white">
+                    <li><a href="#" class="font-black">Inicio</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Crie seu Evento</a></li>
+                    <li><a href="#">Fale conosco</a></li>
+                </ul>
+                <div class="w-[2.5rem] h-[2.5rem] rounded-[100%] bg-cover"
+                    style="background-image: url(./assets/img/perfil.png);"></div>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <section id="home-banner" class="h-screen w-full">
-            <div class="h-full flex items-center justify-center">
-                <div class="flex flex-col items-center p-20 text-black">
-                    <h1 class="text-4xl text-center font-bold md:text-4xl font-roboto">Encontre o pedal perfeito para você!</h1>
-                    <p class="text-2xl text-center md:text-xl mt-4">Faça parte da nossa comunidade!
-                    </p>
-                    <div class="mt-8 flex space-x-8">
-                        <a href="./eventos.html"
-                            class="bg-[#003B7A] mt-6 text-white py-2 px-4 md:py-4 md:px-[4rem] rounded-lg duration-200 hover:opacity-80">Buscar
-                            Eventos</a>
-                    </div>
-                </div>
+    <!-- Seção com imagem de fundo e sobreposição -->
+    <section id="section-one" class="relative bg-[#16161d] ">
+
+        <!-- Imagem de fundo -->
+        <div class="absolute top-0 left-0 w-full h-full bg-cover -z-10"
+            style="background-image: url(./assets/img/bg-index.png);">
+            <div class="absolute inset-0 bg-[#16161d] opacity-[92%]"></div>
+        </div>
+
+
+        <!-- Conteúdo da seção -->
+        <div class="relative z-10 flex justify-center items-center h-full text-white">
+            <div class="absolute right-[10%] top-[20%] flex flex-col items-center">
+                <h2 class="font-roboto text-[9rem] font-bold">+30</h2>
+                <p class="text-[3rem] font-medium">Eventos disponiveis</p>
             </div>
-        </section>
-    
-       
-    </main>
-    <script src="./assets/js/menu.js"></script>
+            <div class="relative w-full h-[100%] mt-[14rem]">
+                <div class="w-full flex items-center justify-center relative">
+                    <img src="./assets/img/bolona.png" alt="" class="absolute -z-10 top-4">
+                    <img src="./assets/img/ciclista-massa.svg" alt="" class="z-20">
+                </div>
+                <img src="./assets/img/blur.png" alt="" class="absolute bottom-0 w-[100000rem] z-50">
+                <img src="./assets/img/blur-grande.png" alt="" class="absolute bottom-0 w-[100000rem] z-50">
+                <img src="./assets/img/blur.png" alt="" class="absolute bottom-0 w-[100000rem] z-20 h-[50%]">
+                <img src="./assets/img/blur.png" alt="" class="absolute bottom-0 w-[100000rem] z-20 h-[50%]">
+                <img src="./assets/img/blur.png" alt="" class="absolute bottom-0 w-[100000rem] z-20 h-[50%]">
+                <img src="./assets/img/blur.png" alt="" class="absolute bottom-0 w-[100000rem] z-20 h-[50%]">
+                <img src="./assets/img/blur.png" alt="" class="absolute bottom-0 w-[100000rem] z-20 h-[50%]">
+                <img src="./assets/img/blur.png" alt="" class="absolute bottom-0 w-[100000rem] z-20 h-[50%]">
+                <img src="./assets/img/blur.png" alt="" class="absolute bottom-0 w-[100000rem] z-20 h-[50%]">
+                <img src="./assets/img/blur.png" alt="" class="absolute bottom-0 w-[100000rem] z-20 h-[50%]">
+                <img src="./assets/img/blur.png" alt="" class="absolute bottom-0 w-[100000rem] z-20 h-[50%]">
+            </div>
+            <div class="absolute left-[14.5%] top-[21%]">
+                <div class="relative h-full">
+                    <h2 class="text-[4.2rem] w-[38%]  font-oswald">Descubra eventos <span
+                            class="font-protest text-[#00E0FF] text-[4.4rem]">Emocionantes</span> de ciclismo na
+                        sua
+                        <br>
+                        região!
+                    </h2>
+                    <p class="w-[40%] absolute mt-8 z-50 text-lg">Explorar novas trilhas e se aventurar em novos
+                        caminhos
+                        faz
+                        parte da
+                        experiência.
+                        Vamos juntos
+                        descobrir a beleza do ciclismo!</p>
+                    <button
+                        class="absolute bottom-[-11rem] z-50 px-4 py-2 bg-[#00E0FF] w-[15%] text-black font-medium cursor-pointer hover:bg-[#006371] duration-200">Vamos
+                        Explorar</button>
+
+                </div>
+
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <section class="100v">
+        <div class="">
+            <div class="">
+                <div
+                    class="animate-fade-in-bottom bg-transparent border-2 border-[#c5c5c5] p-6 rounded-lg shadow-md w-[400px] h-[600px] flex flex-col">
+                    <h2 class="text-[2rem] font-medium text-center">Plano Gratuito</h2>
+                    <p class="text-center my-2">Ideal para usuários que estão começando</p>
+                    <p class="text-[2.4rem] text-center mb-6 font-bold">0R$<span
+                            class="text-[#C5C5C5] text-xl">/mês</span>
+                    </p>
+                    <a href="#"
+                        class="self-center py-2 px-4 bg-[#676767] block w-[80%] rounded-3xl text-center">Assinar</a>
+                    <ul class="flex flex-col text-left mt-14 space-y-4">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>Participar de
+                            Eventos</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>Acesso
+                            limitado ao site</li>
+                    </ul>
+                </div>
+
+                <div
+                    class="animate-fade-in-bottom bg-transparent border-2 border-[#00E0FF] p-6 rounded-lg shadow-md w-[400px] h-[600px] flex flex-col">
+                    <h2 class="text-[2rem] font-medium text-center">Plano Premium</h2>
+                    <p class="text-center my-2">Perfeito para quem quer mais controle</p>
+                    <p class="text-[2.4rem] text-center mb-6 font-bold">10R$<span
+                            class="text-[#C5C5C5] text-xl">/mês</span>
+                    </p>
+                    <a href="#"
+                        class="self-center py-2 px-4 bg-[#00E0FF] block w-[80%] rounded-3xl text-center">Assinar</a>
+                    <ul class="flex flex-col text-left mt-14 space-y-4">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>Participar de
+                            Eventos
+                        </li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>Criar até
+                            5 eventos por mês
+                        </li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>Suporte
+                            Prioritário
+                        </li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>acesso a
+                            recursos exclusivos
+                        </li>
+                    </ul>
+                </div>
+
+                <div
+                    class="animate-fade-in-bottom bg-transparent border-2 border-[#9000FF] p-6 rounded-lg shadow-md w-[400px] h-[600px] flex flex-col">
+                    <h2 class="text-[2rem] font-medium text-center">Plano Pro</h2>
+                    <p class="text-center my-2">Para empresas e organizadores experientes</p>
+                    <p class="text-[2.4rem] text-center mb-6 font-bold">30R$<span
+                            class="text-[#C5C5C5] text-xl">/mês</span>
+                    </p>
+                    <a href="#"
+                        class="self-center py-2 px-4 bg-[#9000FF] block w-[80%] rounded-3xl text-center">Assinar</a>
+                    <ul class="flex flex-col text-left mt-14 space-y-4">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>Participar de
+                            Eventos
+                        </li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>Criar
+                            Eventos Ilimitados
+
+                        </li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>Suporte
+                            24/7
+                        </li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>acesso a
+                            recursos exclusivos
+                        </li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>Eventos
+                            com coorganizadores
+                        </li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>Análises
+                            e relatórios</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2"></i>Promoção
+                            e destaque na
+                            plataforma</li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+    </section>
+
+    <section>
+        <h1>testooooooooo</h1>
+    </section>
+
+
 </body>
 
 </html>

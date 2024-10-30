@@ -19,14 +19,23 @@ module.exports = {
       },
       backgroundImage: {
         'bgGradient': 'linear-gradient(45deg, #003B7A, #006CE0)',
+        'bgGradiente': "url('/assets/img/bg-header-desktop.png')",
       },
       fontFamily: {
         russo: ['Russo One', 'sans-serif'],
+        oswald: ['Oswald', 'sans-serif'],
+        protest: ['Protest Revolution', 'sans-serif'],
         roboto: ['Roboto', 'sans'],
       },
-      backgroundImage: {
-        'bgGradiente': "url('/assets/img/bg-header-desktop.png')",
-      }
+      animation: {
+        'fade-in-bottom': 'fadeInBottom .9s ease-in-out',
+      },
+      keyframes: {
+        fadeInBottom: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
     },
   },
   plugins: [],
