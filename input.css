@@ -108,3 +108,10 @@ body {
   background: #555;
 }
 
+.no-select {
+  user-select: none; 
+}
+
+#carousel-inner {
+  transition: transform 0.3s ease;
+}
