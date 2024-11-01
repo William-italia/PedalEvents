@@ -16,7 +16,8 @@ module.exports = {
         grayishBlue: 'hsl(201, 11%, 66%)',
         'dark-blue': '#003B7A',
         'light-blue': '#006CE0',
-        'color-primary': '#26DD9A',
+        'color-primary': '#1c98ff',
+        // 'color-primary': '#26DD9A',
           },
       backgroundImage: {
         'bgGradient': 'linear-gradient(45deg, #003B7A, #006CE0)',
