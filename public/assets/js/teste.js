@@ -4,10 +4,15 @@ const navbar = document.getElementById("navbar");
 // Adiciona um ouvinte de evento para detectar o scroll
 window.addEventListener("scroll", () => {
     if (window.scrollY > 50) { 
-        navbar.classList.add("bg-black");
+        navbar.classList.remove("bg-transparent");
+        navbar.classList.add("bg-white");
+        navbar.classList.remove("text-white");
+        navbar.classList.add("text-black");
     } else {
-        navbar.classList.remove("bg-black");
+        navbar.classList.remove("bg-white");
         navbar.classList.add("bg-transparent");
+        navbar.classList.remove("text-black");
+        navbar.classList.add("text-white");
     }
 });
 

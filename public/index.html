@@ -25,24 +25,25 @@
 
 <body class="">
     <header id="apresentation">
-        <nav id="navbar" class="fixed w-full bg-transparent h-16 flex flex-col justify-center px-[210px] z-50">
+        <nav id="navbar"
+            class="bg-transparent fixed w-full  h-16 flex flex-col justify-center px-[210px] z-50 text-white">
             <!-- container -->
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center ">
                 <div>
-                    <h2 class="font-russo text-2xl text-white"><span class="text-color-primary">Pedal</span> Events</h2>
+                    <h2 class="font-russo text-2xl "><span class="text-color-primary">Pedal</span> Events</h2>
                 </div>
-                <ul class="flex items-center space-x-8 font-normal text-white">
+                <ul class="flex items-center space-x-8 font-normal ">
                     <li><a href="#" class="hover:text-color-primary duration-200 font-black">Inicio</a></li>
                     <li><a href="./eventos.html" class="hover:text-color-primary duration-200">Eventos</a></li>
                     <li><a href="./create_event.html" class="hover:text-color-primary duration-200">Crie seu Evento</a>
                     </li>
                     <li><a href="#" class="hover:text-color-primary duration-200">Fale conosco</a></li>
                 </ul>
-                <ul class="flex items-center space-x-8 font-normal text-white">
-                    <li><a href="./login.html" class="hover:text-[#26DD9A] duration-200">Entrar</a></li>
+                <ul class="flex items-center space-x-8 font-normal">
+                    <li><a href="./login.html" class="hover:text-color-primary duration-200">Entrar</a></li>
                     <li>
                         <a href="./criando.html"
-                            class="bg-color-primary text-white font-medium px-4 py-2 block rounded-[4px] hover:bg-[#26dd9ada]">
+                            class="bg-color-primary  font-medium px-4 py-2 block rounded-[4px] hover:opacity-80 duration-200 text-white">
                             Explorar
                         </a>
                     </li>
@@ -61,7 +62,7 @@
                 style="background-image: url(./assets/img/blur.png);"></div>
 
             <!-- container principal -->
-            <div class="relative h-full px-[210px] pt-16 text-white flex justify-center z-40">
+            <div class="relative h-full px-[210px] pt-16 text-white flex  z-40">
                 <div class="flex flex-col items-start justify-center space-y-12">
                     <h2 class="text-[50px] font-roboto font-black w-[40%]">Descubra eventos <span
                             class="font-protest text-color-primary">Emocionantes</span> de ciclismo na
@@ -76,8 +77,8 @@
                         conta!</a>
                 </div>
             </div>
-            <img class="absolute top-[7.9rem] left-[46rem] z-10" src="./assets/img/bolona.png" alt="">
-            <img class="absolute bottom-0 left-[42rem] z-10" src="./assets/img/ciclista-massa.svg" alt="">
+            <img class="absolute top-[7.9rem] left-[50rem] z-10" src="./assets/img/bolona.png" alt="">
+            <img class="absolute bottom-0 left-[46rem] z-10" src="./assets/img/ciclista-massa.svg" alt="">
             <div class="absolute top-[12rem] right-[25rem] text-white z-40">
                 <div class="text-center font-roboto">
                     <p class="text-[70px] font-black text-color-primary">+30</p>
@@ -256,10 +257,10 @@
             </div>
         </div>
     </section>
-    <section class="relative mt-[90px] ">
+    <section class="relative mt-[90px]  ">
         <img src="./assets/img/divider.svg" alt="" class="absolute top-[-3rem] rotate-180 mt-[40px] text-red-500">
         <!-- global container -->
-        <div class="relative bg-[#16161d]">
+        <div class="relative bg-[#16161d] pb-[90px]">
             <div class="flex items-center justify-center w-full px-[210px] py-[80px]">
                 <h2 class="w-full text-center text-[40px] text-white font-medium">
                     Depoimentos de nossos clientes
@@ -379,14 +380,54 @@
             </div>
 
     </section>
+    <section class="relative bg-cover bg-center" style="background-image: url(./assets/img/bannerfundociclista.avif);">
+        <div class="w-full h-full">
+            <div class=" absolute flex flex-row items-center justify-center space-x-[6rem] whitespace-nowrap w-full
+            h-full z-20 left-1/2 top-[-20%] -translate-x-1/2">
+                <h2 class="inline-block text-[10rem] font-bold text-white">PEDAL <span
+                        class="text-[#2a38e1]">EVENTS</span></h2>
+                <h2 class="inline-block text-[10rem] font-bold text-white">PEDAL <span
+                        class="text-[#2a38e1]">EVENTS</span></h2>
+                <h2 class="inline-block text-[10rem] font-bold text-white">PEDAL <span
+                        class="text-[#2a38e1]">EVENTS</span></h2>
+            </div>
+
+
+            <div class="absolute z-20 left-1/2 -translate-x-1/2"><img src="./assets/img/bannerpedalciclista.png" alt="">
+            </div>
+
+            <div class="absolute w-full h-[40%] top-[18rem] z-20 bg-cover bg-center -z-10"
+                style="background-image: url(./assets/img/parede.svg);"></div>
+
+            <div class="absolute inset-0 bg-[#757575] opacity-[79%] z-40"></div>
+        </div>
+
+
+        <div class="relative w-full h-full flex items-center justify-center px-[210px] z-50">
+            <div class="w-full flex flex-col text-center items-center justify-center p-20">
+                <p class="text-3xl leading-[3rem] font-bold text-white">
+                    Comece a organizar seus eventos de ciclismo hoje mesmo.<br> Com nossa plataforma,<br>
+                    conectar-se com outros ciclistas e criar experiências únicas<br> é mais fácil do que você imagina!
+                </p>
+                <a href=""
+                    class="bg-[#2770DF] text-black font-medium text-[20px] py-[1rem] px-8 block rounded-[4px] hover:opacity-80 duration-200 mt-10">
+                    Comece Agora!!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class=" relative flex flex-col items-center justify-center p-4 bg-[#16161D] text-white z-20">
+        <p class="text-center text-xl">©2024 Feito Com ❤️Carinho Por William Itália Nogueira. </p>
+        <p class="text-center text-xl mt-[.8rem]">Todos os direitos reservados</p>
+    </footer>
 
 
 
 
 
 
-
-    <script src="./teste.js"></script>
+    <script src="./assets/js/teste.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&display=swap"
+            rel="stylesheet">
+    </head>
+</head>
+
+<body onload="initMap()">
+    <div class="w-full h-[100vh] flex flex-col items-center justify-center bg-red-400">
+        <input id="origin" type="text" placeholder="Origem">
+        <input id="destination" type="text" placeholder="Destino">
+        <button onclick="calculateRoute()">Calcular Rota</button>
+        <div id="map" class="h-[500px] w-[500px]"></div>
+    </div>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi__Vd_gH1ys5-y0YDvmwrAMXxX61FCGI&callback=initMap"></script>
+    <script>
+        let map;
+        let directionsService;
+        let directionsRenderer;
+        let waypoints = [];
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -23.5505, lng: -46.6333 },
+                zoom: 12
+            });
+
+            directionsService = new google.maps.DirectionsService();
+            directionsRenderer = new google.maps.DirectionsRenderer({
+                draggable: true
+            });
+            directionsRenderer.setMap(map);
+
+            google.maps.event.addListener(map, 'click', function (event) {
+                addWaypoint(event.latLng);
+            });
+        }
+
+        function addWaypoint(location) {
+            waypoints.push({
+                location: location,
+                stopover: true
+            });
+
+            // Cria um marcador avançado
+            const marker = new google.maps.marker.AdvancedMarkerElement({
+                position: location,
+                map: map,
+                title: 'Waypoint'
+            });
+
+            // Adiciona um listener de clique para remover o waypoint
+            marker.addListener('click', () => {
+                removeWaypoint(location);
+                marker.setMap(null); // Remove o marcador do mapa
+            });
+        }
+
+        function removeWaypoint(location) {
+            // Filtra os waypoints para remover o selecionado
+            waypoints = waypoints.filter(waypoint => waypoint.location !== location);
+            console.log("Waypoints atualizados:", waypoints);
+        }
+
+        function calculateRoute() {
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+
+            directionsService.route({
+                origin: origin,
+                destination: destination,
+                waypoints: waypoints,
+                travelMode: google.maps.TravelMode.BICYCLING
+            }, (response, status) => {
+                if (status === 'OK') {
+                    console.log(response);
+                    directionsRenderer.setDirections(response);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+        }
+    </script>
+
+    <div class="product-grid">
+        <div class="product">Produto 1</div>
+        <div class="product">Produto 2</div>
+        <div class="product">Produto 3</div>
+        <div class="product">Produto 4</div>
+        <div class="product">Produto 5</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <div class="product">Produto 6</div>
+        <!-- Adicione mais produtos conforme necessário -->
+    </div>
+    <button id="load-more">Carregar Mais</button>
+
+
+    <style>
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* Duas colunas */
+            gap: 20px;
+            /* Espaçamento entre os produtos */
+            overflow: hidden;
+            max-height: 500px;
+            /* Limite de altura se necessário */
+        }
+
+        .product {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const products = document.querySelectorAll(".product");
+            const loadMoreButton = document.getElementById("load-more");
+            let productsPerPage = 4; // Quantidade inicial de produtos visíveis
+
+            // Mostrar apenas os primeiros produtos
+            products.forEach((product, index) => {
+                if (index >= productsPerPage) {
+                    product.classList.add("hidden");
+                }
+            });
+
+            // Função para carregar mais produtos
+            loadMoreButton.addEventListener("click", function () {
+                productsPerPage += 2; // Carregar mais duas colunas
+
+                products.forEach((product, index) => {
+                    if (index < productsPerPage) {
+                        product.classList.remove("hidden");
+                    }
+                });
+
+                // Se todos os produtos estiverem visíveis, esconder o botão
+                if (productsPerPage >= products.length) {
+                    loadMoreButton.style.display = "none";
+                }
+            });
+        });
+
+    </script>
+    <div class="absolute w-full h-full z-20 bg-cover bg-center" style="background-image: url(./assets/img/parede.svg);">
+    </div>
+</body>
+
+</html>
