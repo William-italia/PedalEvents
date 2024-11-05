@@ -17,9 +17,8 @@ module.exports = {
         'dark-blue': '#003B7A',
         'light-blue': '#006CE0',
         'color-primary': '#2770DF',
-        // 'color-primary': '#26DD9A',
         'color-primary-black': '',
-          },
+      },
       backgroundImage: {
         'bgGradient': 'linear-gradient(45deg, #003B7A, #006CE0)',
         'bgGradiente': "url('/assets/img/bg-header-desktop.png')",
@@ -32,11 +31,16 @@ module.exports = {
       },
       animation: {
         'fade-in-bottom': 'fadeInBottom .9s ease-in-out',
+        'scroll-text': 'scrollText 10s linear infinite',
       },
       keyframes: {
         fadeInBottom: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scrollText: {
+          '100%': { transform: 'translateX(-100%)' },
+          '0%': { transform: 'translateX(0)' },
         },
       },
     },
