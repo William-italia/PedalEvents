@@ -1,18 +1,19 @@
 // Seleciona a navbar
 const navbar = document.getElementById("navbar");
 
+
 // Adiciona um ouvinte de evento para detectar o scroll
 window.addEventListener("scroll", () => {
     if (window.scrollY > 50) { 
         navbar.classList.remove("bg-transparent");
-        navbar.classList.add("bg-white");
+        navbar.classList.add("bg-white"); // Altera para fundo branco
         navbar.classList.remove("text-white");
-        navbar.classList.add("text-black");
+        navbar.classList.add("text-black"); // Altera texto para preto
     } else {
-        navbar.classList.remove("bg-white");
-        navbar.classList.add("bg-transparent");
+        navbar.classList.remove("bg-white"); // Remove o fundo branco
+        navbar.classList.add("bg-transparent"); // Mantém fundo transparente
         navbar.classList.remove("text-black");
-        navbar.classList.add("text-white");
+        navbar.classList.add("text-white"); // Mantém texto branco
     }
 });
 

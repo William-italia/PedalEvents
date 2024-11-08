@@ -1,0 +1,86 @@
+<header class="relative">
+        <div class="fixed top-0 left-0">
+            <nav id="side-menu" class="h-screen w-16 bgGradienteVertical py-4 close ">
+                <ul id class="h-full flex flex-col  text-white ">
+                    <div id="arrow-container" class="flex flex-col items-center  w-full px-4">
+                        <div class="flex justify-end">
+                            <li class="group group-duration-200 relative">
+                                <i id="arrow" class="fa-solid fa-arrow-right cursor-pointer close"></i>
+                                <span id="tooltip"
+                                    class="hidden arrow absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Abrir</span>
+                            </li>
+                        </div>
+                        <h1 id="logo" class="hidden text-3xl font-russo mt-[4rem]"><span
+                                class="text-colorLogo">Pedal</span> Events</h1>
+                    </div>
+
+                    <div id="container-items" class="flex flex-col items-center p-4 space-y-10 mt-[4rem]">
+                        <li class="group group-duration-200 relative cursor-pointer  ">
+                            <a href="./index.html">
+                                <i class="fa-solid fa-house"></i>
+                                <span id="liSpans" class="hidden">Home</span>
+                            </a>
+                            <span id="Tooltip"
+                                class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Home</span>
+                        </li>
+                        <li class="group relative cursor-pointer icon-faded">
+                            <a href="./eventos.html">
+                                <i class="fa-solid fa-flag"></i>
+                                <span id="liSpans" class="hidden">Eventos</span>
+                            </a>
+                            <span id="Tooltip"
+                                class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Eventos</span>
+                        </li>
+
+                        <li id="liCriar" class="group relative cursor-pointer">
+                            <a href="#">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                <span id="liSpans" class="hidden">Criar</span>
+                            </a>
+                            <span id="Tooltip"
+                                class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Criar</span>
+                            <!-- caixa do criar -->
+                            <div id="create"
+                                class="hidden absolute w-32 rounded-xl text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D]">
+                                <ul>
+                                    <div class="">
+                                        <li class="p-2 duration-200 hover:opacity-80"><a
+                                                href="./create_event.html">Criar Pedal</a></li>
+                                    </div>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="group relative cursor-pointer">
+                            <a href="./perfil.html">
+                                <img id="perfilImg" class="w-[25px] h-[25px] md:w-[30px] md:h-[30px] inline"
+                                    src="./assets/img/person-img.png" alt="">
+                                <span id="liSpans" class="hidden">Perfil</span>
+                            </a>
+                            <span id="Tooltip"
+                                class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Perfil</span>
+                        </li>
+                    </div>
+
+                    <div id="containerMais" class="flex flex-col p-6 items-center  absolute bottom-0">
+                        <li id="liMais" class="group relative cursor-pointer">
+                            <a href="#">
+                                <i class="fa-solid fa-bars"></i>
+                                <span id="liSpans" class="hidden">Mais</span>
+                            </a>
+                            <span id="Tooltip"
+                                class="hidden absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D] text-white text-sm rounded-lg p-2 opacity-0 transition-opacity duration-200 ">Mais</span>
+                            <!-- caixa do criar -->
+                            <div id="mais"
+                                class="hidden absolute w-32 rounded-xl text-center left-8 top-1/2 transform -translate-y-1/2 bg-[#16161D]">
+                                <ul>
+                                    <div>
+                                        <li class="p-2 duration-200 hover:opacity-80"><a href="./login.html">Sair</a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </div>
+                        </li>
+                    </div>
+            </nav>
+        </div>
+    </header>
