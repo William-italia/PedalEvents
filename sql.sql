@@ -1,10 +1,6 @@
-
 CREATE DATABASE pedalEvents1;
-drop database pedalevents1;
-use pedalevents1;
-
-
-
+DROP DATABASE IF EXISTS pedalEvents1;
+USE pedalEvents1;
 
 -- Tabela de Usuários
 CREATE TABLE usuarios (
@@ -14,20 +10,23 @@ CREATE TABLE usuarios (
     email VARCHAR(255) NOT NULL UNIQUE,
     cpf VARCHAR(14) NOT NULL UNIQUE,
     cidade VARCHAR(100),
+    estado VARCHAR(50),
     data_nascimento DATE NOT NULL,
     senha VARCHAR(255) NOT NULL,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabela de Endereços
+-- Tabela de Endereços (Somente para usuários)
 CREATE TABLE enderecos (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
     cidade VARCHAR(100) NOT NULL,
     estado VARCHAR(50) NOT NULL,
-    ponto_encontro VARCHAR(255) NOT NULL,
-    bairro_encontro VARCHAR(100),
-    ponto_chegada VARCHAR(255) NOT NULL,
-    bairro_chegada VARCHAR(100)
+    bairro VARCHAR(100),
+    rua VARCHAR(255),
+    numero VARCHAR(10),
+    complemento VARCHAR(255),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
 -- Tabela de Categorias
@@ -36,7 +35,7 @@ CREATE TABLE categorias (
     nome_categoria VARCHAR(50) NOT NULL UNIQUE
 );
 
--- tabela de Dificuldades
+-- Tabela de Dificuldades
 CREATE TABLE dificuldades (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_dificuldade VARCHAR(50) NOT NULL UNIQUE
@@ -46,7 +45,6 @@ CREATE TABLE dificuldades (
 CREATE TABLE eventos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,
-    enderecos_id INT,
     nome_evento VARCHAR(255) NOT NULL,
     data_evento DATETIME NOT NULL,
     data_fim_inscricao DATETIME,
@@ -56,10 +54,15 @@ CREATE TABLE eventos (
     distancia DECIMAL(5, 2),
     categoria_id INT, -- Ligação com a tabela de categorias
     dificuldade_id INT, -- Ligação com a tabela de dificuldades
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(50) NOT NULL,
+    ponto_encontro VARCHAR(255) NOT NULL,
+    bairro_encontro VARCHAR(100),
+    ponto_chegada VARCHAR(255) NOT NULL,
+    bairro_chegada VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (enderecos_id) REFERENCES enderecos(id),
-    FOREIGN KEY (categoria_id) REFERENCES categorias(id),	
+    FOREIGN KEY (categoria_id) REFERENCES categorias(id),
     FOREIGN KEY (dificuldade_id) REFERENCES dificuldades(id)
 );
 
@@ -90,48 +93,3 @@ CREATE TABLE links (
     url_link VARCHAR(255),
     FOREIGN KEY (evento_id) REFERENCES eventos(id) ON DELETE CASCADE
 );
-
-
--- tabela participantes
-CREATE TABLE participantes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT NOT NULL,
-    evento_id INT NOT NULL,
-    data_participacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (evento_id) REFERENCES eventos(id) ON DELETE CASCADE
-);
-
--- tabela comentarios
-CREATE TABLE comentarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT NOT NULL,
-    evento_id INT,  
-    conteudo TEXT NOT NULL,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (evento_id) REFERENCES eventos(id) ON DELETE CASCADE
-);
-
--- tabela resposta_comentario
-CREATE TABLE respostas_comentarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    comentario_id INT NOT NULL,
-    usuario_id INT NOT NULL,
-    conteudo TEXT NOT NULL,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (comentario_id) REFERENCES comentarios(id) ON DELETE CASCADE,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
-);
-
--- tabela curtida
-CREATE TABLE curtidas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    comentario_id INT NOT NULL,
-    usuario_id INT NOT NULL,
-    data_curtida TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (comentario_id) REFERENCES comentarios(id) ON DELETE CASCADE,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
-);
-
-
