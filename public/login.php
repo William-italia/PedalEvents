@@ -1,3 +1,40 @@
+<?php 
+
+require '../app/database.php';
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST')
+{
+    $stmt = $pdo-> prepare
+    (
+        'SELECT * FROM usuarios WHERE email = :email'
+    );
+
+    $stmt->bindParam(':email', $_POST['email']);
+
+    $stmt->execute();
+
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($usuario) {
+        // Verificando se a senha corresponde
+        if ($_POST['senha'] === $usuario['senha']) {
+            // Senha correta, pode fazer login
+            session_start(); // Inicia uma sessão
+            $_SESSION['usuario_id'] = $usuario['id']; // Salva o ID do usuário na sessão
+            $_SESSION['usuario_nome'] = $usuario['nome_completo']; // Salva o nome do usuário na sessão
+            header('Location: inicio.php'); // Redireciona para a página inicial
+        } else {
+            header('Location: login.php'); // Redireciona para a página inicial
+        }
+    } else {
+        
+        header('Location: login.php'); // Redireciona para a página inicial
+}
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,27 +73,27 @@
             <p class="font-roboto text-4xl mx-auto text-white font-bold mb-20">Acesse sua conta!</p>
 
             <!-- inputs do email e senha -->
-            <form class="flex mx-auto flex-col space-y-4">
+            <form class="flex mx-auto flex-col space-y-4" action="" method="POST">
                 <div class="flex flex-col text-white">
                     <label for="" class="mb-2">Email:</label>
-                    <input type="text"
+                    <input type="text" name="email"
                         class="w-[18.75rem] p-2 border border-white bg-transparent rounded-md placeholder-white placeholder-opacity-50 focus:outline-none lg:w-[25rem]"
                         placeholder="Digite seu email">
                 </div>
                 <div class="flex flex-col text-white">
                     <label for="" class="mb-2">Senha:</label>
-                    <input type="text "
+                    <input type="password" name="senha"
                         class="w-[18.75rem] mb-[3rem] p-2 border border-white bg-transparent rounded-md placeholder-white placeholder-opacity-50 focus:outline-none lg:w-[25rem]"
                         placeholder="Digite sua senha">
                 </div>
 
                 <!-- botoes de recuperação de conta, continuar, e criar -->
                 <div class="mx-auto text-white mt-[3.1rem] lg:w-[25rem] w-full max-w-[18.75rem] lg:max-w-[25rem]">
-                    <a href="./redefinindo_senha.html" class="opacity-80">Esqueceu sua senha?</a>
+                    <a href="./redefinindo_senha.php" class="opacity-80">Esqueceu sua senha?</a>
                     <div class="flex flex-col space-y-4 text-center mt-2">
-                        <a href="./inicio.html"
-                            class="w-full p-2 border rounded-md duration-200 hover:opacity-50">Entrar</a>
-                        <a href="./criando_conta.html"
+                        <button type="submit" 
+                            class="w-full p-2 border rounded-md duration-200 hover:opacity-50">Entrar</button>
+                        <a href="./criando_conta.php"
                             class="w-full p-2 border rounded-md bgGradiente duration-200 hover:opacity-50">Crie uma
                             conta!</a>
                     </div>

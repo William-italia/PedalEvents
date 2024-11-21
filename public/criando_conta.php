@@ -1,3 +1,56 @@
+<?php
+
+    require '../app/database.php';
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        try {
+            // Hashing a senha
+    
+            // Preparando a consulta
+            $stmt = $pdo->prepare('
+                INSERT INTO usuarios (
+                    nome_completo, 
+                    nome_organizacao, 
+                    email, 
+                    cpf, 
+                    cidade, 
+                    data_nascimento, 
+                    senha
+                ) VALUES (
+                    :nome_completo, 
+                    :nome_organizacao, 
+                    :email, 
+                    :cpf, 
+                    :cidade, 
+                    :data_nascimento, 
+                    :senha
+                )
+            ');
+    
+            // Substituindo os placeholders pelos valores
+            $stmt->bindParam(':nome_completo', $_POST['nomeCompleto']);
+            $stmt->bindParam(':nome_organizacao', $_POST['organizador']);
+            $stmt->bindParam(':email', $_POST['email']);
+            $stmt->bindParam(':cpf', $_POST['cpf']);
+            $stmt->bindParam(':cidade', $_POST['cidade']);
+            $stmt->bindParam(':data_nascimento', $_POST['dataNascimento']);
+            $stmt->bindParam(':senha', $_POST['senha']);
+    
+            // Executando a consulta
+            $stmt->execute();
+    
+            // Redirecionando para a página de login
+            header('Location: login.php');
+            exit;
+    
+        } catch (PDOException $e) {
+            // Se ocorrer algum erro, exibe a mensagem de erro
+            echo "Erro ao inserir usuário: " . $e->getMessage();
+        }
+    }
+    
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +73,7 @@
 <body class="relative ">
     <section id="cria-conta" class="flex h-screen">
         <!--  -->
-        <form action="processa-formulario.php" method="POST"
+        <form id="meuFormulario" action="" method="POST"
             class="bgGradiente w-full flex flex-col p-[6.25rem] lg:w-1/2 lg:p-0 lg:items-center lg:rounded-tr-[1.25rem] lg:rounded-br-[1.25rem]">
             <h1 class="text-4xl mx-auto font-russo text-white my-10 lg:mt-[10rem] lg:mb-16">
                 <span class="text-colorLogo">Pedal</span> Events
@@ -65,7 +118,7 @@
                 </div>
                 <div class="flex flex-col text-white">
                     <label for="dataNascimento" class="mb-2">Data de nascimento:</label>
-                    <input type="text" id="dataNascimento" name="dataNascimento"
+                    <input type="date" id="dataNascimento" name="dataNascimento"
                         class="w-[18.75rem] p-2 border border-white bg-transparent rounded-md placeholder-white placeholder-opacity-50 focus:outline-none lg:w-[25rem]"
                         placeholder="Digite sua data de nascimento">
                 </div>
@@ -77,7 +130,7 @@
                 </div>
                 <div class="flex flex-col text-white">
                     <label for="confirmaSenha" class="mb-2">Confirme sua senha:</label>
-                    <input type="password" id="confirmaSenha" name="confirmaSenha"
+                    <input type="password" id="confirmaSenha" 
                         class="w-[18.75rem] p-2 border border-white bg-transparent rounded-md placeholder-white placeholder-opacity-50 focus:outline-none lg:w-[25rem]"
                         placeholder="Confirme sua senha">
                 </div>
@@ -89,11 +142,11 @@
                     <!-- step1 -->
                     <button type="button" id="nextBtn"
                         class="w-full p-2 border rounded-md duration-200 hover:opacity-50">Próxima página</button>
-                    <a href="./login.html" id="enterBtn"
+                    <a href="./login.php" id="enterBtn"
                         class="w-full p-2 border rounded-md bgGradiente duration-200 hover:opacity-50">Entrar</a>
 
                     <!-- step 2 -->
-                    <button type="button" id="createBtn"
+                    <button type="submit" id="createBtn"
                         class="hidden w-full p-2 border rounded-md duration-200 hover:opacity-50">Criar Conta!</button>
                     <button type="button" id="backBtn"
                         class="hidden w-full p-2 border rounded-md bgGradiente duration-200 hover:opacity-50">Voltar</button>
@@ -107,9 +160,25 @@
             <img class="absolute inset-x-0 mx-auto" src="./assets/img/undraw_team_up_re_84ok 1.svg" alt="">
         </div>
     </section>
-    </form>
 
+    <pre>
+        <?= var_dump($_POST)?>
+    </pre>
     <script src="./assets/js/script.js"></script>
+    <script>
+    document.getElementById('meuFormulario').addEventListener('submit', function(event) {
+        var senha = document.getElementById('senha').value;
+        var confirmarSenha = document.getElementById('confirmaSenha').value;
+        
+        if (senha !== confirmarSenha) {
+            // Impede o envio do formulário
+            event.preventDefault();
+            
+            // Mostra a mensagem de erro
+            alert('senhas não batem');
+        }
+    });
+</script>
 </body>
 
 </html>

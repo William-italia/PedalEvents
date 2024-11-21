@@ -52,8 +52,8 @@
             <!-- botoes de recuperação de conta, continuar, e criar -->
             <div class="mx-auto text-white mt-[3.1rem] lg:w-[25rem] w-full max-w-[18.75rem] lg:max-w-[25rem]">
                 <div class="flex flex-col space-y-4 text-center mt-2">
-                    <a href="./corfimando.html" class="w-full p-2 border rounded-md duration-200 hover:opacity-50">Checar os dados</a>
-                    <a href="./login.html"
+                    <a href="./corfimando.php" class="w-full p-2 border rounded-md duration-200 hover:opacity-50">Checar os dados</a>
+                    <a href="./login.php"
                         class="w-full p-2 border rounded-md bgGradiente duration-200 hover:opacity-50">Voltar</a>
                 </div>
             </div>

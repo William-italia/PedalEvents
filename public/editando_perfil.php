@@ -33,12 +33,12 @@
                     <h2 class="font-russo text-2xl "><span class="text-color-primary">Pedal</span> Events</h2>
                 </div>
                 <ul class="flex items-center space-x-8 font-normal ">
-                    <li><a href="./inicio.html"
+                    <li><a href="./inicio.php"
                             class="hover:text-color-primary duration-200 font-black text-color-primary">Inicio</a></li>
-                    <li><a href="./eventos.html" class="hover:text-color-primary duration-200">Eventos</a></li>
-                    <li><a href="./create_event.html" class="hover:text-color-primary duration-200">Crie seu Evento</a>
+                    <li><a href="./eventos.php" class="hover:text-color-primary duration-200">Eventos</a></li>
+                    <li><a href="./create_event.php" class="hover:text-color-primary duration-200">Crie seu Evento</a>
                     </li>
-                    <li><a href="#" class="hover:text-color-primary duration-200">Fale conosco</a></li>
+                    
                 </ul>
                 <div class="w-[55px] h-[55px] rounded-[100%] bg-cover bg-center"
                     style="background-image: url(./assets/img/person1.png);"></div>
@@ -51,7 +51,7 @@
         <!-- global container -->
         <div
             class="relative mt-[80px] bg-[#16161D] w-full h-full text-white px-[125px] py-[60px] rounded-2xl  w-full h-full">
-            <div class="absolute top-[2rem] right-[2rem]"><a href="./inicio.html"
+            <div class="absolute top-[2rem] right-[2rem]"><a href="./inicio.php"
                     class=" bg-color-primary px-[6rem] py-2 rounded-lg hover:opacity-80">Voltar</a>
             </div>
             <div class="w-full h-full">
@@ -114,7 +114,7 @@
                                     </div>
 
                                 </div>
-                                <button href="./inicio.html"
+                                <button href="./inicio.php"
                                     class=" bg-color-primary px-[6rem] py-2 rounded-lg block self-center w-[80%] mt-10 hover:opacity-80">Salvar</button>
                             </div>
                         </div>

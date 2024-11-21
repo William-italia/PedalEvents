@@ -10,23 +10,11 @@ CREATE TABLE usuarios (
     email VARCHAR(255) NOT NULL UNIQUE,
     cpf VARCHAR(14) NOT NULL UNIQUE,
     cidade VARCHAR(100),
-    estado VARCHAR(50),
     data_nascimento DATE NOT NULL,
     senha VARCHAR(255) NOT NULL,
+    bio VARCHAR(255),
+    img VARCHAR(255),
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Tabela de Endereços (Somente para usuários)
-CREATE TABLE enderecos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT NOT NULL,
-    cidade VARCHAR(100) NOT NULL,
-    estado VARCHAR(50) NOT NULL,
-    bairro VARCHAR(100),
-    rua VARCHAR(255),
-    numero VARCHAR(10),
-    complemento VARCHAR(255),
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
 -- Tabela de Categorias
@@ -46,20 +34,20 @@ CREATE TABLE eventos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,
     nome_evento VARCHAR(255) NOT NULL,
+    dificuldade_id INT, -- Ligação com a tabela de dificuldades
     data_evento DATETIME NOT NULL,
     data_fim_inscricao DATETIME,
-    limite_vagas INT NOT NULL,
-    imagem VARCHAR(255),
-    idade_minima INT,
-    distancia DECIMAL(5, 2),
-    categoria_id INT, -- Ligação com a tabela de categorias
-    dificuldade_id INT, -- Ligação com a tabela de dificuldades
     cidade VARCHAR(100) NOT NULL,
     estado VARCHAR(50) NOT NULL,
+    categoria_id INT, -- Ligação com a tabela de categorias
     ponto_encontro VARCHAR(255) NOT NULL,
     bairro_encontro VARCHAR(100),
     ponto_chegada VARCHAR(255) NOT NULL,
     bairro_chegada VARCHAR(100),
+    idade_minima INT,
+    limite_vagas INT NOT NULL,
+    distancia DECIMAL(5, 2),
+    imagem VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
     FOREIGN KEY (categoria_id) REFERENCES categorias(id),

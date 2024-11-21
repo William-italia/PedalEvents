@@ -27,12 +27,12 @@
                     <h2 class="font-russo text-2xl "><span class="text-color-primary">Pedal</span> Events</h2>
                 </div>
                 <ul class="flex items-center space-x-8 font-normal ">
-                    <li><a href="./inicio.html" class="hover:text-color-primary duration-200 ">Inicio</a></li>
-                    <li><a href="./eventos.html" class="hover:text-color-primary duration-200">Eventos</a></li>
-                    <li><a href="./criando_evento.html" class="hover:text-color-primary duration-200">Crie seu
+                    <li><a href="./inicio.php" class="hover:text-color-primary duration-200 ">Inicio</a></li>
+                    <li><a href="./eventos.php" class="hover:text-color-primary duration-200">Eventos</a></li>
+                    <li><a href="./criando_evento.php" class="hover:text-color-primary duration-200">Crie seu
                             Evento</a>
                     </li>
-                    <li><a href="#" class="hover:text-color-primary duration-200">Fale conosco</a></li>
+                    
                 </ul>
                 <div class="w-[55px] h-[55px] rounded-[100%] bg-cover bg-center"
                     style="background-image: url(./assets/img/person1.png);"></div>
@@ -61,10 +61,10 @@
 
                                     <div class="border-b-2 p-2 mb-8">
                                         <ul class="flex space-x-10 ">
-                                            <li><a href="./evento_detalhes.html"
+                                            <li><a href="./evento_detalhes.php"
                                                     class="font-bold border-b-2 border-color-primary p-[.6rem]">Detalhes</a>
                                             </li>
-                                            <li><a href="./evento_membros.html">Membros</a></li>
+                                            <li><a href="./evento_membros.php">Membros</a></li>
                                             <li><a href="">Editar Detalhes</a></li>
                                             <li><a href="">Excluir</a></li>
                                         </ul>

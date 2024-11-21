@@ -34,9 +34,9 @@
                 </div>
 
                 <ul class="flex items-center space-x-8 font-normal">
-                    <li><a href="./login.html" class="hover:text-color-primary duration-200">Entrar</a></li>
+                    <li><a href="./login.php" class="hover:text-color-primary duration-200">Entrar</a></li>
                     <li>
-                        <a href="./criando_conta.html"
+                        <a href="./criando_conta.php"
                             class="bg-color-primary  font-medium px-4 py-2 block rounded-[4px] hover:opacity-80 duration-200 text-white">
                             Explorar
                         </a>
@@ -65,7 +65,7 @@
                         novos
                         caminhos faz parte da experiência. Vamos juntos
                         descobrir a beleza do ciclismo!</p>
-                    <a href="./criando_conta.html"
+                    <a href="./criando_conta.php"
                         class="bg-color-primary text-black font-medium text-[20px] py-[1rem] px-8 block rounded-[4px] hover:opacity-85 duration-200">Criar
                         uma
                         conta!</a>
@@ -406,7 +406,7 @@
                     Comece a organizar seus eventos de ciclismo hoje mesmo.<br> Com nossa plataforma,<br>
                     conectar-se com outros ciclistas e criar experiências únicas<br> é mais fácil do que você imagina!
                 </p>
-                <a href="./criando_conta.html"
+                <a href="./criando_conta.php"
                     class="bg-[#2770DF] text-black font-medium text-[20px] py-[1rem] px-8 block rounded-[4px] hover:opacity-80 duration-200 mt-10">
                     Comece Agora!!
                 </a>

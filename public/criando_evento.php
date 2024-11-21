@@ -28,14 +28,14 @@
                     <h2 class="font-russo text-2xl "><span class="text-color-primary">Pedal</span> Events</h2>
                 </div>
                 <ul class="flex items-center space-x-8 font-normal ">
-                    <li><a href="./inicio.html" class="hover:text-color-primary duration-200  ">Inicio</a>
+                    <li><a href="./inicio.php" class="hover:text-color-primary duration-200  ">Inicio</a>
                     </li>
-                    <li><a href="./eventos.html" class="hover:text-color-primary duration-200">Eventos</a></li>
-                    <li><a href="./criando_evento.html"
+                    <li><a href="./eventos.php" class="hover:text-color-primary duration-200">Eventos</a></li>
+                    <li><a href="./criando_evento.php"
                             class="hover:text-color-primary duration-200 font-black text-color-primary">Crie seu
                             Evento</a>
                     </li>
-                    <li><a href="#" class="hover:text-color-primary duration-200">Fale conosco</a></li>
+                   
                 </ul>
                 <div class="w-[55px] h-[55px] rounded-[100%] bg-cover bg-center"
                     style="background-image: url(./assets/img/person1.png);"></div>
@@ -297,7 +297,7 @@
                                         <button
                                             class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-[50%]"
                                             type="button" onclick="preview()">Previzualizar</button>
-                                        <button
+                                        <button type="submit"
                                             class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-[50%]">Criar
                                             Evento!</button>
                                     </div>
@@ -487,7 +487,23 @@
         </div>
     </section>
 
+    <pre>
+        <?= var_dump($_POST)?>
+    </pre>
 
+    <?php 
+
+    $links = [];
+
+    foreach($_POST['links'] AS $link) {
+        $links[] = implode(' - ', $link);
+    }
+
+    $linksString = implode(', ', $links);
+
+    echo $linksString; 
+    
+    ?>
     <script src="./assets/js/create_event.js"></script>
 </body>
 
