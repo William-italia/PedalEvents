@@ -35,7 +35,7 @@
                     
                 </ul>
                 <div class="w-[55px] h-[55px] rounded-[100%] bg-cover bg-center"
-                    style="background-image: url(./assets/img/person1.png);"></div>
+                   ></div>
             </div>
         </nav>
     </header>

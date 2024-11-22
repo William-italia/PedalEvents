@@ -139,7 +139,7 @@ function FormataData($data) {
                     
                 </ul>
                 <div class="w-[55px] h-[55px] rounded-[100%] bg-cover bg-center"
-                    style="background-image: url(./assets/img/person1.png);"></div>
+                    ></div>
             </div>
         </nav>
     </header>
@@ -184,7 +184,7 @@ function FormataData($data) {
                  <?php foreach($eventos as $evento) :?>
                     <div class="bg-white text-black h-[36rem] rounded-2xl card-sombra ">
                         <div class="flex items-center justify-center w-full h-[48%] mb-2 bg-cover bg-center"
-                            style="background-image: url('./assets/img/evento.png');">
+                            style="background-image: url('./uploads/<?= $evento['imagem']?>');">
                             <!-- Conteúdo opcional dentro da div -->
                         </div>
 

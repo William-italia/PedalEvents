@@ -1,3 +1,158 @@
+<?php
+
+session_start();
+
+require '../app/database.php';
+
+$id = $_SESSION['usuario_id'];
+
+$sqlDificuldades = 'SELECT * FROM dificuldades';
+
+$stmtDificuldades = $pdo-> prepare($sqlDificuldades);
+
+$stmtDificuldades->execute();
+
+$dificuldades = $stmtDificuldades->fetchAll();
+
+
+
+$sqlCategorias = 'SELECT * FROM categorias';
+
+$stmtCategorias = $pdo-> prepare($sqlCategorias);
+
+$stmtCategorias->execute();
+
+$categorias = $stmtCategorias->fetchAll();
+
+
+$sqluser = 'SELECT * FROM usuarios WHERE id = :id';
+
+$stmtUser = $pdo-> prepare($sqluser);
+
+$stmtUser->bindParam(':id', $id);
+
+$stmtUser->execute();
+
+$user = $stmtUser->fetch();
+
+
+
+
+
+$file = $_FILES['banner'];
+
+
+if($file['error'] === UPLOAD_ERR_OK) 
+  {
+    $uploadDir = 'uploads/';
+
+
+    if(!is_dir($uploadDir)) 
+    {
+      mkdir($uploadDir, 0755, true);
+    }
+
+    // create file name
+    $filename = uniqid() . '-' . $file['name'];
+
+    // upload file
+
+move_uploaded_file($file['tmp_name'], $uploadDir . $filename);
+
+  }
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+    $links = [];
+    foreach ($_POST['links'] as $link) {
+        $links[] = implode(' - ', $link); // junta os links com " - "
+    }
+
+    $topicos = []; 
+    foreach ($_POST['topico'] as $topico) {
+        $topicos[] = implode(' | ', $topico); // junta os tópicos com " | "
+    }
+
+    $linksString = implode(', ', $links); // Junta todos os links com ", "
+    $topicosString = implode(' % ', $topicos); // Junta todos os tópicos com " % "
+
+    // Prepare a consulta SQL
+    $sql = '
+        INSERT INTO eventos (
+            usuario_id, 
+            dificuldade_id, 
+            categoria_id, 
+            nome_evento, 
+            data_evento, 
+            data_fim_inscricao, 
+            cidade, 
+            estado, 
+            ponto_encontro, 
+            bairro_encontro, 
+            ponto_chegada, 
+            bairro_chegada, 
+            idade_minima, 
+            limite_vagas, 
+            distancia, 
+            imagem, 
+            links, 
+            topicos
+        ) VALUES (
+            :usuario_id, 
+            :dificuldade_id, 
+            :categoria_id, 
+            :nome_evento, 
+            :data_evento, 
+            :data_fim_inscricao, 
+            :cidade, 
+            :estado, 
+            :ponto_encontro, 
+            :bairro_encontro, 
+            :ponto_chegada, 
+            :bairro_chegada, 
+            :idade_minima, 
+            :limite_vagas, 
+            :distancia, 
+            :imagem, 
+            :links, 
+            :topicos
+        )
+    ';
+    
+    // Prepare a consulta
+    $stmtEvento = $pdo->prepare($sql);
+    
+    
+    // Execute o bindParam
+    $stmtEvento->bindParam(':usuario_id', $id);
+    $stmtEvento->bindParam(':dificuldade_id', $_POST['difficulty']);
+    $stmtEvento->bindParam(':categoria_id', $_POST['category']);
+    $stmtEvento->bindParam(':nome_evento', $_POST['nameEvent']);
+    $stmtEvento->bindParam(':data_evento', $_POST['date']);
+    $stmtEvento->bindParam(':data_fim_inscricao', $_POST['data_fim_inscricao']);
+    $stmtEvento->bindParam(':cidade', $_POST['city']);
+    $stmtEvento->bindParam(':estado', $_POST['estado']);
+    $stmtEvento->bindParam(':ponto_encontro', $_POST['pontaA']);
+    $stmtEvento->bindParam(':bairro_encontro', $_POST['pontoAbairro']);
+    $stmtEvento->bindParam(':ponto_chegada', $_POST['pontoB']);
+    $stmtEvento->bindParam(':bairro_chegada', $_POST['pontoBbairro']);
+    $stmtEvento->bindParam(':idade_minima', $_POST['age']);
+    $stmtEvento->bindParam(':limite_vagas', $_POST['slots']);
+    $stmtEvento->bindParam(':distancia', $_POST['km']);
+    $stmtEvento->bindParam(':imagem', $filename);
+    $stmtEvento->bindParam(':links', $linksString);
+    $stmtEvento->bindParam(':topicos', $topicosString);
+    
+    // Execute a consulta
+    if ($stmtEvento->execute()) {
+        header('location: inicio.php');
+    } else {
+        echo "Erro ao criar evento.";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +193,7 @@
                    
                 </ul>
                 <div class="w-[55px] h-[55px] rounded-[100%] bg-cover bg-center"
-                    style="background-image: url(./assets/img/person1.png);"></div>
+                    ></div>
             </div>
         </nav>
     </header>
@@ -56,7 +211,7 @@
                         <!-- banner box -->
                         <div id="imgPreviewElement"
                             class="w-full bg-gray-600 h-[500px] rounded-t-xl relative bg-cover bg-center">
-                            <input required id="inputImg" type="file" name="arquivo" class="hidden" accept="image/*">
+                            <input  id="inputImg" type="file" name="banner" class="hidden" accept="image/*">
                             <label
                                 class="absolute bottom-[2rem] right-[2rem] bg-white py-4 px-10 shadow-xl rounded-lg cursor-pointer hover:bg-slate-500 duration-300"
                                 for="inputImg">adicionar
@@ -71,7 +226,7 @@
                                     <div class="flex flex-col">
                                         <label class="font-roboto font-medium text-lg mb-2" for="nameEvent">Nome do
                                             Evento:</label>
-                                        <input required type="text" name="nameEvent"
+                                        <input  type="text" name="nameEvent"
                                             class="border-[#D9D9D9] border-2 rounded-[.2rem] p-[.3rem] mb-[16px]"
                                             value="Treino Diario">
                                     </div>
@@ -82,17 +237,22 @@
                                             <div class="flex flex-col space-y-4">
                                                 <!-- input 1 -->
                                                 <div class="flex flex-col">
-                                                    <label class="font-roboto font-medium text-lg mb-2"
-                                                        for="organizer">Organizador:</label>
-                                                    <input required type="text" name="organizer"
-                                                        class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
-                                                </div>
+                                                <label class="font-roboto font-medium text-lg mb-2" for="difficulty">Organizador:</label>
+                                                <select name="organizer" class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.33rem]">
+                                                    <option value="<?= $user['nome_completo'] ?>"><?= $user['nome_completo'] ?></option>
+                                                    <?php 
+                                                        if($user['nome_organizacao'] !== '') {
+                                                            echo '<option value="' . $user['nome_organizacao'] . '">' . $user['nome_organizacao'] . '</option>';
+                                                        }
+                                                    ?>
+                                                </select>
+                                            </div>
                                                 <!-- input 2 -->
                                                 <div class="flex flex-col">
                                                     <label class="font-roboto font-medium text-lg mb-2" for="date">Data
                                                         do Pedal
                                                         :</label>
-                                                    <input required type="datetime-local" name="date"
+                                                    <input  type="datetime-local" name="date"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem] p-[.3rem]"
                                                         min="2024-04-10T00:00" value="2024-04-10T00:00">
                                                 </div>
@@ -108,7 +268,7 @@
                                                             for="city">UF:</label>
                                                     </div>
                                                     <div class="flex items-center  w-[100%]">
-                                                        <input required type="text" name="city"
+                                                        <input  type="text" name="city"
                                                             class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] w-full "
                                                             placeholder="São Paulo" value="São Paulo">
                                                         <input type="text" name="estado"
@@ -124,7 +284,7 @@
                                                             <div class="">
                                                                 <label class="font-roboto font-medium text-lg mb-2"
                                                                     for="address-end">Ponto de Encontro:</label>
-                                                                <input required type="text" name="pontaA"
+                                                                <input  type="text" name="pontaA"
                                                                     id="address-start"
                                                                     class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] w-[100%]">
                                                             </div>
@@ -132,7 +292,7 @@
                                                             <div class="flex flex-col ">
                                                                 <label class="font-roboto font-medium text-lg "
                                                                     for="">Bairro:</label>
-                                                                <input required type="text" name="pontoAbairro"
+                                                                <input  type="text" name="pontoAbairro"
                                                                     id="neighborhoodStart"
                                                                     class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] w-[100%]">
                                                             </div>
@@ -144,7 +304,7 @@
                                                 <div class="flex flex-col">
                                                     <label class="font-roboto font-medium text-lg mb-2" for="age">Idade
                                                         Minima:</label>
-                                                    <input required type="number" name="age"
+                                                    <input  type="number" name="age"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]"
                                                         min="16" placeholder="16">
                                                 </div>
@@ -153,7 +313,7 @@
                                                     <label class="font-roboto font-medium text-lg mb-2"
                                                         for="km">Distância
                                                         Estimada (km): </label>
-                                                    <input required type="number" name="km" min="4" max="100" value="30"
+                                                    <input  type="number" name="km" min="4" max="100" value="30"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
                                                 </div>
                                             </div>
@@ -168,9 +328,10 @@
                                                         for="difficulty">Dificuldade:</label>
                                                     <select name="difficulty"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.33rem]">
-                                                        <option value="Fácil">Fácil</option>
-                                                        <option value="Intermediário">Intermediário</option>
-                                                        <option value="Difícil">Difícil</option>
+                                                        <?php foreach($dificuldades as $dificuldade): ?>
+                                                            <option value="<?= $dificuldade['id']?>"><?= $dificuldade['nome_dificuldade'] ?></option>
+                                                        <?php endforeach;?>
+                                                     
                                                     </select>
                                                 </div>
                                                 <!-- input 6 -->
@@ -179,7 +340,7 @@
                                                         for="dateLimit">Fim
                                                         das Inscrições
                                                         :</label>
-                                                    <input required type="datetime-local" name="date"
+                                                    <input  type="datetime-local" name="date"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem] p-[.3rem]"
                                                         min="2024-04-08T00:00" value="2024-04-08T00:00">
                                                 </div>
@@ -188,35 +349,9 @@
                                                         for="category">Categoria</label>
                                                     <select name="category"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.33rem]">
-                                                        <option value="passeio-recreativo">Passeio Recreativo</option>
-                                                        <option value="treino-livre">Treino Livre</option>
-                                                        <option value="ciclismo-estrada">Ciclismo de Estrada</option>
-                                                        <option value="ciclismo-urbano">Ciclismo Urbano</option>
-                                                        <option value="cicloturismo">Cicloturismo</option>
-                                                        <option value="gravel">Gravel</option>
-                                                        <option value="ciclismo-indoor">Ciclismo Indoor</option>
-                                                        <option value="trekking-ciclismo">Ciclismo de Trekking</option>
-                                                        <option value="evento-competitivo">Competição</option>
-                                                        <option value="paraciclismo">Paraciclismo</option>
-                                                        <option value="ciclismo-aventura">Aventura</option>
-                                                        <option value="mountain-bike-cross-country">Mountain Bike -
-                                                            Cross Country</option>
-                                                        <option value="mountain-bike-marathon">Mountain Bike - Maratona
-                                                        </option>
-                                                        <option value="downhill">Downhill</option>
-                                                        <option value="bmx-race">BMX - Race</option>
-                                                        <option value="bmx-freestyle">BMX - Freestyle</option>
-                                                        <option value="gran-fondo">Gran Fondo</option>
-                                                        <option value="contra-relogio">Contra-Relógio</option>
-                                                        <option value="treino-de-subida">Treino de Subida</option>
-                                                        <option value="sprint">Sprint</option>
-                                                        <option value="ciclismo-de-pista">Ciclismo de Pista</option>
-                                                        <option value="gravel">Gravel</option>
-                                                        <option value="exploracao-de-trilha">Exploração de Trilha
-                                                        </option>
-                                                        <option value="bikepacking">Bikepacking</option>
-                                                        <option value="treinamento">Treinamento Geral</option>
-                                                        <option value="ciclismo-noturno">Ciclismo Noturno</option>
+                                                        <?php foreach($categorias as $categoria): ?>
+                                                            <option value="<?= $categoria['id']?>"><?= $categoria['nome_categoria']?></option>
+                                                        <?php endforeach;?>
 
                                                     </select>
                                                 </div>
@@ -232,7 +367,7 @@
                                                             <div class="">
                                                                 <label class="font-roboto font-medium text-lg mb-2"
                                                                     for="address-end">Ponto de Chegada:</label>
-                                                                <input required type="text" name="pontoB"
+                                                                <input  type="text" name="pontoB"
                                                                     id="address-end"
                                                                     class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] w-[100%]">
                                                             </div>
@@ -240,7 +375,7 @@
                                                             <div class="flex flex-col ">
                                                                 <label class="font-roboto font-medium text-lg "
                                                                     for="neighborhoodEnd">Bairro:</label>
-                                                                <input required type="text" name="pontoBbairro"
+                                                                <input  type="text" name="pontoBbairro"
                                                                     id="neighborhoodEnd"
                                                                     class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] w-[100%]">
                                                             </div>
@@ -252,7 +387,7 @@
                                                 <div class="flex flex-col">
                                                     <label class="font-roboto font-medium text-lg mb-2"
                                                         for="slots">Limite de Vagas:</label>
-                                                    <input required type="number" name="slots" min="5" max="100"
+                                                    <input  type="number" name="slots" min="5" max="100"
                                                         placeholder="5"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem]">
                                                 </div>
@@ -271,16 +406,36 @@
                                                         <label class="font-roboto font-medium text-lg mb-2"
                                                             for="topico">Titulo do
                                                             Topico</label>
-                                                        <input required type="text" name="topico[0][titulo]"
+                                                        <input  type="text" name="topico[0][titulo]"
                                                             class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] mb-4">
                                                     </div>
                                                     <div>
                                                         <label class="font-roboto font-medium text-lg mb-2"
                                                             for="conteudo">Conteúdo</label>
-                                                        <textarea required name="topico[0][conteudo]"
+                                                        <textarea  name="topico[0][conteudo]"
                                                             class="border-[#D9D9D9] border-2 rounded-[.2rem] mr-[1.4rem] p-[.3rem] w-full h-[400px] mt-2"></textarea>
                                                     </div>
                                                 </div>
+                                            </li>
+                                            <li>
+                                                        <div class="flex flex-col mb-10 relative">
+                            <span class="cursor-pointer  absolute right-0 text-red-600" id="delete-topic"><i
+                                    class="fa-solid fa-trash"></i></span>
+                            <div class="w-[50%] flex flex-col">
+                                <label class="font-roboto font-medium text-lg mb-2"
+                                    for="topico">Titulo do
+                                    Topico</label>
+
+                                <input type="text" name="topico[${lis.length}][titulo]" 
+                                    class="border-[#D9D9D9] border-2 rounded-[.2rem]  p-[.3rem] mb-4">
+                            </div>
+                            <div>
+                                <label class="font-roboto font-medium text-lg mb-2"
+                                    for="conteudo">Conteúdo</label>
+                                <textarea name="topico[${lis.length}][conteudo]" 
+                                    class="border-[#D9D9D9] border-2 rounded-[.2rem] mr-[1.4rem] p-[.3rem] w-full h-[400px] mt-2"></textarea>
+                            </div>
+                        </div>
                                             </li>
 
 
@@ -294,11 +449,8 @@
 
                                     <!-- father box buttons -->
                                     <div class="flex items-center justify-center space-x-4 w-full mt-10">
-                                        <button
-                                            class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-[50%]"
-                                            type="button" onclick="preview()">Previzualizar</button>
                                         <button type="submit"
-                                            class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-[50%]">Criar
+                                            class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full">Criar
                                             Evento!</button>
                                     </div>
                                 </div>
@@ -338,172 +490,15 @@
                     </div>
                 </form>
             </div>
-
-            <!-- preview -->
-            <div id="box-preview" class="hidden">
-                <!-- global container -->
-                <div class="flex items-center justify-center my-10 w-full ">
-                    <!-- form start -->
-                    <div class="w-full flex items-center justify-center">
-                        <!-- father box -->
-                        <div class="w-[100%] flex flex-col items-center justify-center">
-                            <!-- banner box -->
-                            <div id="imgPreviewElement"
-                                class="w-full bg-gray-600 h-[500px] rounded-t-xl relative bg-cover bg-center">
-                            </div>
-                            <!-- father boxs (form and links) -->
-                            <div
-                                class="flex flex-col md:flex-row  w-full border-l-2 border-r-2 border-b-2 rounded-b-xl">
-                                <!-- father form box -->
-                                <div class="w-[70%] mx-6 p-4">
-                                    <!-- form box -->
-                                    <div class="w-full">
-                                        <div class="flex flex-col">
-                                            <!-- titulo -->
-                                            <p class="font-roboto font-bold text-3xl my-4">
-                                                <span id="nameEvent"></span>
-                                            </p>
-                                        </div>
-
-                                        <div class="grid grid-cols-2 gap-6 mt-4 text-xl">
-                                            <!-- organizador -->
-                                            <div class="flex flex-row items-center">
-                                                <!-- <i class="mr-2 fa-solid fa-bookmark"></i> -->
-                                                <img class="mr-2"
-                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Pilot.png"
-                                                    alt="Pilot" width="40" height="40" class="inline-block" />
-                                                <span id="organizer"></span>
-                                            </div>
-                                            <!-- Dificuldade -->
-                                            <div class="flex flex-row items-center">
-                                                <!-- <i class="mr-2 fa-solid fa-trophy"></i> -->
-                                                <img class="mr-2"
-                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Man%20Climbing.png"
-                                                    alt="Man Climbing" width="40" height="40" class="inline-block" />
-                                                <span id="difficult"></span>
-                                            </div>
-
-                                            <!-- Data -->
-                                            <div class="flex flex-row items-center">
-                                                <!-- <i class="mr-2 fa-solid fa-calendar-days"></i> -->
-                                                <img class="mr-2"
-                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Tear-Off%20Calendar.png"
-                                                    alt="Tear-Off Calendar" width="40" height="40"
-                                                    class="inline-block" />
-                                                <span id="date"></span>
-                                            </div>
-
-                                            <!-- Categoria -->
-                                            <div class="flex flex-row items-center">
-                                                <!-- <i class="mr-2 fa-solid fa-layer-group"></i> -->
-                                                <img class="mr-2"
-                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Joystick.png"
-                                                    alt="Joystick" width="40" height="40" class="inline-block" />
-                                                <span id="category"></span>
-                                            </div>
-
-                                            <!-- Cidade -->
-                                            <div class="flex flex-row items-center">
-                                                <!-- <i class="mr-2 fa-solid fa-city"></i> -->
-                                                <img class="mr-2"
-                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/World%20Map.png"
-                                                    alt="World Map" width="40" height="40" class="inline-block" />
-                                                <span id="city"></span>
-                                            </div>
-
-                                            <!-- Vagas -->
-                                            <div class="flex flex-row items-center">
-                                                <!-- <i class="mr-2 fa-solid fa-user"></i> -->
-                                                <img class="mr-2"
-                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png"
-                                                    alt="Bar Chart" width="40" height="40" class="inline-block" />
-                                                <span id="slots"></span>
-                                            </div>
-
-                                            <!-- Endereço -->
-                                            <div class="flex flex-row items-center">
-                                                <!-- <i class="mr-2 fa-solid fa-location-dot"></i> -->
-                                                <img class="mr-2"
-                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Pushpin.png"
-                                                    alt="Pushpin" width="40" height="40" class="inline-block" />
-                                                <span id="address"></span>
-                                            </div>
-                                            <div class="flex flex-row items-center">
-                                                <!-- <i class="mr-2 fa-solid fa-flag"></i> -->
-                                                <img class="mr-2"
-                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Chequered%20Flag.png"
-                                                    alt="Chequered Flag" width="40" height="40" class="inline-block" />
-                                                <span id="addressEnd"></span>
-                                            </div>
-
-
-                                            <!-- Distância -->
-                                            <div class="flex flex-row items-center">
-                                                <!-- <i class="mr-2 fa-solid fa-bicycle"></i> -->
-                                                <img class="mr-2"
-                                                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Man%20Biking.png"
-                                                    alt="Man Biking" width="40" height="40" class="inline-block" />
-                                                <span id="km"></span>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- topics - father box -->
-                                        <div class="mt-10">
-                                            <ul id="preview-topics">
-
-                                            </ul>
-
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                <!-- links box -->
-                                <div class="w-[30%] bg-slate-0 border-l-2 p-4">
-                                    <div>
-                                        <p>Inscrições Abertas</p>
-                                        <p
-                                            class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
-                                            Inscreva-se</p>
-                                        <p id="desc" class="border-b-2 py-4">Evento ficará aberto até ou até o limite
-                                            de
-                                            vagas for atingido!</p>
-                                    </div>
-                                    <!-- links box -->
-                                    <div>
-                                        <h2 class="text-xl font-roboto font-medium mt-8">Links importantes:</h2>
-                                        <ul id="preview-links" class="flex flex-col gap-4 text-1xl mt-8">
-
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
-    <pre>
-        <?= var_dump($_POST)?>
-    </pre>
+<pre>
+    <?= var_dump($_POST)?>
+    <?= $linksString;?>
+    <?= $topicosString;?>
+</pre>
 
-    <?php 
-
-    $links = [];
-
-    foreach($_POST['links'] AS $link) {
-        $links[] = implode(' - ', $link);
-    }
-
-    $linksString = implode(', ', $links);
-
-    echo $linksString; 
-    
-    ?>
     <script src="./assets/js/create_event.js"></script>
 </body>
 

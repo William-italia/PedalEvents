@@ -33,13 +33,13 @@ CREATE TABLE dificuldades (
 CREATE TABLE eventos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,
-    nome_evento VARCHAR(255) NOT NULL,
     dificuldade_id INT, -- Ligação com a tabela de dificuldades
+    categoria_id INT, -- Ligação com a tabela de categorias
+    nome_evento VARCHAR(255) NOT NULL,
     data_evento DATETIME NOT NULL,
     data_fim_inscricao DATETIME,
     cidade VARCHAR(100) NOT NULL,
     estado VARCHAR(50) NOT NULL,
-    categoria_id INT, -- Ligação com a tabela de categorias
     ponto_encontro VARCHAR(255) NOT NULL,
     bairro_encontro VARCHAR(100),
     ponto_chegada VARCHAR(255) NOT NULL,
@@ -48,6 +48,8 @@ CREATE TABLE eventos (
     limite_vagas INT NOT NULL,
     distancia DECIMAL(5, 2),
     imagem VARCHAR(255),
+    links VARCHAR(255),
+    topicos TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
     FOREIGN KEY (categoria_id) REFERENCES categorias(id),
@@ -64,20 +66,20 @@ CREATE TABLE inscricao (
     FOREIGN KEY (evento_id) REFERENCES eventos(id)
 );
 
--- Tabela de Tópicos
-CREATE TABLE topicos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_evento INT NOT NULL,
-    titulo VARCHAR(255) NOT NULL,
-    conteudo TEXT NOT NULL,
-    FOREIGN KEY (id_evento) REFERENCES eventos(id) ON DELETE CASCADE
-);
+-- -- Tabela de Tópicos
+-- CREATE TABLE topicos (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     id_evento INT NOT NULL,
+--     titulo VARCHAR(255) NOT NULL,
+--     conteudo TEXT NOT NULL,
+--     FOREIGN KEY (id_evento) REFERENCES eventos(id) ON DELETE CASCADE
+-- );
 
--- Tabela de Links
-CREATE TABLE links (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    evento_id INT,
-    nome_link VARCHAR(255),
-    url_link VARCHAR(255),
-    FOREIGN KEY (evento_id) REFERENCES eventos(id) ON DELETE CASCADE
-);
+-- -- Tabela de Links
+-- CREATE TABLE links (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     evento_id INT,
+--     nome_link VARCHAR(255),
+--     url_link VARCHAR(255),
+--     FOREIGN KEY (evento_id) REFERENCES eventos(id) ON DELETE CASCADE
+-- );

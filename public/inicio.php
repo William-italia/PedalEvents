@@ -80,7 +80,7 @@
                 <div>
                     <h2 class="font-russo text-2xl "><span class="text-color-primary">Pedal</span> Events</h2>
                 </div>
-                <ul class="flex items-center space-x-8 font-normal ">
+                <ul class="flex items-center justify-center space-x-8 font-normal ">
                     <li><a href="./inicio.php"
                             class="hover:text-color-primary duration-200 font-black text-color-primary">Inicio</a></li>
                     <li><a href="./eventos.php" class="hover:text-color-primary duration-200">Eventos</a></li>
@@ -88,8 +88,7 @@
                             Evento</a>
                     </li>
                 </ul>
-                <div class="w-[55px] h-[55px] rounded-[100%] bg-cover bg-center"
-                    style="background-image: url(./assets/img/person1.png);"></div>
+               <a href="index.php">Sair</a>
             </div>
         </nav>
     </header>
@@ -101,12 +100,12 @@
             <div class="flex justify-between ">
                 <div class="flex space-x-10 items-center justify-between">
                     <div class="w-[200px] h-[200px] border-2 border-color-primary rounded-[100%] bg-cover bg-center"
-                        style="background-image: url(./assets/img/person1.png);">
+                        style="background-image: url(./uploads/<?= $USER['img']?>);">
                     </div>
                     <div>
                         <h2 class="font-medium text-3xl mb-4"><?= $USER['nome_completo'] ?></h2>
                       
-                        <p class="w-[60%] my-6"><?= $USER['bio'] ?></p>
+                        <p class="w-[80%] my-6"><?= $USER['bio'] ?></p>
                         <p class="font-medium"><?= $USER['cidade'] ?><?= isset($USER['estado']) ? ', ' . $USER['estado'] : ''?></p>
                     </div>
                 </div>
@@ -136,7 +135,7 @@
                  <?php foreach($eventos_user as $evento) :?>
                     <div class="bg-white text-black h-[36rem] rounded-2xl card-sombra ">
                         <div class="flex items-center justify-center w-full h-[48%] mb-2 bg-cover bg-center"
-                            style="background-image: url('./assets/img/evento.png');">
+                            style="background-image: url('./uploads/<?= $evento['imagem'] ?>');">
                             <!-- Conteúdo opcional dentro da div -->
                         </div>
 
@@ -184,6 +183,7 @@
             </div>
         </div>
     </section>
+   
 </body>
 
 </html>

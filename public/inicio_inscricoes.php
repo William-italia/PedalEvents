@@ -100,7 +100,7 @@ WHERE
                     
                 </ul>
                 <div class="w-[55px] h-[55px] rounded-[100%] bg-cover bg-center"
-                    style="background-image: url(./assets/img/person1.png);"></div>
+                    ></div>
             </div>
         </nav>
     </header>
@@ -112,12 +112,12 @@ WHERE
             <div class="flex  justify-between ">
                 <div class="flex space-x-10 items-center justify-between">
                     <div class="w-[200px] h-[200px] border-2 border-color-primary rounded-[100%] bg-cover bg-center"
-                        style="background-image: url(./assets/img/person1.png);">
+                        style="background-image: url(./uploads/<?= $USER['img']?>);">
                     </div>
                     <div>
                         <h2 class="font-medium text-3xl mb-4"><?= $USER['nome_completo'] ?></h2>
-                        <p class="w-[60%] my-6"><?= $USER['bio'] ?></p>
-                        <p class="font-medium"><?= $USER['cidade'] ?>, <?= $USER['estado'] ?></p>
+                        <p class="w-[80%] my-6"><?= $USER['bio'] ?></p>
+                        <p class="font-medium"><?= $USER['cidade'] ?><?= isset($USER['estado']) ? ', ' . $USER['estado'] : ''?></p>
                     </div>
                 </div>
                 <div>

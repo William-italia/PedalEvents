@@ -1,3 +1,82 @@
+<?php
+session_start();
+
+require '../app/database.php';
+
+$stmt = $pdo->prepare
+(
+
+    'SELECT * FROM usuarios WHERE id = :id'
+
+);
+
+
+$id =  $_SESSION['usuario_id'];
+
+$stmt->bindParam(':id', $id);
+
+$stmt->execute();
+
+$usuario = $stmt->fetch();
+
+
+$file = $_FILES['img'];
+
+if($file['error'] === UPLOAD_ERR_OK) {
+    $uploadDir = 'uploads/';
+
+    if(!is_dir($uploadDir)) 
+    {
+      mkdir($uploadDir, 0755, true);
+    }
+
+    // create file name
+    $filename = uniqid() . '-' . $file['name'];
+
+    // upload file
+    move_uploaded_file($file['tmp_name'], $uploadDir . $filename);  
+  }
+
+  if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $sql = "UPDATE usuarios 
+    SET nome_completo = :nome_completo,
+        nome_organizacao = :nome_organizacao,
+        cidade = :cidade,
+        estado = :estado,
+        data_nascimento = :data_nascimento,
+        bio = :bio,
+        img = :img
+    WHERE id = :id";
+
+// Prepara a consulta
+$stmt = $pdo->prepare($sql);
+
+// Vinca os parâmetros aos valores fornecidos
+$stmt->bindParam(':nome_completo', $_POST['nomeCompleto']);
+$stmt->bindParam(':nome_organizacao', $_POST['organizacao']);
+$stmt->bindParam(':cidade', $_POST['cidade']);
+$stmt->bindParam(':estado', $_POST['estado']);
+$stmt->bindParam(':data_nascimento', $_POST['dataNascimento']);
+$stmt->bindParam(':bio', $_POST['bio']);
+if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
+
+    $stmt->bindParam(':img', $filename);
+} else {
+    $stmt->bindParam(':img', $usuario['img']); 
+}
+
+$stmt->bindParam(':id', $id);
+
+// Executa a consulta
+$stmt->execute();
+
+
+
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +120,7 @@
                     
                 </ul>
                 <div class="w-[55px] h-[55px] rounded-[100%] bg-cover bg-center"
-                    style="background-image: url(./assets/img/person1.png);"></div>
+                   ></div>
             </div>
         </nav>
     </header>
@@ -57,17 +136,26 @@
             <div class="w-full h-full">
                 <h2 class="text-3xl font-medium">Editar Perfil</h2>
                 <div class="w-full h-full">
-                    <form action="" method="" enctype="multipart/form-data" class="w-full h-full">
+                    <form action="" method="POST" enctype="multipart/form-data" class="w-full h-full">
                         <div class="w-[100%] h-full flex flex-col justify-center">
-                            <!-- img perfil -->
-                            <div class="flex flex-col items-center">
-                                <div class="w-[200px] h-[200px] border-2 border-color-primary rounded-[100%] bg-cover bg-center"
-                                    style="background-image: url(./assets/img/person1.png);">
-                                </div>
-                                <button type="button"
-                                    class="px-10 py-2 bg-color-primary rounded-lg mt-6 hover:opacity-80">Alterar
-                                    Foto</button>
-                            </div>
+                       <!-- img perfil -->
+<div class="flex flex-col items-center">
+    <div class="w-[200px] h-[200px] border-2 border-color-primary rounded-[100%] bg-cover bg-center"
+        style="background-image: url(./uploads/<?= $usuario['img']?>);">
+    </div>
+    <label for="img" class="px-10 py-2 bg-color-primary rounded-lg mt-6 hover:opacity-80 cursor-pointer">Alterar Foto</label>
+    <input type="file" name="img" id="img" class="hidden" onchange="updateFileName()">
+</div>
+
+<script>
+    function updateFileName() {
+        const fileInput = document.getElementById('img');
+        const fileNameDisplay = document.getElementById('file-name');
+        const fileName = fileInput.files[0] ? fileInput.files[0].name : 'Nenhum arquivo selecionado';
+        fileNameDisplay.textContent = fileName;
+    }
+</script>
+
 
                             <!-- box inputs -->
                             <div class="px-[210px] mt-10 flex flex-col ">
@@ -77,14 +165,14 @@
                                         <label for="">Nome Completo:</label>
                                         <input
                                             class="bg-transparent border-2 border-[#c5c5c5] rounded-lg p-[.4rem] mt-2"
-                                            type="text" name="" id="">
+                                            type="text" name="nomeCompleto" id="" value="<?= $usuario['nome_completo']?>">
                                     </div>
                                     <!-- box input -->
                                     <div class="flex flex-col ">
                                         <label for="">Nome da Organização:</label>
                                         <input
                                             class="bg-transparent border-2 border-[#c5c5c5] rounded-lg p-[.4rem] mt-2"
-                                            type="text" name="" id="">
+                                            type="text" name="organizacao" id="" value="<?= $usuario['nome_organizacao']?>">
                                     </div>
                                     <!-- box input -->
                                     <div class="flex  mt-4">
@@ -92,25 +180,25 @@
                                             <label for="">Cidade:</label>
                                             <input
                                                 class="bg-transparent border-2 border-[#c5c5c5] rounded-lg p-[.4rem] mt-2"
-                                                type="text" name="" id="">
+                                                type="text" name="cidade" id="" value="<?= $usuario['cidade']?>">
                                         </div>
                                         <div class="flex flex-col w-[10%]">
                                             <label for="">UF:</label>
                                             <input
                                                 class="bg-transparent border-2 border-[#c5c5c5] rounded-lg p-[.4rem] mt-2"
-                                                type="text" name="" id="">
+                                                type="text" name="estado" id="" value="<?= $usuario['estado']?>">
                                         </div>
                                     </div>
                                     <div class="flex flex-col  mt-4 ">
                                         <label for="">Data de nascimento:</label>
                                         <input
                                             class="bg-transparent text-white border-2 border-[#c5c5c5] rounded-lg p-[.4rem] mt-2"
-                                            type="date" name="" id="">
+                                            type="date" name="dataNascimento" id="" value="<?= $usuario['data_nascimento']?>">
                                     </div>
                                     <div class="flex flex-col  mt-4">
                                         <label for="">Descrição:</label>
-                                        <textarea name="" id=""
-                                            class="h-[200px] bg-transparent border-2 border-[#c5c5c5] rounded-lg p-[.4rem] mt-2"></textarea>
+                                        <textarea name="bio" id=""
+                                            class="h-[200px] bg-transparent border-2 border-[#c5c5c5] rounded-lg p-[.4rem] mt-2"><?= $usuario['bio']?></textarea>
                                     </div>
 
                                 </div>
@@ -125,6 +213,8 @@
         </div>
     </section>
 
+    <?= var_dump($_POST)?>
+   
 </body>
 
 </html>
