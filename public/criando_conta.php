@@ -45,7 +45,6 @@
     
         } catch (PDOException $e) {
             // Se ocorrer algum erro, exibe a mensagem de erro
-            echo "Erro ao inserir usuário: " . $e->getMessage();
         }
     }
     

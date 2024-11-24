@@ -1,8 +1,7 @@
 CREATE DATABASE pedalEvents1;
-DROP DATABASE IF EXISTS pedalEvents1;
+
 USE pedalEvents1;
 
--- Tabela de Usuários
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_completo VARCHAR(255) NOT NULL,
@@ -17,24 +16,24 @@ CREATE TABLE usuarios (
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabela de Categorias
+
 CREATE TABLE categorias (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_categoria VARCHAR(50) NOT NULL UNIQUE
 );
 
--- Tabela de Dificuldades
+
 CREATE TABLE dificuldades (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_dificuldade VARCHAR(50) NOT NULL UNIQUE
 );
 
--- Tabela de Eventos
+
 CREATE TABLE eventos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,
-    dificuldade_id INT, -- Ligação com a tabela de dificuldades
-    categoria_id INT, -- Ligação com a tabela de categorias
+    dificuldade_id INT,
+    categoria_id INT, 
     nome_evento VARCHAR(255) NOT NULL,
     data_evento DATETIME NOT NULL,
     data_fim_inscricao DATETIME,
@@ -56,7 +55,7 @@ CREATE TABLE eventos (
     FOREIGN KEY (dificuldade_id) REFERENCES dificuldades(id)
 );
 
--- Tabela de Inscrições
+
 CREATE TABLE inscricao (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,

@@ -7,27 +7,13 @@
     require '../app/database.php';
     
     $stmt = $pdo->prepare(
-            'SELECT 
-    e.*,
-    u.nome_completo AS nome_usuario_criador,
-    c.nome_categoria,
-    d.nome_dificuldade
-FROM 
-    eventos e
-JOIN 
-    usuarios u ON e.usuario_id = u.id
-JOIN 
-    inscricao i ON e.id = i.evento_id
-JOIN 
-    categorias c ON e.categoria_id = c.id
-JOIN 
-    dificuldades d ON e.dificuldade_id = d.id
-WHERE 
-    i.usuario_id = :id;
-        '
+            'SELECT e.*
+FROM eventos e
+JOIN inscricao i ON e.id = i.evento_id
+WHERE i.usuario_id = :id'
     );  
     
-    $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $user_id);
 
     $stmt->execute();
     
@@ -146,7 +132,7 @@ WHERE
                  <?php foreach($eventos_user as $evento) :?>
                     <div class="bg-white text-black h-[36rem] rounded-2xl card-sombra ">
                         <div class="flex items-center justify-center w-full h-[48%] mb-2 bg-cover bg-center"
-                            style="background-image: url('./assets/img/evento.png');">
+                            style="background-image: url('./uploads/<?= $evento['imagem']?>');">
                             <!-- Conteúdo opcional dentro da div -->
                         </div>
 

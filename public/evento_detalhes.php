@@ -1,3 +1,87 @@
+<?php
+
+session_start();
+
+require '../app/database.php';
+require '../app/helpers.php';
+
+$id = $_SESSION['usuario_id'];
+
+$idEvento = $_GET['id'];
+
+$sql = '  SELECT 
+        eventos.*, 
+        usuarios.*,
+        dificuldades.*,
+        categorias.*
+    FROM 
+        eventos
+    JOIN 
+        usuarios 
+    ON 
+        eventos.usuario_id = usuarios.id
+    JOIN
+        dificuldades
+    ON
+        eventos.dificuldade_id = dificuldades.id
+    JOIN 
+        categorias
+    ON 
+        eventos.categoria_id = categorias.id
+    WHERE 
+        eventos.id = :id
+';
+
+$stmtEvento = $pdo->prepare($sql);
+
+$stmtEvento->bindParam(':id', $idEvento);
+$stmtEvento->execute();
+
+$evento = $stmtEvento->fetch();
+
+$sqlInscricao = 'SELECT * FROM inscricao WHERE evento_id = :event_id AND usuario_id = :user_id';
+$stmtInscricao = $pdo->prepare($sqlInscricao);
+$stmtInscricao->bindParam(':event_id', $idEvento);
+$stmtInscricao->bindParam(':user_id', $id);
+$stmtInscricao->execute();
+$inscricao = $stmtInscricao->fetch();
+
+
+$topicos = transformaEmArray($evento['topicos'], ' | ', ' % ', 'titulo', 'conteudo');
+$links = transformaEmArray($evento['links'], ', ', ' - ', 'link', 'url');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'insert') {
+    
+    $sql = $sql = 'INSERT INTO inscricao (usuario_id, evento_id) VALUES (:user_id, :event_id)';
+
+    // Preparando a query
+    $stmtInscricao = $pdo->prepare($sql);
+
+    // Bind dos parâmetros
+    $stmtInscricao->bindParam(':user_id', $_POST['usuario_id']);
+    $stmtInscricao->bindParam(':event_id', $_POST['evento_id']);
+
+   $stmtInscricao->execute();
+  
+   header('refresh: 1');
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'DELETEEVENT') {
+    
+    $sql = 'DELETE FROM eventos WHERE id = :event_id';
+
+    // Preparando a query
+    $stmtInscricao = $pdo->prepare($sql);
+
+    // Bind dos parâmetros
+    $stmtInscricao->bindParam(':event_id', $_POST['evento_id']);
+
+   $stmtInscricao->execute();
+  
+   header('location: inicio.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +133,7 @@
                     <!-- father box -->
                     <div class="w-[100%] md:w-[70%] flex flex-col items-center justify-center">
                         <!-- banner box -->
-                        <div style="background-image: url(./assets/img/event-img3.png);" id="imgPreviewElement"
+                        <div style="background-image: url('./uploads/<?= $evento['imagem'] ?>');" id="imgPreviewElement"
                             class="w-full bg-gray-600 h-[500px] rounded-t-xl relative bg-cover bg-center">
                         </div>
                         <!-- father boxs (form and links) -->
@@ -61,58 +145,61 @@
 
                                     <div class="border-b-2 p-2 mb-8">
                                         <ul class="flex space-x-10 ">
-                                            <li><a href="./evento_detalhes.php"
+                                            <li><a href="./evento_detalhes.php?id=<?= $idEvento ?>"
                                                     class="font-bold border-b-2 border-color-primary p-[.6rem]">Detalhes</a>
                                             </li>
-                                            <li><a href="./evento_membros.php">Membros</a></li>
-                                            <li><a href="">Editar Detalhes</a></li>
-                                            <li><a href="">Excluir</a></li>
+                                            <li><a href="./evento_membros.php?id=<?= $idEvento ?>">Participantes</a></li>
+                                            <?php 
+                                            
+                                            if($id == $evento['usuario_id']) { 
+                                                echo 
+                                                ' <li><a href="">Editar Detalhes</a></li>
+                                                  <li>
+                                            <form action="" method="POST">
+                                                <input type="hidden" name="evento_id" value="' . $idEvento . '">
+                                                <input type="hidden" name="_method" value="DELETEEVENT">
+                                                <button type="submit"
+                                                  >
+                                                    Excluir
+                                                </button>
+                                            </form>
+                                            </li>
+                                                ';                                            }
+                                            
+                                            ?>
+                                          
+                                            
                                         </ul>
                                     </div>
 
                                     <div class="flex flex-col">
-                                        <p class="font-roboto font-bold text-3xl my-4">Competição Urbana</p>
+                                        <p class="font-roboto font-bold text-3xl my-4"><?= $evento['nome_evento'] ?></p>
                                     </div>
 
                                     <div class="grid grid-cols-2 gap-6 mt-4 text-xl">
-                                        <div><i class="mr-2 fa-solid fa-bookmark"></i> William Italia Nogueira</div>
-                                        <div><i class="mr-2 fa-solid fa-trophy"></i> Intermediário</div>
-                                        <div><i class="mr-2 fa-solid fa-calendar-days"></i> 25/12/2024 ás 06:00</div>
-                                        <div><i class="mr-2 fa-solid fa-layer-group"></i> Ciclismo Urbano</div>
-                                        <div><i class="mr-2 fa-solid fa-city"></i> Mongaguá</div>
-                                        <div><i class="mr-2 fa-solid fa-user"></i> Vagas: 50</div>
-                                        <div><i class="mr-2 fa-solid fa-map"></i> Av das bicicletas, 5456</div>
-                                        <div><i class="mr-2 fa-solid fa-bicycle"></i>40 Km</div>
+                                        <div><i class="mr-2 fa-solid fa-bookmark"></i><?= $evento['nome_completo'] ?></div>
+                                        <div><i class="mr-2 fa-solid fa-trophy"></i> <?= $evento['nome_dificuldade'] ?></div>
+                                        <div><i class="mr-2 fa-solid fa-calendar-days"></i><?= formataData($evento['data_evento'])?></div>
+                                        <div><i class="mr-2 fa-solid fa-layer-group"></i> <?= $evento['nome_categoria'] ?></div>
+                                        <div><i class="mr-2 fa-solid fa-city"></i><?= $evento['cidade'] ?></div>
+                                        <div><i class="mr-2 fa-solid fa-user"></i> Vagas: <?= $evento['limite_vagas'] ?></div>
+                                        <div><i class="mr-2 fa-solid fa-map"></i><?= $evento['ponto_encontro'] . ', ' . $evento['bairro_encontro'] ?></div>
+                                        <div><i class="mr-2 fa-solid fa-map"></i> <?= $evento['ponto_chegada'] . ', ' . $evento['bairro_chegada'] ?></div>
+                                        <div><i class="mr-2 fa-solid fa-map"></i>Idade Minima: <?= $evento['idade_minima']?></div>
+                                        <div><i class="mr-2 fa-solid fa-bicycle"></i>Distância: <?= number_format($evento['distancia'], 1, '.', '') ?>Km</div>
                                     </div>
 
                                     <!-- topics - father box -->
                                     <div class="mt-10">
                                         <ul id="topics">
-                                            <li>
-                                                <div class="flex flex-col mb-10">
-                                                    <h2 class="text-xl underline mb-6 font-medium ">Sobre o Evento</h2>
-                                                    <p class="font-roboto text-1xl  leading-7">Junte-se a nós para a
-                                                        emocionante
-                                                        Corrida na Estrada de nível
-                                                        intermediário, organizada por Antonio Garcia de Olinda. Este
-                                                        evento desafiante de 30km será realizado na bela Praia Grande,
-                                                        oferecendo aos corredores um percurso único que combina a beleza
-                                                        da costa com a adrenalina de uma corrida de estrada.</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="flex flex-col mb-10 ">
-                                                    <h2 class="text-xl underline mb-6 font-medium">Programação</h2>
-                                                    <p class="font-roboto text-1xl leading-7">6:00 - Abertura do
-                                                        evento
-                                                        e entrega
-                                                        dos kits <br>
-                                                        6:45 - Aquecimento e orientações <br>
-                                                        7:00 - Largada <br>
-                                                        10:00 - Premiação e encerramento</p>
-                                                </div>
-                                            </li>
-
+                                            <?php foreach($topicos as $topico): ?>
+                                                <li>
+                                                    <div class="flex flex-col mb-10">
+                                                        <h2 class="text-xl underline mb-6 font-medium "><?= $topico['titulo'] ?></h2>
+                                                        <p class="font-roboto text-1xl  leading-7"><?= $topico['conteudo'] ?></p>
+                                                        </div>
+                                                    </li>
+                                                    <?php endforeach; ?>
                                         </ul>
 
                                     </div>
@@ -124,30 +211,52 @@
                             <div class="w-[30%] bg-slate-0 border-l-2 p-4">
                                 <div>
                                     <p>Inscrições Abertas</p>
-                                    <p
-                                        class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
-                                        Inscreva-se</p>
-                                    <p class="border-b-2 py-4">Evento ficará aberto até 25/12/2024 ou até o limite de
+                                    <?php
+                                    
+                                    if ($id == $evento['usuario_id']) {
+                                        echo '
+                                        <p class="p-2 bg-[#D3D3D3] rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
+                                            Criador do Evento
+                                        </p>
+                                        ';
+                                    } else {
+                                        if ($inscricao) {
+                                            // Caso o usuário já esteja inscrito
+                                            echo '
+                                            <p class="p-2 bg-[#D3D3D3] rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
+                                                Inscrito
+                                            </p>
+                                            ';
+                                        } else {
+                                            // Caso o usuário não esteja inscrito
+                                            echo '
+                                            <form action="" method="POST">
+                                                <input type="hidden" name="evento_id" value="' . $idEvento . '">
+                                                <input type="hidden" name="usuario_id" value="' . $id . '">
+                                                <input type="hidden" name="_method" value="insert">
+                                                <button type="submit"
+                                                    class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
+                                                    Inscreva-se
+                                                </button>
+                                            </form>
+                                            ';
+                                        }
+                                    }
+                                    
+                                    ?>
+                                    <p class="border-b-2 py-4">Evento ficará aberto até <?= formataData($evento['data_fim_inscricao']) ?> ou até o limite de
                                         vagas for atingido!</p>
                                 </div>
                                 <!-- links box -->
                                 <div>
                                     <ul id="links" class="flex flex-col gap-4 text-1xl mt-8">
                                         <h2 class="text-xl font-roboto font-medium">Links importantes:</h2>
-                                        <li>
-                                            <a href="https://www.instagram.com/pedaleventsoficial/" target="_blank"><i
-                                                    class="fa-solid fa-up-right-from-square mr-2"></i> Instagram do
-                                                Pedal</a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.instagram.com/pedaleventsoficial/" target="_blank"><i
-                                                    class="fa-solid fa-up-right-from-square mr-2"></i>Grupo WhatsApp</a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.instagram.com/pedaleventsoficial/" target="_blank"><i
-                                                    class="fa-solid fa-up-right-from-square mr-2"></i> Site Oficial Do
-                                                Evento</a>
-                                        </li>
+                                        <?php foreach($links as $link): ?>
+                                            <li>
+                                                <a href="<?= $link['url'] ?>" target="_blank"><i
+                                                class="fa-solid fa-up-right-from-square mr-2"></i><?= $link['link']?></a>
+                                            </li>
+                                        <?php endforeach; ?>
                                     </ul>
                                 </div>
                             </div>
@@ -158,7 +267,6 @@
             </div>
         </div>
     </section>
-
 
     <script src="./assets/js/home.js"></script>
 </body>

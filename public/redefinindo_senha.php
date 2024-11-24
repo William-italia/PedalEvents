@@ -1,3 +1,31 @@
+<?php 
+
+
+
+require '../app/database.php';
+
+
+if(isset($_POST['cpf'])) {
+
+    $sql = 'SELECT * FROM usuarios WHERE cpf = :cpf';
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->bindParam(':cpf', $_POST['cpf']);
+    $stmt->execute();
+    $user = $stmt->fetch();
+
+    if($user) {
+        session_start(); // Inicia uma sessão
+        $_SESSION['usuario_id_senha'] = $user['id']; // Salva o ID do usuário na sessão
+        header('Location: confirmando_senha.php');
+    } else {
+        header('Location: redefinindo_senha.php');
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +53,7 @@
         </div>
     
         <!-- inputs -->
-        <form
+        <form method="POST"
             class="bgGradiente w-full flex flex-col p-[6.25rem] lg:w-1/2 lg:p-0 lg:items-center lg:rounded-tl-[1.25rem] lg:rounded-bl-[1.25rem]">
             <h1 class="text-4xl mx-auto font-russo text-white my-24 mt-[10rem]"><span class="text-colorLogo">Pedal</span>
                 Events
@@ -37,13 +65,13 @@
             <div class="flex mx-auto flex-col space-y-4">
                 <div class="flex flex-col text-white">
                     <label for="" class="mb-2">Email:</label>
-                    <input type="text"
+                    <input type="text" name="email"
                         class="w-[18.75rem] p-2 border border-white bg-transparent rounded-md placeholder-white placeholder-opacity-50 focus:outline-none lg:w-[25rem]"
                         placeholder="Digite seu email">
                 </div>
                 <div class="flex flex-col text-white">
                     <label for="" class="mb-2">CPF:</label>
-                    <input type="text"
+                    <input type="text" name="cpf"
                         class="w-[18.75rem] p-2 border border-white bg-transparent rounded-md placeholder-white placeholder-opacity-50 focus:outline-none lg:w-[25rem]"
                         placeholder="Digite sua senha">
                 </div>
@@ -52,7 +80,7 @@
             <!-- botoes de recuperação de conta, continuar, e criar -->
             <div class="mx-auto text-white mt-[3.1rem] lg:w-[25rem] w-full max-w-[18.75rem] lg:max-w-[25rem]">
                 <div class="flex flex-col space-y-4 text-center mt-2">
-                    <a href="./corfimando.php" class="w-full p-2 border rounded-md duration-200 hover:opacity-50">Checar os dados</a>
+                    <button type="submit" class="w-full p-2 border rounded-md duration-200 hover:opacity-50">Checar os dados</button>
                     <a href="./login.php"
                         class="w-full p-2 border rounded-md bgGradiente duration-200 hover:opacity-50">Voltar</a>
                 </div>

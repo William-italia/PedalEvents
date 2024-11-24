@@ -1,3 +1,33 @@
+<?php
+session_start();
+
+require '../app/database.php';
+
+// Verifica se o formulário foi enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Verifica se as senhas coincidem
+    if ($_POST['senha'] === $_POST['confirmar_senha']) {
+        // Criptografa a nova senha
+       
+
+        // Prepara o SQL para atualizar a senha no banco de dados
+        $sql = 'UPDATE usuarios SET senha = :senha WHERE id = :id';
+        $stmt = $pdo->prepare($sql);
+
+        // Bind dos parâmetros
+        $stmt->bindParam(':senha', $_POST['senha']);
+        $stmt->bindParam(':id', $_SESSION['usuario_id_senha']);
+
+        // Executa a query
+        if($stmt->execute()) {
+            header('location: login.php');
+        }
+
+
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +55,7 @@
         </div>
     
         <!-- inputs -->
-        <div
+        <form method="POST"
             class="bgGradiente w-full flex flex-col p-[6.25rem] lg:w-1/2 lg:p-0 lg:items-center lg:rounded-tl-[1.25rem] lg:rounded-bl-[1.25rem]">
             <h1 class="text-4xl mx-auto font-russo text-white my-24 mt-[10rem]"><span class="text-colorLogo">Pedal</span>
                 Events
@@ -37,13 +67,13 @@
             <div class="flex mx-auto flex-col space-y-4">
                 <div class="flex flex-col text-white">
                     <label for="" class="mb-2">Senha nova:</label>
-                    <input type="text"
+                    <input type="password" name="senha"
                         class="w-[18.75rem] p-2 border border-white bg-transparent rounded-md placeholder-white placeholder-opacity-50 focus:outline-none lg:w-[25rem]"
-                        placeholder="Digite seu email">
+                        placeholder="Digite sua senha">
                 </div>
                 <div class="flex flex-col text-white">
                     <label for="" class="mb-2">Confirme a senha:</label>
-                    <input type="text"
+                    <input type="password" name="confirmar_senha" 
                         class="w-[18.75rem] p-2 border border-white bg-transparent rounded-md placeholder-white placeholder-opacity-50 focus:outline-none lg:w-[25rem]"
                         placeholder="Digite sua senha">
                 </div>
@@ -52,12 +82,12 @@
             <!-- botoes de recuperação de conta, continuar, e criar -->
             <div class="mx-auto text-white mt-[3.1rem] lg:w-[25rem] w-full max-w-[18.75rem] lg:max-w-[25rem]">
                 <div class="flex flex-col space-y-4 text-center mt-2">
-                    <button class="w-full p-2 border rounded-md bgGradiente duration-200 hover:opacity-50">Confirmar
+                    <button type="submit" class="w-full p-2 border rounded-md bgGradiente duration-200 hover:opacity-50">Confirmar
                     </button>
                 </div>
             </div>
     
-        </div>
+        </form>
     </section>
     <script src="./assets/js/script.js"></script>
 </body>

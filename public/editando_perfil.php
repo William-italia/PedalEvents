@@ -69,7 +69,9 @@ if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
 $stmt->bindParam(':id', $id);
 
 // Executa a consulta
-$stmt->execute();
+if($stmt->execute()){
+    header('location: inicio.php');
+}
 
 
 
@@ -213,7 +215,7 @@ $stmt->execute();
         </div>
     </section>
 
-    <?= var_dump($_POST)?>
+
    
 </body>
 

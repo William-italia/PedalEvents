@@ -35,10 +35,6 @@ $stmtUser->execute();
 
 $user = $stmtUser->fetch();
 
-
-
-
-
 $file = $_FILES['banner'];
 
 
@@ -61,95 +57,7 @@ move_uploaded_file($file['tmp_name'], $uploadDir . $filename);
 
   }
 
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-    $links = [];
-    foreach ($_POST['links'] as $link) {
-        $links[] = implode(' - ', $link); // junta os links com " - "
-    }
-
-    $topicos = []; 
-    foreach ($_POST['topico'] as $topico) {
-        $topicos[] = implode(' | ', $topico); // junta os tópicos com " | "
-    }
-
-    $linksString = implode(', ', $links); // Junta todos os links com ", "
-    $topicosString = implode(' % ', $topicos); // Junta todos os tópicos com " % "
-
-    // Prepare a consulta SQL
-    $sql = '
-        INSERT INTO eventos (
-            usuario_id, 
-            dificuldade_id, 
-            categoria_id, 
-            nome_evento, 
-            data_evento, 
-            data_fim_inscricao, 
-            cidade, 
-            estado, 
-            ponto_encontro, 
-            bairro_encontro, 
-            ponto_chegada, 
-            bairro_chegada, 
-            idade_minima, 
-            limite_vagas, 
-            distancia, 
-            imagem, 
-            links, 
-            topicos
-        ) VALUES (
-            :usuario_id, 
-            :dificuldade_id, 
-            :categoria_id, 
-            :nome_evento, 
-            :data_evento, 
-            :data_fim_inscricao, 
-            :cidade, 
-            :estado, 
-            :ponto_encontro, 
-            :bairro_encontro, 
-            :ponto_chegada, 
-            :bairro_chegada, 
-            :idade_minima, 
-            :limite_vagas, 
-            :distancia, 
-            :imagem, 
-            :links, 
-            :topicos
-        )
-    ';
-    
-    // Prepare a consulta
-    $stmtEvento = $pdo->prepare($sql);
-    
-    
-    // Execute o bindParam
-    $stmtEvento->bindParam(':usuario_id', $id);
-    $stmtEvento->bindParam(':dificuldade_id', $_POST['difficulty']);
-    $stmtEvento->bindParam(':categoria_id', $_POST['category']);
-    $stmtEvento->bindParam(':nome_evento', $_POST['nameEvent']);
-    $stmtEvento->bindParam(':data_evento', $_POST['date']);
-    $stmtEvento->bindParam(':data_fim_inscricao', $_POST['data_fim_inscricao']);
-    $stmtEvento->bindParam(':cidade', $_POST['city']);
-    $stmtEvento->bindParam(':estado', $_POST['estado']);
-    $stmtEvento->bindParam(':ponto_encontro', $_POST['pontaA']);
-    $stmtEvento->bindParam(':bairro_encontro', $_POST['pontoAbairro']);
-    $stmtEvento->bindParam(':ponto_chegada', $_POST['pontoB']);
-    $stmtEvento->bindParam(':bairro_chegada', $_POST['pontoBbairro']);
-    $stmtEvento->bindParam(':idade_minima', $_POST['age']);
-    $stmtEvento->bindParam(':limite_vagas', $_POST['slots']);
-    $stmtEvento->bindParam(':distancia', $_POST['km']);
-    $stmtEvento->bindParam(':imagem', $filename);
-    $stmtEvento->bindParam(':links', $linksString);
-    $stmtEvento->bindParam(':topicos', $topicosString);
-    
-    // Execute a consulta
-    if ($stmtEvento->execute()) {
-        header('location: inicio.php');
-    } else {
-        echo "Erro ao criar evento.";
-    }
-}
+  
 
 ?>
 

@@ -1,3 +1,97 @@
+<?php
+
+session_start();
+
+require '../app/database.php';
+require '../app/helpers.php';
+
+$id = $_SESSION['usuario_id'];
+
+$idEvento = $_GET['id'];
+
+$sql = 'SELECT * FROM eventos WHERE id = :id';
+
+$stmtEvento = $pdo->prepare($sql);
+
+$stmtEvento->bindParam(':id', $idEvento);
+$stmtEvento->execute();
+
+$evento = $stmtEvento->fetch();
+
+$sqlInscricao = 'SELECT * FROM inscricao WHERE evento_id = :event_id AND usuario_id = :user_id';
+$stmtInscricao = $pdo->prepare($sqlInscricao);
+$stmtInscricao->bindParam(':event_id', $idEvento);
+$stmtInscricao->bindParam(':user_id', $id);
+$stmtInscricao->execute();
+$inscricao = $stmtInscricao->fetch();
+
+
+$sql = 'SELECT usuarios.id AS usuario_id, usuarios.nome_completo, usuarios.img, usuarios.cidade, usuarios.estado
+        FROM usuarios
+        JOIN inscricao ON usuarios.id = inscricao.usuario_id
+        WHERE inscricao.evento_id = :evento_id';
+
+$stmtParticipantes = $pdo->prepare($sql);
+
+$stmtParticipantes->bindParam(':evento_id', $idEvento);
+$stmtParticipantes->execute();
+
+$participantes = $stmtParticipantes->fetchAll();
+
+
+$links = transformaEmArray($evento['links'], ', ', ' - ', 'link', 'url');
+
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'DELETE') {
+    // SQL DELETE
+    $sql = 'DELETE FROM inscricao WHERE usuario_id = :user_id AND evento_id = :event_id';
+
+    // Preparando a query
+    $stmtDelete = $pdo->prepare($sql);
+
+    // Bind dos parâmetros
+    $stmtDelete->bindParam(':user_id', $_POST['usuario_id']);
+    $stmtDelete->bindParam(':event_id', $_POST['evento_id']);
+
+   $stmtDelete->execute();
+  
+   header('refresh: 1');
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'insert') {
+    // SQL DELETE
+    $sql = $sql = 'INSERT INTO inscricao (usuario_id, evento_id) VALUES (:user_id, :event_id)';
+
+    // Preparando a query
+    $stmtDelete = $pdo->prepare($sql);
+
+    // Bind dos parâmetros
+    $stmtDelete->bindParam(':user_id', $_POST['usuario_id']);
+    $stmtDelete->bindParam(':event_id', $_POST['evento_id']);
+
+   $stmtDelete->execute();
+  
+   header('refresh: 1');
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'DELETEEVENT') {
+    
+    $sql = 'DELETE FROM eventos WHERE id = :event_id';
+
+    // Preparando a query
+    $stmtInscricao = $pdo->prepare($sql);
+
+    // Bind dos parâmetros
+    $stmtInscricao->bindParam(':event_id', $_POST['evento_id']);
+
+   $stmtInscricao->execute();
+  
+   header('location: inicio.php');
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +144,7 @@
                     <!-- father box -->
                     <div class="w-[100%] md:w-[70%] flex flex-col items-center justify-center">
                         <!-- banner box -->
-                        <div style="background-image: url(./assets/img/event-img3.png);" id="imgPreviewElement"
+                        <div style="background-image: url('./uploads/<?= $evento['imagem']?>');" id="imgPreviewElement"
                             class="w-full bg-gray-600 h-[500px] rounded-t-xl relative bg-cover bg-center">
                         </div>
                         <!-- father boxs (form and links) -->
@@ -62,32 +156,64 @@
 
                                     <div class="border-b-2 p-2 mb-8">
                                         <ul class="flex space-x-10 ">
-                                            <li><a href="./evento_detalhes.php">Detalhes</a>
+                                            <li><a href="./evento_detalhes.php?id=<?= $evento['id'] ?>">Detalhes</a>
                                             </li>
-                                            <li><a href="./evento_membros.php"
-                                                    class="font-bold border-b-2 border-color-primary p-[.6rem]">Membros</a>
+                                            <li><a href="./evento_membros.php?id=<?= $evento['id'] ?>"
+                                                    class="font-bold border-b-2 border-color-primary p-[.6rem]">Participantes</a>
                                             </li>
-                                            <li><a href="">Editar Detalhes</a></li>
-                                            <li><a href="">Excluir</a></li>
+                                            <?php 
+                                            
+                                            if($id == $evento['usuario_id']) { 
+                                                echo 
+                                                ' <li><a href="editando_evento.php?id=' . $evento['id'] . '">Editar Detalhes</a></li>
+
+                                                  <li>
+                                            <form action="" method="POST">
+                                                <input type="hidden" name="evento_id" value="' . $idEvento . '">
+                                                <input type="hidden" name="_method" value="DELETEEVENT">
+                                                <button type="submit"
+                                                  >
+                                                    Excluir
+                                                </button>
+                                            </form>
+                                            </li>
+                                                ';                                            }
+                                            
+                                            ?>
                                         </ul>
                                     </div>
 
                                     <div>
-                                        <h2 class="font-roboto font-bold text-3xl my-4">Membros</h2>
+                                        <h2 class="font-roboto font-bold text-3xl my-4">Participantes</h2>
                                         <ul>
-                                            <li>
-                                                <div class="flex items-center space-x-4 border-b-2 py-4 w-full">
-                                                    <div class="w-[55px] h-[50px] rounded-[100%] bg-cover bg-center"
-                                                        style="background-image: url(./assets/img/person1.png);"></div>
-                                                    <div class="w-full">
-                                                        <p class="font-medium text-xl"><a href="">William Italia</a>
+                                            <?php foreach($participantes as $participante): ?>
+                                                <li>
+                                                    <div class="flex items-center space-x-4 border-b-2 py-4 w-full">
+                                                        <div class="w-[55px] h-[50px] rounded-[100%] bg-cover bg-center"
+                                                        style="background-image: url('./uploads/<?= $participante['img']?>');"></div>
+                                                        <div class="w-full">
+                                                            <p class="font-medium text-xl"><a href=""><?= $participante['nome_completo']?></a>
                                                         </p>
-                                                        <p>Mongaguá, SP</p>
+                                                        <p><?= $participante['cidade'] . ', ' . $participante['estado'] ?></p>
                                                     </div>
-                                                    <button
-                                                        class="flex justify-end bg-red-500 inline-block p-2 rounded-lg text-white hover:opacity-80 duration-200">Remover</button>
+                                                    <?php
+                                                    if($id === $evento['usuario_id']) {
+                                                        echo '
+                                                        <form action="" method="POST">
+                                                            <input type="hidden" name="evento_id" value="' . $idEvento . '">
+                                                            <input type="hidden" name="usuario_id" value="' . $participante['usuario_id'] . '">
+                                                            <input type="hidden" name="_method" value="DELETE">
+                                                            <button type="submit"
+                                                                class="flex justify-end bg-red-500 inline-block p-2 rounded-lg text-white hover:opacity-80 duration-200">Remover</button>
+                                                        </form>
+                                                    ';
+                                                    }    
+                                                    ?>
+
+                                                 
                                                 </div>
                                             </li>
+                                            <?php endforeach; ?>
                                         </ul>
                                     </div>
 
@@ -97,30 +223,53 @@
                             <div class="w-[30%] bg-slate-0 border-l-2 p-4">
                                 <div>
                                     <p>Inscrições Abertas</p>
-                                    <p
-                                        class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
-                                        Inscreva-se</p>
-                                    <p class="border-b-2 py-4">Evento ficará aberto até 25/12/2024 ou até o limite de
+                                    <?php
+                                    
+                                    if ($id == $evento['usuario_id']) {
+                                        echo '
+                                        <p class="p-2 bg-[#D3D3D3] rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
+                                            Criador do Evento
+                                        </p>
+                                        ';
+                                    } else {
+                                        if ($inscricao) {
+                                            // Caso o usuário já esteja inscrito
+                                            echo '
+                                            <p class="p-2 bg-[#D3D3D3] rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
+                                                Inscrito
+                                            </p>
+                                            ';
+                                        } else {
+                                            // Caso o usuário não esteja inscrito
+                                            echo '
+                                            <form action="" method="POST">
+                                                <input type="hidden" name="evento_id" value="' . $idEvento . '">
+                                                <input type="hidden" name="usuario_id" value="' . $id . '">
+                                                <input type="hidden" name="_method" value="insert">
+                                                <button type="submit"
+                                                    class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
+                                                    Inscreva-se
+                                                </button>
+                                            </form>
+                                            ';
+                                        }
+                                    }
+                                    
+                                    ?>
+                                    
+                                    <p class="border-b-2 py-4">Evento ficará aberto até <?= formataData($evento['data_fim_inscricao']) ?> ou até o limite de
                                         vagas for atingido!</p>
                                 </div>
                                 <!-- links box -->
                                 <div>
                                     <ul id="links" class="flex flex-col gap-4 text-1xl mt-8">
                                         <h2 class="text-xl font-roboto font-medium">Links importantes:</h2>
-                                        <li>
-                                            <a href="https://www.instagram.com/pedaleventsoficial/" target="_blank"><i
-                                                    class="fa-solid fa-up-right-from-square mr-2"></i> Instagram do
-                                                Pedal</a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.instagram.com/pedaleventsoficial/" target="_blank"><i
-                                                    class="fa-solid fa-up-right-from-square mr-2"></i>Grupo WhatsApp</a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.instagram.com/pedaleventsoficial/" target="_blank"><i
-                                                    class="fa-solid fa-up-right-from-square mr-2"></i> Site Oficial Do
-                                                Evento</a>
-                                        </li>
+                                        <?php foreach($links as $link): ?>
+                                            <li>
+                                                <a href="<?= $link['url'] ?>" target="_blank"><i
+                                                class="fa-solid fa-up-right-from-square mr-2"></i><?= $link['link']?></a>
+                                            </li>
+                                        <?php endforeach; ?>
                                     </ul>
                                 </div>
                             </div>
