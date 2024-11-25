@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'insert') {
     // SQL DELETE
-    $sql = $sql = 'INSERT INTO inscricao (usuario_id, evento_id) VALUES (:user_id, :event_id)';
+    $sql = 'INSERT INTO inscricao (usuario_id, evento_id) VALUES (:user_id, :event_id)';
 
     // Preparando a query
     $stmtDelete = $pdo->prepare($sql);
@@ -74,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
   
    header('refresh: 1');
 }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'DELETEEVENT') {
     
     $sql = 'DELETE FROM eventos WHERE id = :event_id';
@@ -88,6 +89,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
   
    header('location: inicio.php');
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'EXIT') {
+    // SQL DELETE
+    $sql = 'DELETE FROM inscricao WHERE usuario_id = :user_id AND evento_id = :event_id
+';
+
+    // Preparando a query
+    $stmtExit = $pdo->prepare($sql);
+
+    // Bind dos parâmetros
+    $stmtExit->bindParam(':user_id', $id);
+    $stmtExit->bindParam(':event_id', $_POST['evento_id']);
+
+   $stmtExit->execute();
+  
+   header('refresh: 1');
+}
+
+$data_fim_inscricao = $evento['data_fim_inscricao'];
+
+$data_atual =date('Y-m-d H:i:s');
+
+$inscricao_encerrada = strtotime($data_atual) > strtotime($data_fim_inscricao);
 
 ?>
 
@@ -165,7 +189,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
                                             
                                             if($id == $evento['usuario_id']) { 
                                                 echo 
-                                                ' <li><a href="editando_evento.php?id=' . $evento['id'] . '">Editar Detalhes</a></li>
+                                                ' 
 
                                                   <li>
                                             <form action="" method="POST">
@@ -179,6 +203,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
                                             </li>
                                                 ';                                            }
                                             
+
+                                                if($inscricao) {
+                                                    echo 
+                                                    ' 
+                                                      <li>
+                                                <form action="" method="POST">
+                                                    <input type="hidden" name="evento_id" value="' . $idEvento . '">
+                                                    <input type="hidden" name="_method" value="EXIT">
+                                                    <button type="submit"
+                                                      >
+                                                        Sair
+                                                    </button>
+                                                </form>
+                                                </li>';
+                                                }
                                             ?>
                                         </ul>
                                     </div>
@@ -222,8 +261,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
                             <!-- links box -->
                             <div class="w-[30%] bg-slate-0 border-l-2 p-4">
                                 <div>
-                                    <p>Inscrições Abertas</p>
-                                    <?php
+                                <?php
                                     
                                     if ($id == $evento['usuario_id']) {
                                         echo '
@@ -232,7 +270,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
                                         </p>
                                         ';
                                     } else {
-                                        if ($inscricao) {
+                                    
+                                            if ($inscricao) {
                                             // Caso o usuário já esteja inscrito
                                             echo '
                                             <p class="p-2 bg-[#D3D3D3] rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
@@ -240,18 +279,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
                                             </p>
                                             ';
                                         } else {
+                                            if($inscricao_encerrada) {
+                                                echo '
+                                                <p class="p-2 bg-[#D3D3D3] rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
+                                                    Encerrado
+                                                </p>
+                                                ';
+                                            } else {
+                                                echo '
+                                                <form action="" method="POST">
+                                                    <input type="hidden" name="evento_id" value="' . $idEvento . '">
+                                                    <input type="hidden" name="usuario_id" value="' . $id . '">
+                                                    <input type="hidden" name="_method" value="insert">
+                                                    <button type="submit"
+                                                        class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
+                                                        Inscreva-se
+                                                    </button>
+                                                </form>
+                                                ';
+                                            }
                                             // Caso o usuário não esteja inscrito
-                                            echo '
-                                            <form action="" method="POST">
-                                                <input type="hidden" name="evento_id" value="' . $idEvento . '">
-                                                <input type="hidden" name="usuario_id" value="' . $id . '">
-                                                <input type="hidden" name="_method" value="insert">
-                                                <button type="submit"
-                                                    class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
-                                                    Inscreva-se
-                                                </button>
-                                            </form>
-                                            ';
+                                          
                                         }
                                     }
                                     

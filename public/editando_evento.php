@@ -6,58 +6,30 @@ require '../app/database.php';
 
 $id = $_SESSION['usuario_id'];
 
-$sqlDificuldades = 'SELECT * FROM dificuldades';
+$sql = 'SELECT 
+    e.*,
+    u.*, 
+    c.*,
+    d.* 
+FROM 
+    eventos e
+JOIN 
+    usuarios u ON e.usuario_id = u.id
+JOIN 
+    categorias c ON e.categoria_id = c.id
+JOIN 
+    dificuldades d ON e.dificuldade_id = d.id
+WHERE 
+    e.id = :evento_id;
+';
 
-$stmtDificuldades = $pdo-> prepare($sqlDificuldades);
+$stmtevento = $pdo->prepare($sql); 
 
-$stmtDificuldades->execute();
+$stmtevento->bindParam(':evento_id', $_GET['id']);
 
-$dificuldades = $stmtDificuldades->fetchAll();
+$stmtevento->execute();
 
-
-
-$sqlCategorias = 'SELECT * FROM categorias';
-
-$stmtCategorias = $pdo-> prepare($sqlCategorias);
-
-$stmtCategorias->execute();
-
-$categorias = $stmtCategorias->fetchAll();
-
-
-$sqluser = 'SELECT * FROM usuarios WHERE id = :id';
-
-$stmtUser = $pdo-> prepare($sqluser);
-
-$stmtUser->bindParam(':id', $id);
-
-$stmtUser->execute();
-
-$user = $stmtUser->fetch();
-
-$file = $_FILES['banner'];
-
-
-if($file['error'] === UPLOAD_ERR_OK) 
-  {
-    $uploadDir = 'uploads/';
-
-
-    if(!is_dir($uploadDir)) 
-    {
-      mkdir($uploadDir, 0755, true);
-    }
-
-    // create file name
-    $filename = uniqid() . '-' . $file['name'];
-
-    // upload file
-
-move_uploaded_file($file['tmp_name'], $uploadDir . $filename);
-
-  }
-
-  
+$evento = $stmtevento->fetch();
 
 ?>
 
@@ -401,6 +373,9 @@ move_uploaded_file($file['tmp_name'], $uploadDir . $filename);
         </div>
     </section>
 
+    <pre>
+        <?= var_dump($evento)?>
+    </pre>
 
     <script src="./assets/js/create_event.js"></script>
 </body>

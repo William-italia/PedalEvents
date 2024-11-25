@@ -254,7 +254,7 @@ move_uploaded_file($file['tmp_name'], $uploadDir . $filename);
                                                         :</label>
                                                     <input  type="datetime-local" name="date"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem] p-[.3rem]"
-                                                        min="2024-04-10T00:00" value="2024-04-10T00:00">
+                                                        >
                                                 </div>
                                             </div>
                                             <!-- duo input 2-->
@@ -340,9 +340,9 @@ move_uploaded_file($file['tmp_name'], $uploadDir . $filename);
                                                         for="dateLimit">Fim
                                                         das Inscrições
                                                         :</label>
-                                                    <input  type="datetime-local" name="date"
+                                                    <input  type="datetime-local" name="data_fim_inscricao"
                                                         class="border-[#D9D9D9] border-2 rounded-[.2rem] p-[.3rem]"
-                                                        min="2024-04-08T00:00" value="2024-04-08T00:00">
+                                                        >
                                                 </div>
                                                 <div class="flex flex-col">
                                                     <label class="font-roboto font-medium text-lg mb-2"

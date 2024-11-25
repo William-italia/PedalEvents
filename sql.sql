@@ -9,6 +9,7 @@ CREATE TABLE usuarios (
     email VARCHAR(255) NOT NULL UNIQUE,
     cpf VARCHAR(14) NOT NULL UNIQUE,
     cidade VARCHAR(100),
+    estado VARCHAR(10),
     data_nascimento DATE NOT NULL,
     senha VARCHAR(255) NOT NULL,
     bio VARCHAR(255),

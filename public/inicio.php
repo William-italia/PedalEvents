@@ -1,10 +1,13 @@
 <?php
+
+
     session_start();
 
 
     $user_id = $_SESSION['usuario_id'];
 
     require '../app/database.php';
+    require '../app/helpers.php';
     
     $stmt = $pdo->prepare(
         'SELECT 
@@ -27,11 +30,6 @@
     
     $eventos_user = $results;
 
-    $data_evento = $results['data_evento'];
-    
-    $date = new DateTime($data_evento);
-    
-    $data_formatada = $date->format('d/m/Y, h:ia');
 
     $stmt = $pdo->prepare(
         'SELECT * FROM usuarios WHERE id = :id'
@@ -100,7 +98,7 @@
             <div class="flex justify-between ">
                 <div class="flex space-x-10 items-center justify-between">
                     <div class="w-[200px] h-[200px] border-2 border-color-primary rounded-[100%] bg-cover bg-center"
-                        style="background-image: url(./uploads/<?= $USER['img']?>);">
+                        style="background-image: url('./uploads/<?= $USER['img']?>');">
                     </div>
                     <div>
                         <h2 class="font-medium text-3xl mb-4"><?= $USER['nome_completo'] ?></h2>
@@ -157,7 +155,7 @@
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <P class="text-[1.2rem] font-medium">Data e hora:</P>
-                                    <P class="text-[1.2rem] "><?= $data_formatada ?></P>
+                                    <P class="text-[1.2rem] "><?= formataData($evento['data_evento']) ?></P>
                                 </div>
                                 <div class="flex gap-2">
                                     <div class="flex items-center gap-2">
@@ -183,7 +181,7 @@
             </div>
         </div>
     </section>
-   
+
 </body>
 
 </html>

@@ -98,7 +98,7 @@ WHERE i.usuario_id = :id'
             <div class="flex  justify-between ">
                 <div class="flex space-x-10 items-center justify-between">
                     <div class="w-[200px] h-[200px] border-2 border-color-primary rounded-[100%] bg-cover bg-center"
-                        style="background-image: url(./uploads/<?= $USER['img']?>);">
+                        style="background-image: url('./uploads/<?= $USER['img']?>');">
                     </div>
                     <div>
                         <h2 class="font-medium text-3xl mb-4"><?= $USER['nome_completo'] ?></h2>

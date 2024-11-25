@@ -47,7 +47,7 @@ $stmtInscricao->execute();
 $inscricao = $stmtInscricao->fetch();
 
 
-$topicos = transformaEmArray($evento['topicos'], ' | ', ' % ', 'titulo', 'conteudo');
+$topicos = transformaEmArray($evento['topicos'], ' % ', ' | ', 'titulo', 'conteudo');
 $links = transformaEmArray($evento['links'], ', ', ' - ', 'link', 'url');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'insert') {
@@ -79,6 +79,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
   
    header('location: inicio.php');
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'EXIT') {
+    // SQL DELETE
+    $sql = 'DELETE FROM inscricao WHERE usuario_id = :user_id AND evento_id = :event_id
+';
+
+    // Preparando a query
+    $stmtExit = $pdo->prepare($sql);
+
+    // Bind dos parâmetros
+    $stmtExit->bindParam(':user_id', $id);
+    $stmtExit->bindParam(':event_id', $_POST['evento_id']);
+
+   $stmtExit->execute();
+  
+   header('refresh: 1');
+}
+
+$data_fim_inscricao = $evento['data_fim_inscricao'];
+
+$data_atual =date('Y-m-d H:i:s');
+
+$inscricao_encerrada = strtotime($data_atual) > strtotime($data_fim_inscricao);
 
 ?>
 
@@ -153,7 +175,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
                                             
                                             if($id == $evento['usuario_id']) { 
                                                 echo 
-                                                ' <li><a href="">Editar Detalhes</a></li>
+                                                '
+
                                                   <li>
                                             <form action="" method="POST">
                                                 <input type="hidden" name="evento_id" value="' . $idEvento . '">
@@ -166,6 +189,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
                                             </li>
                                                 ';                                            }
                                             
+                                            if($inscricao) {
+                                                echo 
+                                                ' 
+                                                  <li>
+                                            <form action="" method="POST">
+                                                <input type="hidden" name="evento_id" value="' . $idEvento . '">
+                                                <input type="hidden" name="_method" value="EXIT">
+                                                <button type="submit"
+                                                  >
+                                                    Sair
+                                                </button>
+                                            </form>
+                                            </li>';
+                                            }
                                             ?>
                                           
                                             
@@ -177,16 +214,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
                                     </div>
 
                                     <div class="grid grid-cols-2 gap-6 mt-4 text-xl">
-                                        <div><i class="mr-2 fa-solid fa-bookmark"></i><?= $evento['nome_completo'] ?></div>
-                                        <div><i class="mr-2 fa-solid fa-trophy"></i> <?= $evento['nome_dificuldade'] ?></div>
-                                        <div><i class="mr-2 fa-solid fa-calendar-days"></i><?= formataData($evento['data_evento'])?></div>
-                                        <div><i class="mr-2 fa-solid fa-layer-group"></i> <?= $evento['nome_categoria'] ?></div>
+                                        <!-- Nome do Organizador -->
+                                        <div><i class="mr-2 fa-solid fa-user"></i><?= $evento['nome_completo'] ?></div>
+                                        <!-- Dificuldade -->
+                                        <div><i class="mr-2 fa-solid fa-signal"></i> <?= $evento['nome_dificuldade'] ?></div>
+                                        <!-- Data do Evento -->
+                                        <div><i class="mr-2 fa-solid fa-calendar-alt"></i><?= formataData($evento['data_evento']) ?></div>
+                                        <!-- Categoria -->
+                                        <div><i class="mr-2 fa-solid fa-tags"></i> <?= $evento['nome_categoria'] ?></div>
+                                        <!-- Cidade -->
                                         <div><i class="mr-2 fa-solid fa-city"></i><?= $evento['cidade'] ?></div>
-                                        <div><i class="mr-2 fa-solid fa-user"></i> Vagas: <?= $evento['limite_vagas'] ?></div>
-                                        <div><i class="mr-2 fa-solid fa-map"></i><?= $evento['ponto_encontro'] . ', ' . $evento['bairro_encontro'] ?></div>
-                                        <div><i class="mr-2 fa-solid fa-map"></i> <?= $evento['ponto_chegada'] . ', ' . $evento['bairro_chegada'] ?></div>
-                                        <div><i class="mr-2 fa-solid fa-map"></i>Idade Minima: <?= $evento['idade_minima']?></div>
-                                        <div><i class="mr-2 fa-solid fa-bicycle"></i>Distância: <?= number_format($evento['distancia'], 1, '.', '') ?>Km</div>
+                                        <!-- Vagas -->
+                                        <div><i class="mr-2 fa-solid fa-users"></i> Vagas: <?= $evento['limite_vagas'] ?></div>
+                                        <!-- Ponto de Encontro -->
+                                        <div><i class="mr-2 fa-solid fa-map-marker-alt"></i><?= $evento['ponto_encontro'] . ', ' . $evento['bairro_encontro'] ?></div>
+                                        <!-- Ponto de Chegada -->
+                                        <div><i class="mr-2 fa-solid fa-flag-checkered"></i> <?= $evento['ponto_chegada'] . ', ' . $evento['bairro_chegada'] ?></div>
+                                        <!-- Idade Mínima -->
+                                        <div><i class="mr-2 fa-solid fa-child"></i>Idade Minima: <?= $evento['idade_minima'] ?></div>
+                                        <!-- Distância -->
+                                        <div><i class="mr-2 fa-solid fa-road"></i>Distância: <?= number_format($evento['distancia'], 1, '.', '') ?>Km</div>
                                     </div>
 
                                     <!-- topics - father box -->
@@ -210,7 +257,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
                             <!-- links box -->
                             <div class="w-[30%] bg-slate-0 border-l-2 p-4">
                                 <div>
-                                    <p>Inscrições Abertas</p>
                                     <?php
                                     
                                     if ($id == $evento['usuario_id']) {
@@ -220,7 +266,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
                                         </p>
                                         ';
                                     } else {
-                                        if ($inscricao) {
+                                    
+                                            if ($inscricao) {
                                             // Caso o usuário já esteja inscrito
                                             echo '
                                             <p class="p-2 bg-[#D3D3D3] rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
@@ -228,18 +275,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
                                             </p>
                                             ';
                                         } else {
+                                            if($inscricao_encerrada) {
+                                                echo '
+                                                <p class="p-2 bg-[#D3D3D3] rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
+                                                    Encerrado
+                                                </p>
+                                                ';
+                                            } else {
+                                                echo '
+                                                <form action="" method="POST">
+                                                    <input type="hidden" name="evento_id" value="' . $idEvento . '">
+                                                    <input type="hidden" name="usuario_id" value="' . $id . '">
+                                                    <input type="hidden" name="_method" value="insert">
+                                                    <button type="submit"
+                                                        class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
+                                                        Inscreva-se
+                                                    </button>
+                                                </form>
+                                                ';
+                                            }
                                             // Caso o usuário não esteja inscrito
-                                            echo '
-                                            <form action="" method="POST">
-                                                <input type="hidden" name="evento_id" value="' . $idEvento . '">
-                                                <input type="hidden" name="usuario_id" value="' . $id . '">
-                                                <input type="hidden" name="_method" value="insert">
-                                                <button type="submit"
-                                                    class="p-2 bg-[#00D1FF] hover:bg-cyan-600 duration-500 rounded-[4px] shadow-xl w-full mt-4 text-center cursor-pointer">
-                                                    Inscreva-se
-                                                </button>
-                                            </form>
-                                            ';
+                                          
                                         }
                                     }
                                     
@@ -267,7 +323,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST[
             </div>
         </div>
     </section>
-
     <script src="./assets/js/home.js"></script>
 </body>
 
